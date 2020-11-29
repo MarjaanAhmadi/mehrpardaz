@@ -1,0 +1,10 @@
+{
+  apps : [
+    {
+      name      : "Admin",
+      script    : "PORT=4040 serve -s build",
+      interpreter: "none",
+      args: ""
+    }
+  ]
+}
