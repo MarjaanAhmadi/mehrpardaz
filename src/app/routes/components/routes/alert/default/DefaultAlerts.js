@@ -1,5 +1,5 @@
-import React from 'react';
-import {Alert} from 'reactstrap';
+import React from "react";
+import { Alert } from "reactstrap";
 
 const DefaultAlerts = () => {
   return (
@@ -19,7 +19,6 @@ const DefaultAlerts = () => {
         <Alert className="shadow-lg" color="secondary">
           This is a secondary alert — check it out!
         </Alert>
-
 
         <h5>Success Alerts</h5>
         <Alert className="shadow-lg" color="success">
@@ -53,7 +52,6 @@ const DefaultAlerts = () => {
         </Alert>
       </div>
     </div>
-
   );
 };
 

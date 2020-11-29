@@ -1,99 +1,119 @@
-import React, { useState, useEffect } from 'react';
-import ContainerHeader from 'components/ContainerHeader';
-import AircraftTable from 'components/dashboard/aircrafts/AircraftTable';
-import IntlMessages from 'util/IntlMessages';
-import { List } from 'DataManager/DataManager';
-import { useDispatch } from 'react-redux';
-import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import CreateOrEdit from '../../../../../components/dashboard/aircrafts/actions/CreateOrEdit';
-import Button from '@material-ui/core/Button';
-import DetailsComp from 'components/dashboard/aircrafts/actions/DetailsComp';
+import React, { useState, useEffect } from "react";
+import ContainerHeader from "components/ContainerHeader";
+import AircraftTable from "components/dashboard/aircrafts/AircraftTable";
+import IntlMessages from "util/IntlMessages";
+import { List } from "DataManager/DataManager";
+import { useDispatch } from "react-redux";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import CreateOrEdit from "../../../../../components/dashboard/aircrafts/actions/CreateOrEdit";
+import Button from "@material-ui/core/Button";
+import DetailsComp from "components/dashboard/aircrafts/actions/DetailsComp";
 
-const Aircrafts = ({match}) => {
-    const dispatch = useDispatch();
-    const [aircrafts, setAircrafts] = useState({
-        list: []
-    });
-    const [editedId, setEditedId] = useState('');
-    const [detailId, setDetailedId] = useState('');
-    const [edit, setEdit] = useState(false)
-    const [previewVisible, setPreviewVisible] = useState(false);
-    const [previewVisibleDetail, setPreviewVisibleDetail] = useState(false);
-    const handleCancelDetail = () => {
-        setPreviewVisibleDetail(false);
-    }
-    const getAircrafts = async () => {
-        try{
-            const response = await List('aircrafts', undefined, 10, 0, undefined, undefined);
-            
-            setAircrafts({
-                ...aircrafts,
-                list: response
-            });
-            if(previewVisible){
-                setPreviewVisible(false)
-            }
-            
-            dispatch({aircrafts: response, type: 'SET_AIRCRAFTS'});
-        }
-        catch(error) {
-            console.log(error)
-        }
-    }
+const Aircrafts = ({ match }) => {
+  const dispatch = useDispatch();
+  const [aircrafts, setAircrafts] = useState({
+    list: [],
+  });
+  const [editedId, setEditedId] = useState("");
+  const [detailId, setDetailedId] = useState("");
+  const [edit, setEdit] = useState(false);
+  const [previewVisible, setPreviewVisible] = useState(false);
+  const [previewVisibleDetail, setPreviewVisibleDetail] = useState(false);
+  const handleCancelDetail = () => {
+    setPreviewVisibleDetail(false);
+  };
+  const getAircrafts = async () => {
+    try {
+      const response = await List(
+        "aircrafts",
+        undefined,
+        10,
+        1,
+        undefined,
+        undefined
+      );
 
-    const handleCancel = () => {
+      setAircrafts({
+        ...aircrafts,
+        list: response,
+      });
+      if (previewVisible) {
         setPreviewVisible(false);
+      }
+
+      dispatch({ aircrafts: response, type: "SET_AIRCRAFTS" });
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    useEffect(() => {
-        getAircrafts();
-    },[])
+  const handleCancel = () => {
+    setPreviewVisible(false);
+  };
 
-    return(
-        <div className="dashboard animated slideInUpTiny animation-duration-3">
-            <ContainerHeader match={match} title={<IntlMessages id="sidebar.dashboard.aircrafts"/>}/>
-            <div className="row mb-md-3">
-                <div className="col-12">
-                <div className="jr-card">
-                    <div className="jr-card-header d-flex align-items-center">
-                    <div className={`jr-btn-group d-flex flex-wrap mt-3`}>
-                        <Button onClick={()=>{
-                                setPreviewVisible(true);
-                                setEditedId('');
-                                setEdit(false)
-                            }} 
-                            variant="contained" color="primary" className="jr-btn text-white">
-                        <h3 className="mb-0">Create New Aircraft</h3>
-                        </Button>
-                    </div>
-                    </div>
-                    <AircraftTable openModal={(data) => {
-                                setPreviewVisible(true);
-                                setEdit(true);                                 
-                                setEditedId(data);
-                    }}
-                    openDetailedLog={(data) => {
-                        setPreviewVisibleDetail(true);                         
-                        setEdit(false);                                 
-                        setDetailedId(data);
-                    }}
-                    getAircrafts={getAircrafts} data={aircrafts.list}/>
-                </div>
-                </div>
+  useEffect(() => {
+    getAircrafts();
+  }, []);
+
+  return (
+    <div className="dashboard animated slideInUpTiny animation-duration-3">
+      <ContainerHeader
+        match={match}
+        title={<IntlMessages id="sidebar.dashboard.aircrafts" />}
+      />
+      <div className="row mb-md-3">
+        <div className="col-12">
+          <div className="jr-card">
+            <div className="jr-card-header d-flex align-items-center">
+              <div className={`jr-btn-group d-flex flex-wrap mt-3`}>
+                <Button
+                  onClick={() => {
+                    setPreviewVisible(true);
+                    setEditedId("");
+                    setEdit(false);
+                  }}
+                  variant="contained"
+                  color="primary"
+                  className="jr-btn text-white"
+                >
+                  <h3 className="mb-0">Create New Aircraft</h3>
+                </Button>
+              </div>
             </div>
-            <Modal isOpen={previewVisible} toggle={handleCancel}>
-                <ModalHeader toggle={handleCancel}>{edit ? 'Edit Aircraft' : 'Create Aircraft'}</ModalHeader>
-                <ModalBody>
-                    <CreateOrEdit getAircrafts={getAircrafts} id={editedId} edit={edit}/>
-                </ModalBody>
-            </Modal>
-            <Modal isOpen={previewVisibleDetail} toggle={handleCancelDetail}>
-                <ModalHeader toggle={handleCancelDetail}>Flight Details</ModalHeader>
-                <ModalBody>
-                    <DetailsComp detailId={detailId}/>
-                </ModalBody>
-            </Modal>
+            <AircraftTable
+              openModal={(data) => {
+                setPreviewVisible(true);
+                setEdit(true);
+                setEditedId(data);
+              }}
+              openDetailedLog={(data) => {
+                setPreviewVisibleDetail(true);
+                setEdit(false);
+                setDetailedId(data);
+              }}
+              getAircrafts={getAircrafts}
+              data={aircrafts.list}
+            />
+          </div>
         </div>
-    )
-}
+      </div>
+      <Modal isOpen={previewVisible} toggle={handleCancel}>
+        <ModalHeader toggle={handleCancel}>
+          {edit ? "Edit Aircraft" : "Create Aircraft"}
+        </ModalHeader>
+        <ModalBody>
+          <CreateOrEdit getAircrafts={getAircrafts} id={editedId} edit={edit} />
+        </ModalBody>
+      </Modal>
+      <Modal isOpen={previewVisibleDetail} toggle={handleCancelDetail}>
+        <ModalHeader toggle={handleCancelDetail}>
+          Notification Details
+        </ModalHeader>
+        <ModalBody>
+          <DetailsComp detailId={detailId} />
+        </ModalBody>
+      </Modal>
+    </div>
+  );
+};
 export default Aircrafts;

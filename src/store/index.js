@@ -1,32 +1,36 @@
-import {applyMiddleware, compose, createStore} from 'redux';
-import reducers from '../reducers/index';
-import {createBrowserHistory} from 'history'
-import {routerMiddleware} from 'connected-react-router';
-import createSagaMiddleware from 'redux-saga';
-import rootSaga from '../sagas/index';
-
+import { configureStore } from "@reduxjs/toolkit";
+import reducers from "../reducers/index";
+import { createBrowserHistory } from "history";
+import { routerMiddleware } from "connected-react-router";
+import defMiddles from "./middlewares";
+// import thunk from "redux-thunk";
+import baseSliceReducer from "./slices";
+import testSliceReducer from "tests/testRouteWithSlice/testSlice";
+import librarySlice from "app/routes/dashboard/routes/library/slice/librarySlice";
 
 const history = createBrowserHistory();
+const JamboReducers = reducers(history);
 const routeMiddleware = routerMiddleware(history);
-const sagaMiddleware = createSagaMiddleware();
+// const middlewares = [routeMiddleware];
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const middlewares = [sagaMiddleware, routeMiddleware];
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const allMiddles = [routeMiddleware, ...defMiddles];
 
+// export default configureStore({
+//   reducer: {
+//     ...reducers(history),
+//   },
+//   middleware: (getDefaults) => getDefaults().concat(allMiddles),
+// })
 
-export default function configureStore(initialState) {
-  const store = createStore(reducers(history), initialState,
-    composeEnhancers(applyMiddleware(...middlewares)));
+export default configureStore({
+  reducer: {
+    ...JamboReducers,
+    ...baseSliceReducer,
+    ...testSliceReducer,
+    ...librarySlice,
+  },
+  middleware: (getDefaults) => getDefaults().concat(allMiddles),
+});
 
-  sagaMiddleware.run(rootSaga);
-
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers/index', () => {
-      const nextRootReducer = require('../reducers/index');
-      store.replaceReducer(nextRootReducer);
-    });
-  }
-  return store;
-}
-export {history};
+export { history };

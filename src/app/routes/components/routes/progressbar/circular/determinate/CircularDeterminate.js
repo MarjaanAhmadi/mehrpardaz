@@ -1,11 +1,10 @@
-import React from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
-
+import React from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function CircularDeterminate() {
   return (
     <div className="manage-margin">
-      <CircularProgress variant="determinate" value={75}/>
+      <CircularProgress variant="determinate" value={75} />
       <CircularProgress
         size={50}
         variant="determinate"
@@ -13,7 +12,7 @@ function CircularDeterminate() {
         min={0}
         max={50}
       />
-      <CircularProgress color="secondary" variant="determinate" value={75}/>
+      <CircularProgress color="secondary" variant="determinate" value={75} />
       <CircularProgress
         color="secondary"
         size={50}
@@ -25,6 +24,5 @@ function CircularDeterminate() {
     </div>
   );
 }
-
 
 export default CircularDeterminate;

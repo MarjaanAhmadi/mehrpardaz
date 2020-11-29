@@ -1,11 +1,12 @@
-import React, {Component} from "react";
-import {GoogleMap, TrafficLayer, withGoogleMap} from "react-google-maps";
+import React, { Component } from "react";
+import { GoogleMap, TrafficLayer, withGoogleMap } from "react-google-maps";
 
-const TrafficLayerExampleGoogleMap = withGoogleMap(props => (
+const TrafficLayerExampleGoogleMap = withGoogleMap((props) => (
   <GoogleMap
     defaultZoom={15}
-    defaultCenter={{lat: 47.646935, lng: -122.303763}}>
-    <TrafficLayer autoUpdate/>
+    defaultCenter={{ lat: 47.646935, lng: -122.303763 }}
+  >
+    <TrafficLayer autoUpdate />
   </GoogleMap>
 ));
 
@@ -13,14 +14,13 @@ const TrafficLayerExampleGoogleMap = withGoogleMap(props => (
  * Add <script src="https://maps.googleapis.com/maps/api/js"></script> to your HTML to provide google.maps reference
  */
 export default class TrafficLayerEx extends Component {
-
   render() {
     return (
       <TrafficLayerExampleGoogleMap
         containerElement={
-          <div className="embed-responsive embed-responsive-21by9"/>
+          <div className="embed-responsive embed-responsive-21by9" />
         }
-        mapElement={<div className="embed-responsive-item"/>}
+        mapElement={<div className="embed-responsive-item" />}
       />
     );
   }

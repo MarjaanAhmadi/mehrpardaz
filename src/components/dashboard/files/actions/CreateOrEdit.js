@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import Checkbox from "@material-ui/core/Checkbox";
 import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+// import Select from "@material-ui/core/Select";
+// import MenuItem from "@material-ui/core/MenuItem";
 import Input from "@material-ui/core/Input";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   folder: {
     width: 30,
     height: 30,
-    marginTop: 20
+    marginTop: 20,
   },
 });
 
@@ -50,13 +50,13 @@ const CreateOrEdit = (props) => {
     successMsg: "",
   });
 
-  const onFileChange = (event) => {
+  function onFileChange(event) {
     setSelectedFile(event.target.files[0]);
-  };
+  }
   const craeteFile = async () => {
     try {
       const f = await onNewFolder();
-       
+
       const formData = new FormData();
 
       // Update the formData object
@@ -125,7 +125,6 @@ const CreateOrEdit = (props) => {
 
   const getFile = async () => {
     try {
-       
       const userLi = await getUsers();
       const response = await Retrieve("file_managers", props.editedId);
       const cb = userLi.filter((i) => i._id === response.created_by._id)[0];
@@ -146,15 +145,15 @@ const CreateOrEdit = (props) => {
 
   const [newFolder, setNewFolder] = useState("");
 
-  const onNewFolder = async() => {
+  const onNewFolder = async () => {
     setForm((prev) => ({ ...prev, filePath: `${prev.filePath}${newFolder}/` }));
-     
-    
-    const filePath = newFolder !== "" ? `${form.filePath}${newFolder}/` : form.filePath;
-     
+
+    const filePath =
+      newFolder !== "" ? `${form.filePath}${newFolder}/` : form.filePath;
+
     setCheckForNewFolder(false);
     return filePath;
-  }
+  };
 
   useEffect(() => {
     if (props.edit) getFile();
@@ -203,24 +202,23 @@ const CreateOrEdit = (props) => {
                 />
               </FormControl>
             </Grid> */}
-              <Grid item xs={6} sm={6}>
-              <img 
+            <Grid item xs={6} sm={6}>
+              <img
                 className={classes.folder}
-                src={require("assets/images/folder.png")}/>
+                src={require("assets/images/folder.png")}
+              />
 
-                <FormControl>
-                  <InputLabel htmlFor="position-top">
-                    New Folder
-                  </InputLabel>
-                  <Input
-                    type="text"
-                    value={newFolder}
-                    onChange={(e) => {
-                      setNewFolder(e.target.value);
-                    }}
-                  />
-                </FormControl>
-              </Grid>
+              <FormControl>
+                <InputLabel htmlFor="position-top">New Folder</InputLabel>
+                <Input
+                  type="text"
+                  value={newFolder}
+                  onChange={(e) => {
+                    setNewFolder(e.target.value);
+                  }}
+                />
+              </FormControl>
+            </Grid>
           </React.Fragment>
         ) : (
           <Grid item xs={6} sm={6}>

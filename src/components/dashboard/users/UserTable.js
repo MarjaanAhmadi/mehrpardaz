@@ -7,7 +7,7 @@ import { Delete } from 'DataManager/DataManager';
 const UserTable = (props) => {
   const deleteUser = async (id) => {
     try {
-       
+        
       await Delete('users', id);
       props.getUsers();
     } catch (error) {
@@ -33,7 +33,7 @@ const UserTable = (props) => {
             props.data.length > 0
             ? props.data.map(data => {
               return (
-                <UserTableCell openModal={(data) => { ;props.openModal(data)}} deleteUser={(id) => {deleteUser(id)}} getUsers={props.getUsers} key={data._id} data={data}/>
+                <UserTableCell openModal={(data) => { props.openModal(data)}} deleteUser={(id) => {deleteUser(id)}} getUsers={props.getUsers} key={data. id} data={data}/>
               );
             })
             : null

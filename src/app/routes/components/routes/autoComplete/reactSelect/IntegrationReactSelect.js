@@ -1,81 +1,83 @@
-import React from 'react';
-import clsx from 'clsx';
-import Select from 'react-select';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import NoSsr from '@material-ui/core/NoSsr';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
-import Chip from '@material-ui/core/Chip';
-import MenuItem from '@material-ui/core/MenuItem';
-import CancelIcon from '@material-ui/icons/Cancel';
-import { emphasize } from '@material-ui/core/styles/colorManipulator';
-import PropTypes from 'prop-types';
+import React from "react";
+import clsx from "clsx";
+import Select from "react-select";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import NoSsr from "@material-ui/core/NoSsr";
+import TextField from "@material-ui/core/TextField";
+import Paper from "@material-ui/core/Paper";
+import Chip from "@material-ui/core/Chip";
+import MenuItem from "@material-ui/core/MenuItem";
+import CancelIcon from "@material-ui/icons/Cancel";
+import { emphasize } from "@material-ui/core/styles/colorManipulator";
+import PropTypes from "prop-types";
 
 const suggestions = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-  { label: 'Anguilla' },
-  { label: 'Antarctica' },
-  { label: 'Antigua and Barbuda' },
-  { label: 'Argentina' },
-  { label: 'Armenia' },
-  { label: 'Aruba' },
-  { label: 'Australia' },
-  { label: 'Austria' },
-  { label: 'Azerbaijan' },
-  { label: 'Bahamas' },
-  { label: 'Bahrain' },
-  { label: 'Bangladesh' },
-  { label: 'Barbados' },
-  { label: 'Belarus' },
-  { label: 'Belgium' },
-  { label: 'Belize' },
-  { label: 'Benin' },
-  { label: 'Bermuda' },
-  { label: 'Bhutan' },
-  { label: 'Bolivia, Plurinational State of' },
-  { label: 'Bonaire, Sint Eustatius and Saba' },
-  { label: 'Bosnia and Herzegovina' },
-  { label: 'Botswana' },
-  { label: 'Bouvet Island' },
-  { label: 'Brazil' },
-  { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
-].map(suggestion => ({
+  { label: "Afghanistan" },
+  { label: "Aland Islands" },
+  { label: "Albania" },
+  { label: "Algeria" },
+  { label: "American Samoa" },
+  { label: "Andorra" },
+  { label: "Angola" },
+  { label: "Anguilla" },
+  { label: "Antarctica" },
+  { label: "Antigua and Barbuda" },
+  { label: "Argentina" },
+  { label: "Armenia" },
+  { label: "Aruba" },
+  { label: "Australia" },
+  { label: "Austria" },
+  { label: "Azerbaijan" },
+  { label: "Bahamas" },
+  { label: "Bahrain" },
+  { label: "Bangladesh" },
+  { label: "Barbados" },
+  { label: "Belarus" },
+  { label: "Belgium" },
+  { label: "Belize" },
+  { label: "Benin" },
+  { label: "Bermuda" },
+  { label: "Bhutan" },
+  { label: "Bolivia, Plurinational State of" },
+  { label: "Bonaire, Sint Eustatius and Saba" },
+  { label: "Bosnia and Herzegovina" },
+  { label: "Botswana" },
+  { label: "Bouvet Island" },
+  { label: "Brazil" },
+  { label: "British Indian Ocean Territory" },
+  { label: "Brunei Darussalam" },
+].map((suggestion) => ({
   value: suggestion.label,
   label: suggestion.label,
 }));
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     height: 250,
   },
   input: {
-    display: 'flex',
+    display: "flex",
     padding: 0,
-    height: 'auto',
+    height: "auto",
   },
   valueContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap",
     flex: 1,
-    alignItems: 'center',
-    overflow: 'hidden',
+    alignItems: "center",
+    overflow: "hidden",
   },
   chip: {
     margin: theme.spacing(0.5, 0.25),
   },
   chipFocused: {
     backgroundColor: emphasize(
-      theme.palette.type === 'light' ? theme.palette.grey[300] : theme.palette.grey[700],
-      0.08,
+      theme.palette.type === "light"
+        ? theme.palette.grey[300]
+        : theme.palette.grey[700],
+      0.08
     ),
   },
   noOptionsMessage: {
@@ -85,13 +87,13 @@ const useStyles = makeStyles(theme => ({
     fontSize: 16,
   },
   placeholder: {
-    position: 'absolute',
+    position: "absolute",
     left: 2,
     bottom: 6,
     fontSize: 16,
   },
   paper: {
-    position: 'absolute',
+    position: "absolute",
     zIndex: 1,
     marginTop: theme.spacing(1),
     left: 0,
@@ -204,7 +206,10 @@ Placeholder.propTypes = {
 
 function SingleValue(props) {
   return (
-    <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
+    <Typography
+      className={props.selectProps.classes.singleValue}
+      {...props.innerProps}
+    >
       {props.children}
     </Typography>
   );
@@ -217,7 +222,11 @@ SingleValue.propTypes = {
 };
 
 function ValueContainer(props) {
-  return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
+  return (
+    <div className={props.selectProps.classes.valueContainer}>
+      {props.children}
+    </div>
+  );
 }
 
 ValueContainer.propTypes = {
@@ -248,7 +257,11 @@ MultiValue.propTypes = {
 
 function Menu(props) {
   return (
-    <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
+    <Paper
+      square
+      className={props.selectProps.classes.paper}
+      {...props.innerProps}
+    >
       {props.children}
     </Paper>
   );
@@ -286,11 +299,11 @@ function IntegrationReactSelect() {
   }
 
   const selectStyles = {
-    input: base => ({
+    input: (base) => ({
       ...base,
       color: theme.palette.text.primary,
-      '& input': {
-        font: 'inherit',
+      "& input": {
+        font: "inherit",
       },
     }),
   };
@@ -303,12 +316,12 @@ function IntegrationReactSelect() {
           styles={selectStyles}
           inputId="react-select-single"
           TextFieldProps={{
-            label: 'Country',
+            label: "Country",
             InputLabelProps: {
-              htmlFor: 'react-select-single',
+              htmlFor: "react-select-single",
               shrink: true,
             },
-            placeholder: 'Search a country (start with a)',
+            placeholder: "Search a country (start with a)",
           }}
           options={suggestions}
           components={components}
@@ -321,12 +334,12 @@ function IntegrationReactSelect() {
           styles={selectStyles}
           inputId="react-select-multiple"
           TextFieldProps={{
-            label: 'Countries',
+            label: "Countries",
             InputLabelProps: {
-              htmlFor: 'react-select-multiple',
+              htmlFor: "react-select-multiple",
               shrink: true,
             },
-            placeholder: 'Select multiple countries',
+            placeholder: "Select multiple countries",
           }}
           options={suggestions}
           components={components}

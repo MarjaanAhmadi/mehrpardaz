@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import SwipeableViews from 'react-swipeable-views';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import SwipeableViews from "react-swipeable-views";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
-function TabContainer({children, dir}) {
+function TabContainer({ children, dir }) {
   return (
-    <div dir={dir} style={{padding: 8 * 3}}>
+    <div dir={dir} style={{ padding: 8 * 3 }}>
       {children}
     </div>
   );
@@ -25,15 +25,15 @@ class FullWidthTabs extends Component {
   };
 
   handleChange = (event, value) => {
-    this.setState({value});
+    this.setState({ value });
   };
 
-  handleChangeIndex = index => {
-    this.setState({value: index});
+  handleChangeIndex = (index) => {
+    this.setState({ value: index });
   };
 
   render() {
-    const {theme} = this.props;
+    const { theme } = this.props;
 
     return (
       <div className="w-100">
@@ -46,13 +46,13 @@ class FullWidthTabs extends Component {
             variant="fullWidth"
             scrollButtons="on"
           >
-            <Tab className="tab" label="Item One"/>
-            <Tab className="tab" label="Item Two"/>
-            <Tab className="tab" label="Item Three"/>
+            <Tab className="tab" label="Item One" />
+            <Tab className="tab" label="Item Two" />
+            <Tab className="tab" label="Item Three" />
           </Tabs>
         </AppBar>
         <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
@@ -69,4 +69,4 @@ FullWidthTabs.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(null, {withTheme: true})(FullWidthTabs);
+export default withStyles(null, { withTheme: true })(FullWidthTabs);

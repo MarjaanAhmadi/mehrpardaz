@@ -32,7 +32,7 @@
     position: relative;
     width: 100%;
     min-height: 100%;
-    @include background('https://via.placeholder.com/1920x1072', center center);
+    //@include background('#{$image_path}/background-picture-1.jpg', center center);
   }
   & .pi-content {
     padding: 70px 40px 24px !important;
@@ -181,6 +181,7 @@
 .card-title {
   font-size: $h3-font-size;
   text-transform: capitalize;
+  text-align: center;
 
   .jr-card-metrics & {
     font-size: $h6-font-size;
@@ -255,6 +256,7 @@
   .jr-card-social & {
     margin-bottom: 0;
     @include justify-content(space-between);
+    display: flex !important;
   }
 
   .jr-card-social-around & {
@@ -358,14 +360,14 @@
     padding: 40px 20px;
     margin-bottom: 0;
     text-align: center;
-    @include background('https://via.placeholder.com/370x250', center center);
+    //@include background('#{$image_path}/dashboard/francisco-bg.jpg', center center);
     position: relative;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
     overflow: hidden;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       top: 0;

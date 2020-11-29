@@ -1,4 +1,4 @@
-@import 'react-joyride';
+@import "react-joyride";
 /*Joyride Tour Styles*/
 
 @mixin viewport-unit($property, $value) {
@@ -8,20 +8,24 @@
 
   @if (index((vw, vh, vmin, vmax), $unit) != null) {
     $devices: (
-                    (768px, 1024px), // iPad (all versions)
-                    (320px, 480px), // iPhone 4
-                    (320px, 568px) // iPhone 5, 5C, 5S
+      (768px, 1024px),
+      // iPad (all versions)
+        (320px, 480px),
+      // iPhone 4
+        (320px, 568px)
+        // iPhone 5, 5C, 5S
     );
 
     @each $device in $devices {
       $device-width: nth($device, 1);
       $device-height: nth($device, 2);
 
-      $device-query: 'only screen and (-webkit-min-device-pixel-ratio: 1)';
-      $device-query: '#{$device-query} and (device-width: #{$device-width})';
-      $device-query: '#{$device-query} and (device-height: #{$device-height})';
+      $device-query: "only screen and (-webkit-min-device-pixel-ratio: 1)";
+      $device-query: "#{$device-query} and (device-width: #{$device-width})";
+      $device-query: "#{$device-query} and (device-height: #{$device-height})";
 
-      $percent: $value / ($value * 0 + 1); // see https://github.com/sass/sass/issues/533
+      $percent: $value /
+        ($value * 0 + 1); // see https://github.com/sass/sass/issues/533
 
       $percent-width: $device-width * $percent / 100;
       $percent-height: $device-height * $percent / 100;

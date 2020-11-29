@@ -1,18 +1,24 @@
-import React from 'react';
-import {ButtonDropdown, ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import {
+  ButtonDropdown,
+  ButtonGroup,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+} from "reactstrap";
+import Button from "@material-ui/core/Button";
 
 class NestedButtonGroup extends React.Component {
   toggle = () => {
     this.setState({
-      dropDownOpen: !this.state.dropDownOpen
-    })
+      dropDownOpen: !this.state.dropDownOpen,
+    });
   };
 
   constructor() {
     super();
     this.state = {
-      dropDownOpen: false
+      dropDownOpen: false,
     };
   }
 
@@ -22,7 +28,10 @@ class NestedButtonGroup extends React.Component {
         <Button className="jr-btn bg-secondary text-white">Left</Button>
         <Button className="jr-btn bg-secondary text-white">Middle</Button>
         <ButtonDropdown isOpen={this.state.dropDownOpen} toggle={this.toggle}>
-          <DropdownToggle className="jr-btn border-0 no-shadow bg-secondary text-white" caret>
+          <DropdownToggle
+            className="jr-btn border-0 no-shadow bg-secondary text-white"
+            caret
+          >
             Right
           </DropdownToggle>
           <DropdownMenu>
@@ -32,7 +41,7 @@ class NestedButtonGroup extends React.Component {
         </ButtonDropdown>
       </ButtonGroup>
     );
-  };
+  }
 }
 
 export default NestedButtonGroup;

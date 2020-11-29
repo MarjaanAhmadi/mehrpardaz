@@ -1,5 +1,5 @@
-import React from 'react';
-import {Badge} from 'reactstrap';
+import React from "react";
+import { Badge } from "reactstrap";
 
 export default class Contextual extends React.Component {
   render() {

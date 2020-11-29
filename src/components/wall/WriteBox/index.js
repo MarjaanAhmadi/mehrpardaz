@@ -1,127 +1,123 @@
-import React, {Component} from "react";
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import {Card, Modal, ModalHeader} from "reactstrap"
-import TextField from '@material-ui/core/TextField';
-import Dropzone from 'react-dropzone';
-import Divider from '@material-ui/core/Divider';
+import React, { useCallback, useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import { Card, Modal, ModalHeader } from "reactstrap";
+import TextField from "@material-ui/core/TextField";
+import { useDropzone } from "react-dropzone";
+import Divider from "@material-ui/core/Divider";
 
-class WriteBox extends Component {
+const WriteBox = (props) => {
+  const [commentText, setCommentText] = useState("");
 
-  state = {
-    commentText: '',
-    previewVisible: false,
-    previewImage: '',
-    fileList: [],
-    rejected: [],
-    isOpen: false,
+  const [previewVisible, setPreviewVisible] = useState(false);
+
+  const [previewImage, setPreviewImage] = useState("");
+
+  const [fileList, setFileList] = useState([]);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleCancel = () => {
+    setPreviewVisible(false);
   };
 
-  handleCancel = () => this.setState({previewVisible: false})
+  const onDrop = useCallback((acceptedFiles) => {
+    setFileList(acceptedFiles.map((file) => URL.createObjectURL(file)));
+  }, []);
 
-  handlePreview = (file) => {
-    console.log("previewImage", file)
-    this.setState({
-      previewImage: file.url || file.thumbUrl,
-      previewVisible: true,
-    });
-  }
-
-  onDrop = files => {
-    console.log("file-->", files)
-    this.setState({
-      fileList: files,
-    });
+  const handleClickImage = () => {
+    setIsOpen(!isOpen);
   };
 
-  handleChange = ({fileList}) => {
-    console.log("fileList", fileList)
-    this.setState({fileList})
-  }
+  const handleAddPost = () => {
+    console.log("send image list", fileList);
+    props.addPost(commentText, fileList);
+    setCommentText("");
+    setPreviewVisible("");
+    setPreviewImage("");
+    setFileList([]);
+    setIsOpen(false);
+  };
 
-  handleClickImage() {
-    this.setState((previousState) => ({
-      isOpen: !previousState.isOpen
-    }));
-  }
+  const onChange = (e) => {
+    setCommentText(e.target.value);
+  };
 
-  handleAddPost() {
-    this.props.addPost(this.state.commentText, this.state.fileList);
-    this.setState({
-      commentText: '',
-      previewVisible: false,
-      previewImage: '',
-      fileList: [],
-      isOpen: false,
-    });
-  }
+  const isEnabled = fileList.length === 0 && commentText === "";
 
-  onChange(e) {
-    this.setState({commentText: e.target.value})
-  }
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  render() {
-    const {previewVisible, previewImage, fileList} = this.state;
-    console.log("this.state.fileList.length", fileList.length)
-    const isEnabled = fileList.length === 0 && this.state.commentText === "";
-
-    return (
-      <Card className="jr-card">
-        <div className="media mb-2">
-          <Avatar className="size-50 mr-3" src={this.props.user.image}/>
-          <div className="media-body">
-            <TextField
-              id="exampleTextarea"
-              placeholder="Whats in your mind?"
-              label="Whats in your mind?"
-              value={this.state.commentText}
-              onChange={(event) => this.onChange(event)}
-              multiline
-              fullWidth
-              className="jr-wall-textarea"
-              margin="none"
-              variant="outlined"
-              rows="4"
-            />
-          </div>
+  return (
+    <Card className="jr-card">
+      <div className="media mb-2">
+        <Avatar className="size-50 mr-3" src={props.user.image} />
+        <div className="media-body">
+          <TextField
+            id="exampleTextarea"
+            placeholder="Whats in your mind?"
+            label="Whats in your mind?"
+            value={commentText}
+            onChange={(event) => onChange(event)}
+            multiline
+            fullWidth
+            className="jr-wall-textarea"
+            margin="none"
+            variant="outlined"
+            rows="4"
+          />
         </div>
+      </div>
 
-        <div className="jr-clearfix">
-          {this.state.isOpen === true ? <div className="d-flex flex-row">
-              <ul className="list-inline mb-3 mr-2">
-                {fileList.map((user, index) =>
-                  <li className="mb-1 mr-0 list-inline-item align-top" key={index}>
-                    <img alt="..." className="size-60 rounded" src={user.preview}/>
-                  </li>
-                )
-                }
-              </ul>
-              <Dropzone
-                className="jr-wall-dropzone" onDrop={this.onDrop}><i className="zmdi zmdi-collection-image"/></Dropzone>
+      <div className="jr-clearfix">
+        {isOpen === true ? (
+          <div className="d-flex flex-row">
+            {console.log(fileList)}
+            <ul className="list-inline mb-3 mr-2">
+              {fileList.map((file, index) => (
+                <li
+                  className="mb-1 mr-0 list-inline-item align-top"
+                  key={index}
+                >
+                  <img alt="..." className="size-60 rounded" src={file} />
+                </li>
+              ))}
+            </ul>
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              {isDragActive ? (
+                <i className="zmdi zmdi-collection-image" />
+              ) : (
+                <i className="zmdi zmdi-collection-image" />
+              )}
             </div>
-            : null}
-          <Divider/>
-
-          <Modal isOpen={previewVisible} toggle={this.handleCancel}>
-            <ModalHeader toggle={this.toggle}>Slide Show</ModalHeader>
-            <img alt="example" style={{width: '100%'}} src={previewImage}/>
-          </Modal>
-        </div>
-
-        <div className="d-flex flex-row align-items-center mt-2">
-          <div className="pointer" onClick={this.handleClickImage.bind(this)}>
-            <i className="zmdi zmdi-camera mr-2 jr-fs-xl d-inline-flex align-middle"/>
-            <span className="jr-fs-sm"> Add Photos/Album </span>
           </div>
+        ) : null}
+        <Divider />
 
-          <Button color="primary" size='small' className="ml-auto mb-0"
-                  disabled={(isEnabled) ? "disabled" : ""}
-                  onClick={this.handleAddPost.bind(this)}>SEND
-          </Button>
+        <Modal isOpen={previewVisible} toggle={handleCancel}>
+          <ModalHeader>Slide Show</ModalHeader>
+          <img alt="example" style={{ width: "100%" }} src={previewImage} />
+        </Modal>
+      </div>
+
+      <div className="d-flex flex-row align-items-center mt-2">
+        <div className="pointer" onClick={handleClickImage}>
+          <i className="zmdi zmdi-camera mr-2 jr-fs-xl d-inline-flex align-middle" />
+          <span className="jr-fs-sm"> Add Photos/Album </span>
         </div>
-      </Card>
-    )
-  }
-}
+
+        <Button
+          color="primary"
+          size="small"
+          className="ml-auto mb-0"
+          disabled={isEnabled ? "disabled" : ""}
+          onClick={handleAddPost}
+        >
+          SEND
+        </Button>
+      </div>
+    </Card>
+  );
+};
 
 export default WriteBox;

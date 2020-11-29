@@ -82,6 +82,10 @@
   & li.nav-item {
     padding: 0 10px;
 
+    @media screen and (max-width: 1099px) {
+      padding: 0 5px;
+    }
+
     & > .nav-link,
     & > a {
       padding: 24px 0 25px;
@@ -165,7 +169,7 @@
         display: inline-block;
         float: right;
         font: {
-          family: 'Material-Design-Iconic-Font';
+          family: "Material-Design-Iconic-Font";
           size: 15px;
         }
         margin-left: 10px;

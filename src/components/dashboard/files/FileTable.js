@@ -1,22 +1,18 @@
-import React from 'react';
-import FileTableCell from './FileTableCell';
-import { Delete } from 'DataManager/DataManager';
-
+import React from "react";
+import FileTableCell from "./FileTableCell";
+import { Delete } from "DataManager/DataManager";
 
 const FileTable = (props) => {
-  const deleteFile = async (id) => {
+  async function deleteFile(id) {
     try {
-        
-      await Delete('file_managers', id);
+      await Delete("file_managers", id);
       props.getFiles();
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
-    return (
-      <div className="table-responsive-material">
-        <table className="default-table table-unbordered table table-sm table-hover">
-          <thead className="th-border-b">
+  return (
+    <div className="table-responsive-material">
+      <table className="default-table table-unbordered table table-sm table-hover">
+        <thead className="th-border-b">
           <tr>
             <th>File Id</th>
             <th>File Path</th>
@@ -25,23 +21,31 @@ const FileTable = (props) => {
             <th>File Name</th>
             <th>Created By</th>
             <th></th>
-            <th/>
+            <th />
           </tr>
-          </thead>
-          <tbody>
-          {
-            props.data.length > 0
-            ? props.data.map(data => {
-              return (
-                <FileTableCell openModal={(data) => {props.openModal(data)}} deleteFile={(id) => {deleteFile(id)}} getFiles={props.getFiles} key={data._id} data={data}/>
-              );
-            })
-            : null
-          }
-          </tbody>
-        </table>
-      </div>
-    );
-}
+        </thead>
+        <tbody>
+          {props.data.length > 0
+            ? props.data.map((data) => {
+                return (
+                  <FileTableCell
+                    openModal={(data) => {
+                      props.openModal(data);
+                    }}
+                    deleteFile={(id) => {
+                      deleteFile(id);
+                    }}
+                    getFiles={props.getFiles}
+                    key={data._id}
+                    data={data}
+                  />
+                );
+              })
+            : null}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default FileTable;

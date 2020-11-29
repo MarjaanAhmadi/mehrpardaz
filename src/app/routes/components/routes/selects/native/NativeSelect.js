@@ -1,22 +1,21 @@
-import React from 'react';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Select from '@material-ui/core/Select';
+import React from "react";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Select from "@material-ui/core/Select";
 
 class NativeSelect extends React.Component {
   state = {
-    age: '',
-    name: 'hai',
+    age: "",
+    name: "hai",
   };
 
-  handleChange = name => event => {
-    this.setState({[name]: event.target.value});
+  handleChange = (name) => (event) => {
+    this.setState({ [name]: event.target.value });
   };
 
   render() {
-
     return (
       <div className="row">
         <div className="col-lg-3 col-sm-6 col-12">
@@ -25,10 +24,10 @@ class NativeSelect extends React.Component {
             <Select
               native
               value={this.state.age}
-              onChange={this.handleChange('age')}
-              input={<Input id="age-native-simple"/>}
+              onChange={this.handleChange("age")}
+              input={<Input id="age-native-simple" />}
             >
-              <option value=""/>
+              <option value="" />
               <option value={10}>Ten</option>
               <option value={20}>Twenty</option>
               <option value={30}>Thirty</option>
@@ -41,10 +40,10 @@ class NativeSelect extends React.Component {
             <Select
               native
               value={this.state.age}
-              onChange={this.handleChange('age')}
-              input={<Input id="age-native-helper"/>}
+              onChange={this.handleChange("age")}
+              input={<Input id="age-native-helper" />}
             >
-              <option value=""/>
+              <option value="" />
               <option value={10}>Ten</option>
               <option value={20}>Twenty</option>
               <option value={30}>Thirty</option>
@@ -57,7 +56,7 @@ class NativeSelect extends React.Component {
             <Select
               native
               value={this.state.age}
-              onChange={this.handleChange('age')}
+              onChange={this.handleChange("age")}
               className="mt-3"
             >
               <option value="">None</option>
@@ -74,10 +73,10 @@ class NativeSelect extends React.Component {
             <Select
               native
               value={this.state.name}
-              onChange={this.handleChange('name')}
-              input={<Input id="name-native-disabled"/>}
+              onChange={this.handleChange("name")}
+              input={<Input id="name-native-disabled" />}
             >
-              <option value=""/>
+              <option value="" />
               <optgroup label="Author">
                 <option value="hai">Hai</option>
               </optgroup>
@@ -95,10 +94,10 @@ class NativeSelect extends React.Component {
             <Select
               native
               value={this.state.name}
-              onChange={this.handleChange('name')}
-              input={<Input id="name-native-error"/>}
+              onChange={this.handleChange("name")}
+              input={<Input id="name-native-error" />}
             >
-              <option value=""/>
+              <option value="" />
               <optgroup label="Author">
                 <option value="hai">Hai</option>
               </optgroup>
@@ -113,15 +112,19 @@ class NativeSelect extends React.Component {
         <div className="col-lg-3 col-sm-6 col-12">
           <FormControl className="w-100 mb-2">
             <InputLabel htmlFor="name-input">Name</InputLabel>
-            <Input id="nameInput2"/>
+            <Input id="nameInput2" />
             <FormHelperText>Alignment with an input</FormHelperText>
           </FormControl>
         </div>
         <div className="col-lg-3 col-sm-6 col-12">
           <FormControl className="w-100 mb-2">
             <InputLabel htmlFor="uncontrolled-native">Name</InputLabel>
-            <Select native defaultValue={30} input={<Input id="uncontrolled-native"/>}>
-              <option value=""/>
+            <Select
+              native
+              defaultValue={30}
+              input={<Input id="uncontrolled-native" />}
+            >
+              <option value="" />
               <option value={10}>Ten</option>
               <option value={20}>Twenty</option>
               <option value={30}>Thirty</option>

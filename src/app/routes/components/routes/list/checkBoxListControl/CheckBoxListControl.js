@@ -9,11 +9,32 @@ import { Badge } from "reactstrap";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
 const users = [
-  {id: 1, image: 'https://via.placeholder.com/150x150', email: 'henrric@example.com'},
-  {id: 2, image: 'https://via.placeholder.com/120x120', email: 'stella02@example.com'},
-  {id: 3, image: 'https://via.placeholder.com/150x150', email: 'chrris@example.com'},
-  {id: 4, image: 'https://via.placeholder.com/260x260', email: 'jhonson@example.com'},
-  {id: 5, image: 'https://via.placeholder.com/208x208', email: 'domnic@example.com'}];
+  {
+    id: 1,
+    image: "https://via.placeholder.com/150x150",
+    email: "henrric@example.com",
+  },
+  {
+    id: 2,
+    image: "https://via.placeholder.com/120x120",
+    email: "stella02@example.com",
+  },
+  {
+    id: 3,
+    image: "https://via.placeholder.com/150x150",
+    email: "chrris@example.com",
+  },
+  {
+    id: 4,
+    image: "https://via.placeholder.com/260x260",
+    email: "jhonson@example.com",
+  },
+  {
+    id: 5,
+    image: "https://via.placeholder.com/208x208",
+    email: "domnic@example.com",
+  },
+];
 
 class CheckBoxListControl extends Component {
   state = {
@@ -21,7 +42,7 @@ class CheckBoxListControl extends Component {
   };
 
   handleToggle = (event, value) => {
-    const {checked} = this.state;
+    const { checked } = this.state;
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
 
@@ -39,20 +60,31 @@ class CheckBoxListControl extends Component {
   render() {
     return (
       <List>
-        {users.map(user =>
-          <ListItem button key={user.email} onClick={event => this.handleToggle(event, user.id)}>
+        {users.map((user) => (
+          <ListItem
+            button
+            key={user.email}
+            onClick={(event) => this.handleToggle(event, user.id)}
+          >
             <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src={user.image}/>
+              <Avatar alt="Remy Sharp" src={user.image} />
             </ListItemAvatar>
-            <ListItemText className="br-break" primary={user.email} secondary="Nov 8, 2017"/>
-            <Badge className="mr-4 mt-2 text-uppercase" color="success" pill>Agent</Badge>
+            <ListItemText
+              className="br-break"
+              primary={user.email}
+              secondary="Nov 8, 2017"
+            />
+            <Badge className="mr-4 mt-2 text-uppercase" color="success" pill>
+              Agent
+            </Badge>
             <ListItemSecondaryAction>
-              <Checkbox color="primary"
-                        checked={this.state.checked.indexOf(user.id) !== -1}
+              <Checkbox
+                color="primary"
+                checked={this.state.checked.indexOf(user.id) !== -1}
               />
             </ListItemSecondaryAction>
-          </ListItem>,
-        )}
+          </ListItem>
+        ))}
       </List>
     );
   }

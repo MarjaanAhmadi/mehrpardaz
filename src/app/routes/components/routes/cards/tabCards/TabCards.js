@@ -1,18 +1,14 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import SwipeableViews from 'react-swipeable-views';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import AppBar from '@material-ui/core/AppBar';
-import {Card, CardBody, CardFooter, CardSubtitle, CardText} from 'reactstrap';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import SwipeableViews from "react-swipeable-views";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import AppBar from "@material-ui/core/AppBar";
+import { Card, CardBody, CardFooter, CardSubtitle, CardText } from "reactstrap";
 
-function TabContainer({children, dir}) {
-  return (
-    <div dir={dir}>
-      {children}
-    </div>
-  );
+function TabContainer({ children, dir }) {
+  return <div dir={dir}>{children}</div>;
 }
 
 TabContainer.propTypes = {
@@ -26,48 +22,51 @@ class TabCards extends Component {
   };
 
   handleChange = (event, value) => {
-    this.setState({value});
+    this.setState({ value });
   };
 
-  handleChangeIndex = index => {
-    this.setState({value: index});
+  handleChangeIndex = (index) => {
+    this.setState({ value: index });
   };
 
   render() {
-    const {theme} = this.props;
+    const { theme } = this.props;
 
     return (
       <Card className="shadow border-0">
-        <AppBar className="bg-primary card-header" position="static" style={{paddingTop: 22, height: 70}}>
-
+        <AppBar
+          className="bg-primary card-header"
+          position="static"
+          style={{ paddingTop: 22, height: 70 }}
+        >
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
-            variant="fullWidth">
-            <Tab className="tab" label="Active"/>
-            <Tab className="tab" label="TAB 1"/>
-            <Tab className="tab" label="TAB 2"/>
+            variant="fullWidth"
+          >
+            <Tab className="tab" label="Active" />
+            <Tab className="tab" label="TAB 1" />
+            <Tab className="tab" label="TAB 2" />
           </Tabs>
         </AppBar>
 
         <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}>
-
+          onChangeIndex={this.handleChangeIndex}
+        >
           <TabContainer dir={theme.direction}>
             <div>
               <CardBody>
                 <h3 className="card-title">Card Title</h3>
                 <CardSubtitle>Sub-heading text</CardSubtitle>
                 <CardText>
-                  Small plates, salads & sandwiches in an
-                  intimate setting with 12 indoor seats plus
-                  patio seating
+                  Small plates, salads & sandwiches in an intimate setting with
+                  12 indoor seats plus patio seating
                 </CardText>
                 <CardText>
-                  Donec imperdiet enim et dignissim interdum. Pellentesque in ortti tor elit.
-                  Curabitur consectetur.
+                  Donec imperdiet enim et dignissim interdum. Pellentesque in
+                  ortti tor elit. Curabitur consectetur.
                 </CardText>
               </CardBody>
               <CardFooter>2 days ago</CardFooter>
@@ -79,13 +78,12 @@ class TabCards extends Component {
                 <h3 className="card-title">Card Title</h3>
                 <CardSubtitle>Sub-heading text</CardSubtitle>
                 <CardText>
-                  Small plates, salads & sandwiches in an
-                  intimate setting with 12 indoor seats plus
-                  patio seating
+                  Small plates, salads & sandwiches in an intimate setting with
+                  12 indoor seats plus patio seating
                 </CardText>
                 <CardText>
-                  Donec imperdiet enim et dignissim interdum. Pellentesque in ortti tor elit.
-                  Curabitur consectetur.
+                  Donec imperdiet enim et dignissim interdum. Pellentesque in
+                  ortti tor elit. Curabitur consectetur.
                 </CardText>
               </CardBody>
               <CardFooter>2 days ago</CardFooter>
@@ -97,23 +95,19 @@ class TabCards extends Component {
                 <h3 className="card-title">Card Title</h3>
                 <CardSubtitle>Sub-heading text</CardSubtitle>
                 <CardText>
-                  Small plates, salads & sandwiches in an
-                  intimate setting with 12 indoor seats plus
-                  patio seating
+                  Small plates, salads & sandwiches in an intimate setting with
+                  12 indoor seats plus patio seating
                 </CardText>
                 <CardText>
-                  Donec imperdiet enim et dignissim interdum. Pellentesque in ortti tor elit.
-                  Curabitur consectetur.
+                  Donec imperdiet enim et dignissim interdum. Pellentesque in
+                  ortti tor elit. Curabitur consectetur.
                 </CardText>
               </CardBody>
               <CardFooter>2 days ago</CardFooter>
             </div>
           </TabContainer>
-
         </SwipeableViews>
-
       </Card>
-
     );
   }
 }
@@ -122,4 +116,4 @@ TabCards.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(null, {withTheme: true})(TabCards);
+export default withStyles(null, { withTheme: true })(TabCards);

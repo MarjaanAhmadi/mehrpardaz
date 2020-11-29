@@ -8,9 +8,22 @@ import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
 const users = [
-  {id: 1, image: 'https://via.placeholder.com/150x150', email: 'jhonsmith@example.com'},
-  {id: 2, image: 'https://via.placeholder.com/120x120', email: 'stella02@example.com'},
-  {id: 3, image: 'https://via.placeholder.com/150x150', email: 'chrris0254@example.com'}];
+  {
+    id: 1,
+    image: "https://via.placeholder.com/150x150",
+    email: "jhonsmith@example.com",
+  },
+  {
+    id: 2,
+    image: "https://via.placeholder.com/120x120",
+    email: "stella02@example.com",
+  },
+  {
+    id: 3,
+    image: "https://via.placeholder.com/150x150",
+    email: "chrris0254@example.com",
+  },
+];
 
 class CheckboxListSecondary extends Component {
   state = {
@@ -18,7 +31,7 @@ class CheckboxListSecondary extends Component {
   };
 
   handleToggle = (event, value) => {
-    const {checked} = this.state;
+    const { checked } = this.state;
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
 
@@ -36,20 +49,21 @@ class CheckboxListSecondary extends Component {
   render() {
     return (
       <List>
-        {users.map(user =>
+        {users.map((user) => (
           <ListItem button key={user.email}>
             <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src={user.image}/>
+              <Avatar alt="Remy Sharp" src={user.image} />
             </ListItemAvatar>
-            <ListItemText className="br-break" primary={user.email}/>
+            <ListItemText className="br-break" primary={user.email} />
             <ListItemSecondaryAction>
-              <Checkbox color="primary"
-                        onClick={event => this.handleToggle(event, user.id)}
-                        checked={this.state.checked.indexOf(user.id) !== -1}
+              <Checkbox
+                color="primary"
+                onClick={(event) => this.handleToggle(event, user.id)}
+                checked={this.state.checked.indexOf(user.id) !== -1}
               />
             </ListItemSecondaryAction>
-          </ListItem>,
-        )}
+          </ListItem>
+        ))}
       </List>
     );
   }

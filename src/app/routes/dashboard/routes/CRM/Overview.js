@@ -4,7 +4,6 @@ import LineIndicator from "./LineIndicator";
 import BubbleMap from "./BubbleMap/index";
 
 const Overview = () => {
-
   return (
     <div className="jr-card-overview">
       <div className="jr-overview-row">
@@ -12,16 +11,36 @@ const Overview = () => {
           <h4 className="card-title">Revenu Overview</h4>
           <ul className="jr-line-indicator">
             <li>
-              <LineIndicator width="45%" title="Europe" color="purple" value="45%"/>
+              <LineIndicator
+                width="45%"
+                title="Europe"
+                color="purple"
+                value="45%"
+              />
             </li>
             <li>
-              <LineIndicator width="30%" title="North America" color="green" value="30%"/>
+              <LineIndicator
+                width="30%"
+                title="North America"
+                color="green"
+                value="30%"
+              />
             </li>
             <li>
-              <LineIndicator width="20%" title="Japan, South Koria" color="yellow" value="20%"/>
+              <LineIndicator
+                width="20%"
+                title="Japan, South Koria"
+                color="yellow"
+                value="20%"
+              />
             </li>
             <li>
-              <LineIndicator width="10%" title="Others" color="grey" value="10%"/>
+              <LineIndicator
+                width="10%"
+                title="Others"
+                color="grey"
+                value="10%"
+              />
             </li>
           </ul>
         </div>
@@ -46,11 +65,10 @@ const Overview = () => {
           </div>
         </div>
         <div className="jr-map-col">
-          <BubbleMap/>
+          <BubbleMap />
         </div>
       </div>
     </div>
-
   );
 };
 

@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import React, { Component } from "react";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 class DisabledCheckboxes extends Component {
   state = {
@@ -10,8 +10,8 @@ class DisabledCheckboxes extends Component {
     checkedC: false,
   };
 
-  handleChange = name => (event, checked) => {
-    this.setState({[name]: checked});
+  handleChange = (name) => (event, checked) => {
+    this.setState({ [name]: checked });
   };
 
   render() {
@@ -20,10 +20,11 @@ class DisabledCheckboxes extends Component {
         <FormControlLabel
           disabled
           control={
-            <Checkbox color="primary"
-                      checked={this.state.checkedA}
-                      onChange={this.handleChange('checkedA')}
-                      value="checkedA"
+            <Checkbox
+              color="primary"
+              checked={this.state.checkedA}
+              onChange={this.handleChange("checkedA")}
+              value="checkedA"
             />
           }
           label="Selected Disabled"
@@ -31,10 +32,11 @@ class DisabledCheckboxes extends Component {
         <FormControlLabel
           disabled
           control={
-            <Checkbox color="primary"
-                      checked={this.state.checkedB}
-                      onChange={this.handleChange('checkedB')}
-                      value="Unselected Disabled"
+            <Checkbox
+              color="primary"
+              checked={this.state.checkedB}
+              onChange={this.handleChange("checkedB")}
+              value="Unselected Disabled"
             />
           }
           label="Unselected Disabled"
@@ -42,10 +44,11 @@ class DisabledCheckboxes extends Component {
         <FormControlLabel
           disabled
           control={
-            <Checkbox color="primary"
-                      checked={this.state.checkedB}
-                      onChange={this.handleChange('checkedC')}
-                      value="Disabled"
+            <Checkbox
+              color="primary"
+              checked={this.state.checkedB}
+              onChange={this.handleChange("checkedC")}
+              value="Disabled"
             />
           }
           label="Disabled"

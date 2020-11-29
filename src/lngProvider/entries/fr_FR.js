@@ -1,11 +1,9 @@
-import appLocaleData from 'react-intl/locale-data/fr';
-import saMessages from '../locales/fr_FR.json';
+import saMessages from "../locales/fr_FR.json";
 
 const saLang = {
   messages: {
-    ...saMessages
+    ...saMessages,
   },
-  locale: 'fr-FR',
-  data: appLocaleData
+  locale: "fr-FR",
 };
 export default saLang;

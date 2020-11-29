@@ -1,24 +1,24 @@
-import React from 'react';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import React from "react";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 
 const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
+  "Oliver Hansen",
+  "Van Henry",
+  "April Tucker",
+  "Ralph Hubbard",
+  "Omar Alexander",
+  "Carlos Abbott",
+  "Miriam Wagner",
+  "Bradley Wilkerson",
+  "Virginia Andrews",
+  "Kelly Snyder",
 ];
 
 class MultipleSelect extends React.Component {
@@ -26,12 +26,11 @@ class MultipleSelect extends React.Component {
     name: [],
   };
 
-  handleChange = event => {
-    this.setState({name: event.target.value});
+  handleChange = (event) => {
+    this.setState({ name: event.target.value });
   };
 
   render() {
-
     return (
       <div className="row">
         <div className="col-12">
@@ -41,7 +40,7 @@ class MultipleSelect extends React.Component {
               multiple
               value={this.state.name}
               onChange={this.handleChange}
-              input={<Input id="name-multiple"/>}
+              input={<Input id="name-multiple" />}
               MenuProps={{
                 PaperProps: {
                   style: {
@@ -51,12 +50,13 @@ class MultipleSelect extends React.Component {
                 },
               }}
             >
-              {names.map(name => (
+              {names.map((name) => (
                 <MenuItem
                   key={name}
                   value={name}
                   style={{
-                    fontWeight: this.state.name.indexOf(name) !== -1 ? '500' : '400',
+                    fontWeight:
+                      this.state.name.indexOf(name) !== -1 ? "500" : "400",
                   }}
                 >
                   {name}

@@ -1,19 +1,19 @@
-import React from 'react';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import React from "react";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 class SimpleSelect extends React.Component {
   state = {
-    age: '',
-    name: 'hai',
+    age: "",
+    name: "hai",
   };
 
-  handleChange = name => event => {
-    this.setState({[name]: event.target.value});
+  handleChange = (name) => (event) => {
+    this.setState({ [name]: event.target.value });
   };
 
   render() {
@@ -24,8 +24,8 @@ class SimpleSelect extends React.Component {
             <InputLabel htmlFor="age-simple">Age</InputLabel>
             <Select
               value={this.state.age}
-              onChange={this.handleChange('age')}
-              input={<Input id="ageSimple1"/>}
+              onChange={this.handleChange("age")}
+              input={<Input id="ageSimple1" />}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -42,8 +42,8 @@ class SimpleSelect extends React.Component {
             <InputLabel htmlFor="age-helper">Age</InputLabel>
             <Select
               value={this.state.age}
-              onChange={this.handleChange('age')}
-              input={<Input id="age-helper"/>}
+              onChange={this.handleChange("age")}
+              input={<Input id="age-helper" />}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -60,7 +60,7 @@ class SimpleSelect extends React.Component {
           <FormControl className="w-100 mb-2">
             <Select
               value={this.state.age}
-              onChange={this.handleChange('age')}
+              onChange={this.handleChange("age")}
               displayEmpty
               className="mt-3"
             >
@@ -80,8 +80,8 @@ class SimpleSelect extends React.Component {
             <InputLabel htmlFor="name-disabled">Name</InputLabel>
             <Select
               value={this.state.name}
-              onChange={this.handleChange('name')}
-              input={<Input id="name-disabled"/>}
+              onChange={this.handleChange("name")}
+              input={<Input id="name-disabled" />}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -99,9 +99,9 @@ class SimpleSelect extends React.Component {
             <InputLabel htmlFor="name-error">Name</InputLabel>
             <Select
               value={this.state.name}
-              onChange={this.handleChange('name')}
-              renderValue={value => `⚠️  - ${value}`}
-              input={<Input id="name-error"/>}
+              onChange={this.handleChange("name")}
+              renderValue={(value) => `⚠️  - ${value}`}
+              input={<Input id="name-error" />}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -117,7 +117,7 @@ class SimpleSelect extends React.Component {
         <div className="col-lg-3 col-sm-6 col-12">
           <FormControl className="w-100 mb-2">
             <InputLabel htmlFor="name-input">Name</InputLabel>
-            <Input id="nameInput1"/>
+            <Input id="nameInput1" />
             <FormHelperText>Alignment with an input</FormHelperText>
           </FormControl>
         </div>
@@ -127,8 +127,8 @@ class SimpleSelect extends React.Component {
             <InputLabel htmlFor="name-readonly">Name</InputLabel>
             <Select
               value={this.state.name}
-              onChange={this.handleChange('name')}
-              input={<Input id="name-readonly" readOnly/>}
+              onChange={this.handleChange("name")}
+              input={<Input id="name-readonly" readOnly />}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -146,8 +146,8 @@ class SimpleSelect extends React.Component {
             <InputLabel htmlFor="age-simple">Age</InputLabel>
             <Select
               value={this.state.age}
-              onChange={this.handleChange('age')}
-              input={<Input id="ageSimple3"/>}
+              onChange={this.handleChange("age")}
+              input={<Input id="ageSimple3" />}
               autoWidth
             >
               <MenuItem value="">

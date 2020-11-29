@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {GoogleMap, withGoogleMap} from "react-google-maps";
+import React, { Component } from "react";
+import { GoogleMap, withGoogleMap } from "react-google-maps";
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager";
 
 /*
@@ -16,7 +16,7 @@ import DrawingManager from "react-google-maps/lib/components/drawing/DrawingMana
 
 const google = window.google;
 
-const DrawingExampleGoogleMap = withGoogleMap(props => (
+const DrawingExampleGoogleMap = withGoogleMap((props) => (
   <GoogleMap
     defaultZoom={15}
     defaultCenter={new google.maps.LatLng(47.646935, -122.303763)}
@@ -35,7 +35,7 @@ const DrawingExampleGoogleMap = withGoogleMap(props => (
           ],
         },
         circleOptions: {
-          fillColor: '#ff0000',
+          fillColor: "#ff0000",
           fillOpacity: 0.2,
           strokeWeight: 3,
           clickable: false,
@@ -43,7 +43,7 @@ const DrawingExampleGoogleMap = withGoogleMap(props => (
           zIndex: 1,
         },
         rectangleOptions: {
-          fillColor: '#ff0000',
+          fillColor: "#ff0000",
           fillOpacity: 0.2,
           strokeWeight: 3,
           clickable: false,
@@ -55,14 +55,13 @@ const DrawingExampleGoogleMap = withGoogleMap(props => (
   </GoogleMap>
 ));
 export default class DrawingView extends Component {
-
   render() {
     return (
       <DrawingExampleGoogleMap
         containerElement={
-          <div className="embed-responsive embed-responsive-21by9"/>
+          <div className="embed-responsive embed-responsive-21by9" />
         }
-        mapElement={<div className="embed-responsive-item"/>}
+        mapElement={<div className="embed-responsive-item" />}
       />
     );
   }

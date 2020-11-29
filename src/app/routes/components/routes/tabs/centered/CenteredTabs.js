@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import React, { Component } from "react";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 class CenteredTabs extends Component {
   state = {
@@ -9,11 +9,10 @@ class CenteredTabs extends Component {
   };
 
   handleChange = (event, value) => {
-    this.setState({value});
+    this.setState({ value });
   };
 
   render() {
-
     return (
       <Paper className="w-100">
         <Tabs
@@ -24,9 +23,9 @@ class CenteredTabs extends Component {
           centered
           scrollButtons="on"
         >
-          <Tab label="Item One"/>
-          <Tab label="Item Two"/>
-          <Tab label="Item Three"/>
+          <Tab label="Item One" />
+          <Tab label="Item Two" />
+          <Tab label="Item Three" />
         </Tabs>
       </Paper>
     );

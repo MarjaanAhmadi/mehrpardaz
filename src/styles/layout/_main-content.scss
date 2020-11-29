@@ -12,3 +12,11 @@
     padding: 20px;
   }
 }
+
+.breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  color: #6c757d;
+  font-size: 22px !important;
+  margin-top: 5px !important;
+}

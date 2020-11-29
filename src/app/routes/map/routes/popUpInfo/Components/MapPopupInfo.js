@@ -1,13 +1,15 @@
-import React, {Component} from 'react';
-import {GoogleMap, InfoWindow, Marker, withGoogleMap} from 'react-google-maps';
+import React, { Component } from "react";
+import {
+  GoogleMap,
+  InfoWindow,
+  Marker,
+  withGoogleMap,
+} from "react-google-maps";
 
 const google = window.google;
 
-const PopUpInfoWindowExampleGoogleMap = withGoogleMap(props => (
-  <GoogleMap
-    defaultZoom={15}
-    center={props.center}
-  >
+const PopUpInfoWindowExampleGoogleMap = withGoogleMap((props) => (
+  <GoogleMap defaultZoom={15} center={props.center}>
     {props.markers.map((marker, index) => (
       <Marker
         defaultIcon={require("assets/images/marker.png")}
@@ -22,8 +24,7 @@ const PopUpInfoWindowExampleGoogleMap = withGoogleMap(props => (
         */}
         {marker.showInfo && (
           <InfoWindow onCloseClick={() => props.onMarkerClose(marker)}>
-            <div>{marker.infoContent}
-            </div>
+            <div>{marker.infoContent}</div>
           </InfoWindow>
         )}
       </Marker>
@@ -39,10 +40,10 @@ const PopUpInfoWindowExampleGoogleMap = withGoogleMap(props => (
  *  @author: @chiwoojo
  */
 export default class MapPopupInfo extends Component {
-
   state = {
     center: {
-      lat: 47.646935, lng: -122.303763,
+      lat: 47.646935,
+      lng: -122.303763,
     },
 
     // array of objects of markers
@@ -74,7 +75,6 @@ export default class MapPopupInfo extends Component {
               <p>1959 NE Pacific St</p>
               <p>Seattle, WA 98195</p>
             </div>
-
           </div>
         ),
       },
@@ -101,11 +101,12 @@ export default class MapPopupInfo extends Component {
               </svg>
             </div>
             <div className="ml-1">
-              <p>University of Washington Intramural Activities (IMA) Building</p>
+              <p>
+                University of Washington Intramural Activities (IMA) Building
+              </p>
               <p>3924 Montlake Blvd NE</p>
               <p>Seattle, WA 98195</p>
             </div>
-
           </div>
         ),
       },
@@ -118,7 +119,7 @@ export default class MapPopupInfo extends Component {
   // Toggle to 'true' to show InfoWindow and re-renders simple
   handleMarkerClick(targetMarker) {
     this.setState({
-      markers: this.state.markers.map(marker => {
+      markers: this.state.markers.map((marker) => {
         if (marker === targetMarker) {
           return {
             ...marker,
@@ -132,7 +133,7 @@ export default class MapPopupInfo extends Component {
 
   handleMarkerClose(targetMarker) {
     this.setState({
-      markers: this.state.markers.map(marker => {
+      markers: this.state.markers.map((marker) => {
         if (marker === targetMarker) {
           return {
             ...marker,
@@ -148,9 +149,9 @@ export default class MapPopupInfo extends Component {
     return (
       <PopUpInfoWindowExampleGoogleMap
         containerElement={
-          <div className="embed-responsive embed-responsive-21by9"/>
+          <div className="embed-responsive embed-responsive-21by9" />
         }
-        mapElement={<div className="embed-responsive-item"/>}
+        mapElement={<div className="embed-responsive-item" />}
         center={this.state.center}
         markers={this.state.markers}
         onMarkerClick={this.handleMarkerClick}

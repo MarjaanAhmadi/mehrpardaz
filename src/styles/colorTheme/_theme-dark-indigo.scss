@@ -1,6 +1,6 @@
 /*Theme Dark Indigo Styles*/
 $app-primary-dark-indigo: #3f51b5 !default;
-$secondary-dark-indigo: #FF4081;
+$secondary-dark-indigo: #ff4081;
 
 $sidebar-dark-indigo: #252525 !default;
 $sidebar-text-dark-indigo: #a1a1a1 !default;
@@ -167,7 +167,6 @@ $link-hover-dark-indigo: $white;
 //_right-sidebar.scss
 .dark-indigo .color-theme-header {
   background-color: $app-primary-dark-indigo;
-
 }
 
 //_sidebar.scss
@@ -194,69 +193,72 @@ $link-hover-dark-indigo: $white;
   }
 }
 
-.dark-indigo ul.nav-menu li button,
-.dark-indigo ul.nav-menu li a {
-  color: $sidebar-text-dark-indigo;
-}
-
-.dark-indigo ul.nav-menu {
+.dark-indigo .nav-section {
   & .nav-header {
     color: $sidebar-text-dark-indigo;
   }
 }
 
-.dark-indigo ul.nav-menu > li.open > button,
-.dark-indigo ul.nav-menu > li > button:hover,
-.dark-indigo ul.nav-menu > li > button:focus,
-.dark-indigo ul.nav-menu > li.open > a,
-.dark-indigo ul.nav-menu > li > a:hover,
-.dark-indigo ul.nav-menu > li > a:focus {
-  background-color: $sidebar-darken-indigo;
-  color: $link-hover-dark-indigo;
+.dark-indigo .nav-collapse {
+  & .nav-collapse-btn {
+    color: $sidebar-text-dark-indigo;
+
+    &:focus,
+    &:hover {
+      background-color: $sidebar-darken-indigo;
+      color: $link-hover-dark-indigo;
+    }
+  }
+
+  &.open {
+    background-color: $sidebar-darken-indigo;
+
+    & .nav-collapse-btn {
+      background-color: $sidebar-darken-indigo;
+      color: $link-hover-dark-indigo;
+
+      &:focus,
+      &:hover {
+        background-color: $sidebar-darken-indigo;
+        color: $link-hover-dark-indigo;
+      }
+    }
+  }
 }
 
-.dark-indigo ul.nav-menu li.menu.open > a {
-  border-color: $warning;
+.dark-indigo .nav-collapse {
+  & .nav-menu-item .nav-menu-link {
+    color: $sidebar-text-dark-indigo;
+
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $sidebar-darken-indigo;
+      color: $link-hover-dark-indigo;
+    }
+
+    &:after {
+      background-color: $white;
+    }
+  }
+
+  &.open {
+    & .nav-menu-item .nav-menu-link.active {
+      background-color: $sidebar-bg-darken-highlight-indigo;
+      color: $link-hover-dark-indigo;
+    }
+  }
 }
 
-.dark-indigo ul.nav-menu li.menu > button:focus:before,
-.dark-indigo ul.nav-menu li.menu > button:hover:before,
-.dark-indigo ul.nav-menu li.menu > a:focus:before,
-.dark-indigo ul.nav-menu li.menu > a:hover:before {
-  color: $link-hover-dark-indigo;
-}
-
-.dark-indigo ul.nav-menu li ul {
-  background-color: $sidebar-darken-indigo;
-}
-
-.dark-indigo ul.nav-menu li.menu > button:before,
-.dark-indigo ul.nav-menu li.menu > a:before {
-  color: $sidebar-text-dark-indigo;
-}
-
-.dark-indigo ul.nav-menu li.menu.open > a:before,
-.dark-indigo ul.nav-menu li.menu > a:focus:before,
-.dark-indigo ul.nav-menu li.menu li > a:hover:before {
-  color: $link-hover-dark-indigo;
-}
-
-.dark-indigo ul.nav-menu li.menu .sub-menu li > a:before {
-  color: $sidebar-text-dark-indigo;
-}
-
-.dark-indigo ul.nav-menu li.menu.open .sub-menu li > a.active {
-  background-color: $sidebar-bg-darken-highlight-indigo;
-  color: $link-hover-dark-indigo;
-}
-
-.dark-indigo ul.nav-menu li.menu .sub-menu li > a:hover,
-.dark-indigo ul.nav-menu li.menu .sub-menu li > a:focus,
-.dark-indigo ul.nav-menu li.menu.open .sub-menu li > a.active:before,
-.dark-indigo ul.nav-menu li.menu .sub-menu li > a:focus:before,
-.dark-indigo ul.nav-menu li.menu .sub-menu li > a:hover:before {
-  background-color: $sidebar-darken-indigo;
-  color: $link-hover-dark-indigo;
+.dark-indigo .nav-menu-item {
+  & .nav-menu-link {
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $sidebar-darken-indigo;
+      color: $link-hover-dark-indigo;
+    }
+  }
 }
 
 /*Header top Navbar Styles*/
@@ -271,7 +273,7 @@ $link-hover-dark-indigo: $white;
 
     & a,
     & .nav-link {
-      color: $sidebar-text-color;
+      color: $sidebar-text-dark-indigo;
     }
 
     & a:hover,
@@ -312,7 +314,7 @@ $link-hover-dark-indigo: $white;
   & .nav-arrow {
     & > a:before,
     & > .nav-link:before {
-      color: $sidebar-text-color;
+      color: $sidebar-text-dark-indigo;
     }
 
     & a:hover,
@@ -336,7 +338,6 @@ $link-hover-dark-indigo: $white;
 }
 
 .dark-indigo .app-top-nav {
-
   & .navbar-nav {
     & li.nav-item > a,
     & li.nav-item > .nav-link {
@@ -366,7 +367,6 @@ $link-hover-dark-indigo: $white;
 
 .dark-indigo .header-notifications .app-notification {
   & .jr-list-link {
-
     @include hover-focus-active {
       color: $app-primary-dark-indigo;
       border-color: $app-primary-dark-indigo;
@@ -376,8 +376,12 @@ $link-hover-dark-indigo: $white;
 
 //_app-module.scss
 .dark-indigo .module-nav {
-  & li a {
-    &.active {
+  & li {
+    & a.active {
+      border-color: $app-primary-dark-indigo;
+    }
+
+    & .jr-link.active {
       color: $app-primary-dark-indigo;
     }
   }
@@ -530,7 +534,6 @@ $link-hover-dark-indigo: $white;
       background-color: $app-primary-dark-indigo;
       border-color: $app-primary-dark-indigo;
     }
-
   }
 
   > .jr-flat-btn {
@@ -579,11 +582,20 @@ $link-hover-dark-indigo: $white;
 
 // Gradient Color Class
 .dark-indigo .bg-gradient-primary {
-  @include gradient-directional($app-primary-dark-indigo, lighten($app-primary-dark-indigo, 16%), 0deg);
+  @include gradient-directional(
+    $app-primary-dark-indigo,
+    lighten($app-primary-dark-indigo, 16%),
+    0deg
+  );
 }
 
 .dark-indigo .bg-gradient-primary-x {
-  @include gradient-x(darken($app-primary-dark-indigo, 10%), lighten($app-primary-dark-indigo, 16%), 70%, 100%);
+  @include gradient-x(
+    darken($app-primary-dark-indigo, 10%),
+    lighten($app-primary-dark-indigo, 16%),
+    70%,
+    100%
+  );
 }
 
 //Profile style
@@ -602,7 +614,6 @@ $link-hover-dark-indigo: $white;
 }
 
 .dark-indigo .dropdown-item {
-
   &.active,
   &:active {
     background-color: $app-primary-dark-indigo;
@@ -610,7 +621,6 @@ $link-hover-dark-indigo: $white;
   }
 
   &[class*="text-"] {
-
     &.active,
     &:active {
       background-color: transparent;

@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
-import Button from '@material-ui/core/Button';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import MobileStepper from "@material-ui/core/MobileStepper";
+import Button from "@material-ui/core/Button";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 
 class DotsMobileStepper extends React.Component {
   state = {
@@ -24,7 +24,7 @@ class DotsMobileStepper extends React.Component {
   };
 
   render() {
-    const {theme} = this.props;
+    const { theme } = this.props;
 
     return (
       <MobileStepper
@@ -37,14 +37,30 @@ class DotsMobileStepper extends React.Component {
           flexGrow: 1,
         }}
         nextButton={
-          <Button size="small" onClick={this.handleNext} disabled={this.state.activeStep === 5}>
+          <Button
+            size="small"
+            onClick={this.handleNext}
+            disabled={this.state.activeStep === 5}
+          >
             Next
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft/> : <KeyboardArrowRight/>}
+            {theme.direction === "rtl" ? (
+              <KeyboardArrowLeft />
+            ) : (
+              <KeyboardArrowRight />
+            )}
           </Button>
         }
         backButton={
-          <Button size="small" onClick={this.handleBack} disabled={this.state.activeStep === 0}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight/> : <KeyboardArrowLeft/>}
+          <Button
+            size="small"
+            onClick={this.handleBack}
+            disabled={this.state.activeStep === 0}
+          >
+            {theme.direction === "rtl" ? (
+              <KeyboardArrowRight />
+            ) : (
+              <KeyboardArrowLeft />
+            )}
             Back
           </Button>
         }
@@ -58,4 +74,4 @@ DotsMobileStepper.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(null, {withTheme: true})(DotsMobileStepper);
+export default withStyles(null, { withTheme: true })(DotsMobileStepper);

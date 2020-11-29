@@ -40,7 +40,7 @@
         }
 
         & .icon {
-          background-color: map_get($indigo, 'lighten-1');
+          background-color: map_get($indigo, "lighten-1");
           color: $white;
           @include border-radius(50%);
           margin-right: 6px;
@@ -80,7 +80,6 @@
         }
       }
     }
-
   }
 }
 

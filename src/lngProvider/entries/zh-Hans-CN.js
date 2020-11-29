@@ -1,11 +1,9 @@
-import appLocaleData from 'react-intl/locale-data/zh';
-import zhMessages from '../locales/zh-Hans.json';
+import zhMessages from "../locales/zh-Hans.json";
 
 const ZhLan = {
   messages: {
-    ...zhMessages
+    ...zhMessages,
   },
-  locale: 'zh-Hans-CN',
-  data: appLocaleData
+  locale: "zh-Hans-CN",
 };
 export default ZhLan;

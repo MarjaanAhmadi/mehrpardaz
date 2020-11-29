@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core";
+import { InputLabel, makeStyles } from "@material-ui/core";
 import { Post, Retrieve, Patch } from "DataManager/DataManager";
 import Select from "@material-ui/core/Select";
 import Chip from "@material-ui/core/Chip";
@@ -73,7 +70,7 @@ const FieldSelect = (props) => {
           name={name}
           onChange={handleChange}
           input={<Input id="select-multiple-chip" />}
-          renderValue={(selected) => {
+          renderValue={function (selected) {
             return (
               <div className={classes.chips}>
                 {selected.map((id) => {
@@ -105,7 +102,7 @@ const FieldSelect = (props) => {
 };
 
 const FieldInput = (props) => {
-  const { field, error, value, onChange, onHourChange } = props;
+  const { field, error, value, onChange } = props;
   const { name, validationType } = field;
   return (
     <Grid item xs={3} sm={3} style={{ margin: "1rem 1rem" }}>
@@ -187,7 +184,7 @@ const CreateOrEdit = (props) => {
     if (!valid) return "";
     try {
       const data = form;
-      const response = await Patch("journeylogs", data, props.id);
+      await Patch("journeylogs", data, props.id);
       setSuccess({
         ...success,
         hasSuccess: true,

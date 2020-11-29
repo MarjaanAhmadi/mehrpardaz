@@ -3,7 +3,6 @@
 .pt-default,
 .pt-dark,
 .pt-circle {
-
   & .package {
     position: relative;
     padding: 0;
@@ -15,7 +14,7 @@
     &:hover,
     &:focus,
     &:active {
-      @include box-shadow (0 0 16px rgba(#666666, 0.5));
+      @include box-shadow(0 0 16px rgba(#666666, 0.5));
       -webkit-transform: scale(1.05);
       -ms-transform: scale(1.05);
       transform: scale(1.05);

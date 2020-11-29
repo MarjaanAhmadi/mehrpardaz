@@ -1,6 +1,6 @@
 /*Theme Deep Orange Styles*/
 $app-primary-deep-orange: #ff5722 !default;
-$secondary-deep-orange: #40C4FF;
+$secondary-deep-orange: #40c4ff;
 
 $sidebar-deep-orange: rgba($app-primary-deep-orange, 0.25) !default;
 $sidebar-text-deep-orange: #868e96 !default;
@@ -192,80 +192,73 @@ $sidebar-text-deep-orange: #868e96 !default;
   }
 }
 
-.deep-orange ul.nav-menu li button,
-.deep-orange ul.nav-menu li a {
-  color: $sidebar-text-deep-orange;
-}
-
-.deep-orange ul.nav-menu {
+.deep-orange .nav-section {
   & .nav-header {
     color: $sidebar-text-deep-orange;
-  }
-
-  & li.menu + .nav-header {
     border-color: $gray-400;
   }
 }
 
-.deep-orange ul.nav-menu > li.open > button,
-.deep-orange ul.nav-menu > li > button:hover,
-.deep-orange ul.nav-menu > li > button:focus,
-.deep-orange ul.nav-menu > li.open > a,
-.deep-orange ul.nav-menu > li > a:hover,
-.deep-orange ul.nav-menu > li > a:focus {
-  background-color: $white;
-  color: $app-primary-deep-orange;
+.deep-orange .nav-collapse {
+  & .nav-collapse-btn {
+    color: $sidebar-text-deep-orange;
+
+    &:focus,
+    &:hover {
+      background-color: $white;
+      color: $app-primary-deep-orange;
+    }
+  }
+
+  &.open {
+    background-color: $white;
+
+    & .nav-collapse-btn {
+      background-color: $white;
+      color: $app-primary-deep-orange;
+
+      &:focus,
+      &:hover {
+        background-color: $white;
+        color: $app-primary-deep-orange;
+      }
+    }
+  }
 }
 
-.deep-orange ul.nav-menu li.menu.open > a {
-  border-color: $app-primary-deep-orange;
+.deep-orange .nav-collapse {
+  & .nav-menu-item .nav-menu-link {
+    color: $sidebar-text-deep-orange;
+
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $white;
+      color: $app-primary-deep-orange;
+    }
+
+    &:after {
+      background-color: $app-primary-deep-orange;
+    }
+  }
+
+  &.open {
+    & .nav-menu-item .nav-menu-link.active {
+      background-color: $sidebar-deep-orange;
+      color: $app-primary-deep-orange;
+    }
+  }
 }
 
-.deep-orange ul.nav-menu li.menu > button:focus:before,
-.deep-orange ul.nav-menu li.menu > button:hover:before,
-.deep-orange ul.nav-menu li.menu > a:focus:before,
-.deep-orange ul.nav-menu li.menu > a:hover:before {
-  color: $app-primary-deep-orange;
-}
-
-.deep-orange ul.nav-menu li ul {
-  background-color: $white;
-}
-
-.deep-orange ul.nav-menu li.menu > button:before,
-.deep-orange ul.nav-menu li.menu > a:before {
-  color: $sidebar-text-deep-orange;
-}
-
-.deep-orange ul.nav-menu li.menu.open > a:before,
-.deep-orange ul.nav-menu li.menu > a:focus:before,
-.deep-orange ul.nav-menu li.menu li > a:hover:before,
-.deep-orange ul.nav-menu li.menu.open > button:before,
-.deep-orange ul.nav-menu li.menu > button:focus:before,
-.deep-orange ul.nav-menu li.menu li > button:hover:before {
-  color: $app-primary-deep-orange;
-}
-
-.deep-orange ul.nav-menu li.menu .sub-menu li > a:before {
-  color: $sidebar-text-deep-orange;
-}
-
-.deep-orange ul.nav-menu li.menu.open .sub-menu li > a:after {
-  background-color: $app-primary-deep-orange;
-}
-
-.deep-orange ul.nav-menu li.menu.open .sub-menu li > a.active {
-  background-color: $sidebar-deep-orange;
-  color: $app-primary-deep-orange;
-}
-
-.deep-orange ul.nav-menu li.menu .sub-menu li > a:hover,
-.deep-orange ul.nav-menu li.menu .sub-menu li > a:focus,
-.deep-orange ul.nav-menu li.menu.open .sub-menu li > a.active:before,
-.deep-orange ul.nav-menu li.menu .sub-menu li > a:focus:before,
-.deep-orange ul.nav-menu li.menu .sub-menu li > a:hover:before {
-  background-color: $white;
-  color: $app-primary-deep-orange;
+.deep-orange .nav-menu-item {
+  & .nav-menu-link {
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $white;
+      color: $app-primary-deep-orange;
+    }
+  }
 }
 
 /*Header top Navbar Styles*/
@@ -345,7 +338,6 @@ $sidebar-text-deep-orange: #868e96 !default;
 }
 
 .deep-orange .app-top-nav {
-
   & .navbar-nav {
     & li.nav-item > a,
     & li.nav-item > .nav-link {
@@ -375,7 +367,6 @@ $sidebar-text-deep-orange: #868e96 !default;
 
 .deep-orange .header-notifications .app-notification {
   & .jr-list-link {
-
     @include hover-focus-active {
       color: $app-primary-deep-orange;
       border-color: $app-primary-deep-orange;
@@ -385,9 +376,13 @@ $sidebar-text-deep-orange: #868e96 !default;
 
 //_app-module.scss
 .deep-orange .module-nav {
-  & li a {
-    &.active {
+  & li {
+    & a.active {
       border-color: $app-primary-deep-orange;
+    }
+
+    & .jr-link.active {
+      color: $app-primary-deep-orange;
     }
   }
 }
@@ -538,7 +533,6 @@ $sidebar-text-deep-orange: #868e96 !default;
       background-color: $app-primary-deep-orange;
       border-color: $app-primary-deep-orange;
     }
-
   }
 
   > .jr-flat-btn {
@@ -587,11 +581,20 @@ $sidebar-text-deep-orange: #868e96 !default;
 
 // Gradient Color Class
 .deep-orange .bg-gradient-primary {
-  @include gradient-directional($app-primary-deep-orange, lighten($app-primary-deep-orange, 16%), 0deg);
+  @include gradient-directional(
+    $app-primary-deep-orange,
+    lighten($app-primary-deep-orange, 16%),
+    0deg
+  );
 }
 
 .deep-orange .bg-gradient-primary-x {
-  @include gradient-x(darken($app-primary-deep-orange, 10%), lighten($app-primary-deep-orange, 16%), 70%, 100%);
+  @include gradient-x(
+    darken($app-primary-deep-orange, 10%),
+    lighten($app-primary-deep-orange, 16%),
+    70%,
+    100%
+  );
 }
 
 //Profile style
@@ -610,7 +613,6 @@ $sidebar-text-deep-orange: #868e96 !default;
 }
 
 .deep-orange .dropdown-item {
-
   &.active,
   &:active {
     background-color: $app-primary-deep-orange;
@@ -618,7 +620,6 @@ $sidebar-text-deep-orange: #868e96 !default;
   }
 
   &[class*="text-"] {
-
     &.active,
     &:active {
       background-color: transparent;

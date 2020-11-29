@@ -1,5 +1,5 @@
-import blue from '@material-ui/core/colors/blue';
-import deepOrange from '@material-ui/core/colors/deepOrange';
+import blue from "@material-ui/core/colors/blue";
+import deepOrange from "@material-ui/core/colors/deepOrange";
 
 export default {
   palette: {
@@ -7,22 +7,22 @@ export default {
       light: blue[300],
       main: blue[500],
       dark: blue[700],
-      contrastText: '#fff'
+      contrastText: "#fff",
     },
     secondary: {
       light: deepOrange[300],
-      main: deepOrange['A200'],
+      main: deepOrange["A200"],
       dark: deepOrange[700],
-      contrastText: '#fff'
-    }
+      contrastText: "#fff",
+    },
   },
   status: {
-    danger: 'orange',
+    danger: "orange",
   },
   typography: {
     button: {
       fontWeight: 400,
-      textAlign: 'capitalize'
+      textAlign: "capitalize",
     },
   },
 };

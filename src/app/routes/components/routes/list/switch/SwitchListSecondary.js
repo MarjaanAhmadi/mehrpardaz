@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Switch from '@material-ui/core/Switch';
+import React, { Component } from "react";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import Switch from "@material-ui/core/Switch";
 
 class SwitchListSecondary extends Component {
   state = {
-    checked: ['wifi'],
+    checked: ["wifi"],
   };
 
   handleToggle = (event, value) => {
-    const {checked} = this.state;
+    const { checked } = this.state;
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
 
@@ -30,54 +30,62 @@ class SwitchListSecondary extends Component {
 
   render() {
     return (
-      <List subheader={<ListSubheader className="position-static">Settings</ListSubheader>}>
+      <List
+        subheader={
+          <ListSubheader className="position-static">Settings</ListSubheader>
+        }
+      >
         <ListItem>
           <ListItemIcon>
-            <i className="zmdi zmdi-wifi zmdi-hc-fw zmdi-hc-2x"/>
+            <i className="zmdi zmdi-wifi zmdi-hc-fw zmdi-hc-2x" />
           </ListItemIcon>
-          <ListItemText primary="Wi-Fi"/>
+          <ListItemText primary="Wi-Fi" />
           <ListItemSecondaryAction>
-            <Switch color="primary"
-                    onClick={event => this.handleToggle(event, 'wifi')}
-                    checked={this.state.checked.indexOf('wifi') !== -1}
+            <Switch
+              color="primary"
+              onClick={(event) => this.handleToggle(event, "wifi")}
+              checked={this.state.checked.indexOf("wifi") !== -1}
             />
           </ListItemSecondaryAction>
         </ListItem>
         <ListItem>
           <ListItemIcon>
-            <i className="zmdi zmdi-bluetooth zmdi-hc-fw zmdi-hc-2x"/>
+            <i className="zmdi zmdi-bluetooth zmdi-hc-fw zmdi-hc-2x" />
           </ListItemIcon>
-          <ListItemText primary="Bluetooth"/>
+          <ListItemText primary="Bluetooth" />
           <ListItemSecondaryAction>
-            <Switch color="primary"
-                    onClick={event => this.handleToggle(event, 'bluetooth')}
-                    checked={this.state.checked.indexOf('bluetooth') !== -1}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
-
-        <ListItem>
-          <ListItemIcon>
-            <i className="zmdi zmdi-mic zmdi-hc-fw zmdi-hc-2x"/>
-          </ListItemIcon>
-          <ListItemText primary="Mic"/>
-          <ListItemSecondaryAction>
-            <Switch color="primary"
-                    onClick={event => this.handleToggle(event, 'mic')}
-                    checked={this.state.checked.indexOf('mic') !== -1}
+            <Switch
+              color="primary"
+              onClick={(event) => this.handleToggle(event, "bluetooth")}
+              checked={this.state.checked.indexOf("bluetooth") !== -1}
             />
           </ListItemSecondaryAction>
         </ListItem>
 
         <ListItem>
           <ListItemIcon>
-            <i className="zmdi zmdi-remote-control zmdi-hc-fw zmdi-hc-2x"/>
+            <i className="zmdi zmdi-mic zmdi-hc-fw zmdi-hc-2x" />
           </ListItemIcon>
-          <ListItemText primary="Remote Control"/>
+          <ListItemText primary="Mic" />
           <ListItemSecondaryAction>
-            <Switch color="primary"
-                    onClick={event => this.handleToggle(event, 'RemoteControl')}
-                    checked={this.state.checked.indexOf('RemoteControl') !== -1}
+            <Switch
+              color="primary"
+              onClick={(event) => this.handleToggle(event, "mic")}
+              checked={this.state.checked.indexOf("mic") !== -1}
+            />
+          </ListItemSecondaryAction>
+        </ListItem>
+
+        <ListItem>
+          <ListItemIcon>
+            <i className="zmdi zmdi-remote-control zmdi-hc-fw zmdi-hc-2x" />
+          </ListItemIcon>
+          <ListItemText primary="Remote Control" />
+          <ListItemSecondaryAction>
+            <Switch
+              color="primary"
+              onClick={(event) => this.handleToggle(event, "RemoteControl")}
+              checked={this.state.checked.indexOf("RemoteControl") !== -1}
             />
           </ListItemSecondaryAction>
         </ListItem>
@@ -85,6 +93,5 @@ class SwitchListSecondary extends Component {
     );
   }
 }
-
 
 export default SwitchListSecondary;

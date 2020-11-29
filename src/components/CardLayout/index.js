@@ -1,12 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const CardLayout = ({children, styleName, childrenStyle}) => {
-  return (
-    <div className={`jr-card`}>
-      {children}
-    </div>
-  )
+const CardLayout = ({ children }) => {
+  return <div className={`jr-card`}>{children}</div>;
 };
 
 export default CardLayout;
-

@@ -17,7 +17,6 @@ import { makeStyles } from "@material-ui/styles";
 import ArrowBackIcon from "@material-ui/icons/ArrowBackIos";
 import { folderCreator, uniqPathsByKey, setObjToKey } from "./func";
 import FileModal from "./fileModal/fileModal";
-import Downloader from "./Downloader";
 
 import * as R from "ramda";
 const useStyle = makeStyles({
@@ -68,7 +67,6 @@ const Files = ({ match }) => {
   // const [initFoldersData, setInitFoldersData] = useState([]);
 
   const getFiles = async (finalPath = null) => {
-     ;
     const response = await List(
       "file_managers",
       undefined,
@@ -135,18 +133,13 @@ const Files = ({ match }) => {
 
   const deleteFolder = async (folder) => {
     try {
-       ;
       const selectedFile = files[curFolder.path];
 
-      curFolder.children.forEach((item, idx) => {
-         ;
-      });
-       ;
+      curFolder.children.forEach((item, idx) => {});
     } catch (error) {}
   };
 
   const handleRequestCloseFolder = (idx, folder) => {
-     ;
     if (idx !== null) {
       switch (idx) {
         case 2:
@@ -178,7 +171,6 @@ const Files = ({ match }) => {
   const { folders, files } = contents;
 
   const checkFilePath = (idx) => () => {
-     ;
     if (idx === 0) {
       const { title, path, children } = folders.contents[5];
       setCurFolder({ title, path, children });
@@ -192,7 +184,6 @@ const Files = ({ match }) => {
   const [fileModal, setFileModal] = useState(false);
   const [curFile, setCurFile] = useState({});
   const onFileClick = (file) => {
-     ;
     setFileModal(true);
     setCurFile(file);
   };
@@ -269,15 +260,7 @@ const Files = ({ match }) => {
             return (
               <div className={classes.folderContent}>
                 <div>
-                  <Downloader fileId={file._id} fileName={file.filename} fileExtension={file.extension}>
-                    <img
-                      src={require("assets/images/file.png")}
-                      className={classes.folder}
-                      title="folder"
-                      alt="folder"
-                    />
-                    <span>{file.filename}</span>
-                  </Downloader>
+                  
                 </div>
                 <div className={classes.details}>{file.created_time}</div>
                 <div className={classes.details}>

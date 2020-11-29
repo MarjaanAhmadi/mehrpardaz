@@ -21,7 +21,7 @@
   }
 
   .box-bottom {
-    border-top: 1px solid rgba($black, .15);
+    border-top: 1px solid rgba($black, 0.15);
   }
 
   .box-info {
@@ -38,7 +38,7 @@
       text-transform: uppercase;
       line-height: 14px;
       background-color: $white;
-      border: 1px solid rgba($black, .15);
+      border: 1px solid rgba($black, 0.15);
       font-size: 12px;
       color: $text-muted;
       border-radius: 1em;
@@ -237,7 +237,10 @@
     @include display-flex(flex, column, nowrap);
     @include justify-content(center);
     @include align-items(center);
-    @include box-shadow(0 6px 20px 0 rgba($gray-900, 0.19), 0 8px 17px 0 rgba($gray-900, 0.20));
+    @include box-shadow(
+      0 6px 20px 0 rgba($gray-900, 0.19),
+      0 8px 17px 0 rgba($gray-900, 0.2)
+    );
     @include transition(all 100ms ease);
     position: absolute;
     left: 15px;
@@ -311,7 +314,7 @@
   }
 
   & .user-img-container {
-    content: '';
+    content: "";
     @include display-flex(flex, row, nowrap);
     @include justify-content(flex-end);
     @include align-items(center);

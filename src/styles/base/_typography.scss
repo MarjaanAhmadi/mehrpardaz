@@ -1,32 +1,48 @@
 /*Typography Styles*/
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   font-weight: $headings-font-weight;
   margin: 0 0 $headings-margin-bottom;
   color: $headings-color;
 }
 
-[class*="text-"] h1, [class*="text-"] .h1 {
+[class*="text-"] h1,
+[class*="text-"] .h1 {
   color: inherit;
 }
 
-[class*="text-"] h2, [class*="text-"] .h2 {
+[class*="text-"] h2,
+[class*="text-"] .h2 {
   color: inherit;
 }
 
-[class*="text-"] h3, [class*="text-"] .h3 {
+[class*="text-"] h3,
+[class*="text-"] .h3 {
   color: inherit;
 }
 
-[class*="text-"] h4, [class*="text-"] .h4 {
+[class*="text-"] h4,
+[class*="text-"] .h4 {
   color: inherit;
 }
 
-[class*="text-"] h5, [class*="text-"] .h5 {
+[class*="text-"] h5,
+[class*="text-"] .h5 {
   color: inherit;
 }
 
-[class*="text-"] h6, [class*="text-"] .h6 {
+[class*="text-"] h6,
+[class*="text-"] .h6 {
   color: inherit;
 }
 
@@ -49,7 +65,6 @@ h1, h2, h3, h4, h5, h6,
     & .card-title {
       margin-bottom: 6px;
     }
-
   }
 
   &.even-odd {
@@ -177,7 +192,7 @@ h1, h2, h3, h4, h5, h6,
   line-height: 1;
 
   @media screen and (max-width: 1199px) {
-    font-size:  2rem !important; //32px
+    font-size: 2rem !important; //32px
   }
 
   @media screen and (max-width: 991px) {
@@ -186,7 +201,6 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .jr-fs-cp {
-
   @media screen and (min-width: 1368px) {
     font-size: 1rem !important; //16px
     line-height: 1;

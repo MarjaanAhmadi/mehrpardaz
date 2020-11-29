@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
+import React, { Component } from "react";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import PhoneIcon from "@material-ui/icons/Phone";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import PersonPinIcon from "@material-ui/icons/PersonPin";
 
 export default class IconLabelTabs extends Component {
   state = {
@@ -12,7 +12,7 @@ export default class IconLabelTabs extends Component {
   };
 
   handleChange = (event, value) => {
-    this.setState({value});
+    this.setState({ value });
   };
 
   render() {
@@ -26,9 +26,9 @@ export default class IconLabelTabs extends Component {
           textColor="secondary"
           scrollButtons="on"
         >
-          <Tab icon={<PhoneIcon/>} label="RECENTS"/>
-          <Tab icon={<FavoriteIcon/>} label="FAVORITES"/>
-          <Tab icon={<PersonPinIcon/>} label="NEARBY"/>
+          <Tab icon={<PhoneIcon />} label="RECENTS" />
+          <Tab icon={<FavoriteIcon />} label="FAVORITES" />
+          <Tab icon={<PersonPinIcon />} label="NEARBY" />
         </Tabs>
       </Paper>
     );

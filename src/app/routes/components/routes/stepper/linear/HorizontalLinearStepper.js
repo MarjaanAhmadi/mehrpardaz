@@ -1,40 +1,39 @@
-import React from 'react';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ["Select campaign settings", "Create an ad group", "Create an ad"];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return 'Select campaign settings...';
+      return "Select campaign settings...";
     case 1:
-      return 'What is an ad group anyways?';
+      return "What is an ad group anyways?";
     case 2:
-      return 'This is the bit I really care about!';
+      return "This is the bit I really care about!";
     default:
-      return 'Unknown step';
+      return "Unknown step";
   }
 }
 
 class HorizontalLinearStepper extends React.Component {
-
   state = {
     activeStep: 0,
     skipped: new Set(),
   };
 
-  isStepOptional = step => {
+  isStepOptional = (step) => {
     return step === 1;
   };
   handleNext = () => {
-    const {activeStep} = this.state;
-    let {skipped} = this.state;
+    const { activeStep } = this.state;
+    let { skipped } = this.state;
     if (this.isStepSkipped(activeStep)) {
       skipped = new Set(skipped.values());
       skipped.delete(activeStep);
@@ -45,13 +44,13 @@ class HorizontalLinearStepper extends React.Component {
     });
   };
   handleBack = () => {
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
     this.setState({
       activeStep: activeStep - 1,
     });
   };
   handleSkip = () => {
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
     if (!this.isStepOptional(activeStep)) {
       // You probably want to guard against something like this,
       // it should never occur unless someone's actively trying to break something.
@@ -76,7 +75,7 @@ class HorizontalLinearStepper extends React.Component {
 
   render() {
     const steps = getSteps();
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
 
     return (
       <div className="w-100">
@@ -85,14 +84,24 @@ class HorizontalLinearStepper extends React.Component {
             const props = {};
             const labelProps = {};
             if (this.isStepOptional(index)) {
-              labelProps.optional = <Typography variant="caption">Optional</Typography>;
+              labelProps.optional = (
+                <Typography variant="caption">Optional</Typography>
+              );
             }
             if (this.isStepSkipped(index)) {
               props.completed = false;
             }
             return (
-              <Step key={label} className={`horizontal-stepper ${index === activeStep ? 'active' : ''}`} {...props}>
-                <StepLabel className="stepperlabel" {...labelProps}>{label}</StepLabel>
+              <Step
+                key={label}
+                className={`horizontal-stepper ${
+                  index === activeStep ? "active" : ""
+                }`}
+                {...props}
+              >
+                <StepLabel className="stepperlabel" {...labelProps}>
+                  {label}
+                </StepLabel>
               </Step>
             );
           })}
@@ -109,7 +118,9 @@ class HorizontalLinearStepper extends React.Component {
             </div>
           ) : (
             <div>
-              <Typography className="my-2">{getStepContent(activeStep)}</Typography>
+              <Typography className="my-2">
+                {getStepContent(activeStep)}
+              </Typography>
               <div>
                 <Button
                   disabled={activeStep === 0}
@@ -128,8 +139,13 @@ class HorizontalLinearStepper extends React.Component {
                     Skip
                   </Button>
                 )}
-                <Button variant="contained" color="primary" onClick={this.handleNext} className="jr-btn">
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleNext}
+                  className="jr-btn"
+                >
+                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
                 </Button>
               </div>
             </div>

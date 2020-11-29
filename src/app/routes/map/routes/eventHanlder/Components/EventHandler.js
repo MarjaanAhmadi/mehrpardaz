@@ -1,18 +1,16 @@
-import React, {Component} from "react";
-import {GoogleMap, InfoWindow, withGoogleMap} from "react-google-maps";
+import React, { Component } from "react";
+import { GoogleMap, InfoWindow, withGoogleMap } from "react-google-maps";
 
 const google = window.google;
 
-const GettingPropertiesExampleGoogleMap = withGoogleMap(props => (
+const GettingPropertiesExampleGoogleMap = withGoogleMap((props) => (
   <GoogleMap
     ref={props.onMapMounted}
     onZoomChanged={props.onZoomChanged}
     defaultCenter={props.center}
     zoom={props.zoom}
   >
-    <InfoWindow
-      defaultPosition={props.center}
-    >
+    <InfoWindow defaultPosition={props.center}>
       <div>{props.content}</div>
     </InfoWindow>
   </GoogleMap>
@@ -24,7 +22,6 @@ const GettingPropertiesExampleGoogleMap = withGoogleMap(props => (
  * Add <script src="https://maps.googleapis.com/maps/api/js"></script> to your HTML to provide google.maps reference
  */
 export default class EventHandler extends Component {
-
   state = {
     zoom: 15,
     content: `Change the zoom level`,
@@ -53,9 +50,9 @@ export default class EventHandler extends Component {
     return (
       <GettingPropertiesExampleGoogleMap
         containerElement={
-          <div className="embed-responsive embed-responsive-21by9"/>
+          <div className="embed-responsive embed-responsive-21by9" />
         }
-        mapElement={<div className="embed-responsive-item"/>}
+        mapElement={<div className="embed-responsive-item" />}
         onMapMounted={this.handleMapMounted}
         onZoomChanged={this.handleZoomChanged}
         center={new google.maps.LatLng(47.646935, -122.303763)}

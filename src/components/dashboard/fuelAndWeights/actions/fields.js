@@ -1,6 +1,7 @@
 import * as R from "ramda";
 
 const fieldsArr = [
+  ["name", "string"],
   ["trip_f_plnd", "number", 0, 300000],
   ["trip_f_time", "time"],
   ["cont_f_plnd", "number", 0, 300000],
@@ -43,7 +44,7 @@ const fieldsArr = [
   ["underload_w_max", "number", 0, 800000],
 ];
 
-const selectFields = [["alt_f", "string"]];
+// const selectFields = [["alt_f", "string"]];
 
 const mapper = (field) => {
   const [name, validationType, min, max] = field;

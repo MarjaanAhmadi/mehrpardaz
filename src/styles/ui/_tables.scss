@@ -121,7 +121,7 @@
 }
 
 .table-responsive-material {
-  min-height: .01%;
+  min-height: 0.01%;
   overflow-x: auto;
 }
 
@@ -205,5 +205,40 @@
 .full-table-last-sm {
   & td:last-child {
     padding-right: ($jr-card-padding - 14);
+  }
+}
+
+// React Table
+.ReactTable {
+  & .rt-th,
+  & .rt-td {
+    padding: 12px 15px !important;
+
+    &.rt-expandable {
+      padding: 0 !important;
+    }
+  }
+
+  & .rt-thead {
+    & .rt-th,
+    & .rt-td {
+      padding: 12px 15px !important;
+
+      &.rt-expandable {
+        padding: 0 !important;
+      }
+    }
+  }
+
+  & .rt-td {
+    & > div {
+      padding: 3px 10px;
+    }
+  }
+
+  .-pagination {
+    @media screen and (max-width: 399px) {
+      flex-direction: column;
+    }
   }
 }

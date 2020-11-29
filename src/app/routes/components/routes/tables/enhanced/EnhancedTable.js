@@ -1,35 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import keycode from 'keycode';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import React from "react";
+import PropTypes from "prop-types";
+import keycode from "keycode";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableFooter from "@material-ui/core/TableFooter";
+import TableHead from "@material-ui/core/TableHead";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableRow from "@material-ui/core/TableRow";
+import TableSortLabel from "@material-ui/core/TableSortLabel";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Checkbox from "@material-ui/core/Checkbox";
+import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
+import DeleteIcon from "@material-ui/icons/Delete";
+import FilterListIcon from "@material-ui/icons/FilterList";
 
 let counter = 0;
 
 function createData(name, calories, fat, carbs, protein) {
   counter += 1;
-  return {id: counter, name, calories, fat, carbs, protein};
+  return { id: counter, name, calories, fat, carbs, protein };
 }
 
 const columnData = [
-  {id: 'name', align: false, disablePadding: true, label: 'Dessert (100g serving)'},
-  {id: 'calories', align: true, disablePadding: false, label: 'Calories'},
-  {id: 'fat', align: true, disablePadding: false, label: 'Fat (g)'},
-  {id: 'carbs', align: true, disablePadding: false, label: 'Carbs (g)'},
-  {id: 'protein', align: true, disablePadding: false, label: 'Protein (g)'},
+  {
+    id: "name",
+    align: false,
+    disablePadding: true,
+    label: "Dessert (100g serving)",
+  },
+  { id: "calories", align: true, disablePadding: false, label: "Calories" },
+  { id: "fat", align: true, disablePadding: false, label: "Fat (g)" },
+  { id: "carbs", align: true, disablePadding: false, label: "Carbs (g)" },
+  { id: "protein", align: true, disablePadding: false, label: "Protein (g)" },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -42,33 +47,40 @@ class EnhancedTableHead extends React.Component {
     rowCount: PropTypes.number.isRequired,
   };
 
-  createSortHandler = property => event => {
+  createSortHandler = (property) => (event) => {
     this.props.onRequestSort(event, property);
   };
 
   render() {
-    const {onSelectAllClick, order, orderBy, numSelected, rowCount} = this.props;
+    const {
+      onSelectAllClick,
+      order,
+      orderBy,
+      numSelected,
+      rowCount,
+    } = this.props;
 
     return (
       <TableHead>
         <TableRow>
           <TableCell padding="checkbox">
-            <Checkbox color="primary"
-                      indeterminate={numSelected > 0 && numSelected < rowCount}
-                      checked={numSelected === rowCount}
-                      onChange={onSelectAllClick}
+            <Checkbox
+              color="primary"
+              indeterminate={numSelected > 0 && numSelected < rowCount}
+              checked={numSelected === rowCount}
+              onChange={onSelectAllClick}
             />
           </TableCell>
-          {columnData.map(column => {
+          {columnData.map((column) => {
             return (
               <TableCell
                 key={column.id}
                 numeric={column.numeric}
-                padding={column.disablePadding ? 'none' : 'default'}
+                padding={column.disablePadding ? "none" : "default"}
               >
                 <Tooltip
                   title="Sort"
-                  placement={column.numeric ? 'bottom-end' : 'bottom-start'}
+                  placement={column.numeric ? "bottom-end" : "bottom-start"}
                   enterDelay={300}
                 >
                   <TableSortLabel
@@ -88,13 +100,11 @@ class EnhancedTableHead extends React.Component {
   }
 }
 
-
-let EnhancedTableToolbar = props => {
-  const {numSelected} = props;
+let EnhancedTableToolbar = (props) => {
+  const { numSelected } = props;
 
   return (
-    <Toolbar
-      className="table-header">
+    <Toolbar className="table-header">
       <div className="title">
         {numSelected > 0 ? (
           <Typography variant="subheading">{numSelected} selected</Typography>
@@ -102,18 +112,18 @@ let EnhancedTableToolbar = props => {
           <Typography variant="title">Nutrition</Typography>
         )}
       </div>
-      <div className="spacer"/>
+      <div className="spacer" />
       <div className="actions">
         {numSelected > 0 ? (
           <Tooltip title="Delete">
             <IconButton aria-label="Delete">
-              <DeleteIcon/>
+              <DeleteIcon />
             </IconButton>
           </Tooltip>
         ) : (
           <Tooltip title="Filter list">
             <IconButton aria-label="Filter list">
-              <FilterListIcon/>
+              <FilterListIcon />
             </IconButton>
           </Tooltip>
         )}
@@ -126,37 +136,36 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-
 class EnhancedTable extends React.Component {
   handleRequestSort = (event, property) => {
     const orderBy = property;
-    let order = 'desc';
+    let order = "desc";
 
-    if (this.state.orderBy === property && this.state.order === 'desc') {
-      order = 'asc';
+    if (this.state.orderBy === property && this.state.order === "desc") {
+      order = "asc";
     }
 
     const data =
-      order === 'desc'
+      order === "desc"
         ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
         : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
 
-    this.setState({data, order, orderBy});
+    this.setState({ data, order, orderBy });
   };
   handleSelectAllClick = (event, checked) => {
     if (checked) {
-      this.setState({selected: this.state.data.map(n => n.id)});
+      this.setState({ selected: this.state.data.map((n) => n.id) });
       return;
     }
-    this.setState({selected: []});
+    this.setState({ selected: [] });
   };
   handleKeyDown = (event, id) => {
-    if (keycode(event) === 'space') {
+    if (keycode(event) === "space") {
       this.handleClick(event, id);
     }
   };
   handleClick = (event, id) => {
-    const {selected} = this.state;
+    const { selected } = this.state;
     const selectedIndex = selected.indexOf(id);
     let newSelected = [];
 
@@ -169,41 +178,41 @@ class EnhancedTable extends React.Component {
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
+        selected.slice(selectedIndex + 1)
       );
     }
 
-    this.setState({selected: newSelected});
+    this.setState({ selected: newSelected });
   };
   handleChangePage = (event, page) => {
-    this.setState({page});
+    this.setState({ page });
   };
-  handleChangeRowsPerPage = event => {
-    this.setState({rowsPerPage: event.target.value});
+  handleChangeRowsPerPage = (event) => {
+    this.setState({ rowsPerPage: event.target.value });
   };
-  isSelected = id => this.state.selected.indexOf(id) !== -1;
+  isSelected = (id) => this.state.selected.indexOf(id) !== -1;
 
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      order: 'asc',
-      orderBy: 'calories',
+      order: "asc",
+      orderBy: "calories",
       selected: [],
       data: [
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Donut', 452, 25.0, 51, 4.9),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-        createData('Honeycomb', 408, 3.2, 87, 6.5),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Jelly Bean', 375, 0.0, 94, 0.0),
-        createData('KitKat', 518, 26.0, 65, 7.0),
-        createData('Lollipop', 392, 0.2, 98, 0.0),
-        createData('Marshmallow', 318, 0, 81, 2.0),
-        createData('Nougat', 360, 19.0, 9, 37.0),
-        createData('Oreo', 437, 18.0, 63, 4.0),
+        createData("Cupcake", 305, 3.7, 67, 4.3),
+        createData("Donut", 452, 25.0, 51, 4.9),
+        createData("Eclair", 262, 16.0, 24, 6.0),
+        createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+        createData("Gingerbread", 356, 16.0, 49, 3.9),
+        createData("Honeycomb", 408, 3.2, 87, 6.5),
+        createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+        createData("Jelly Bean", 375, 0.0, 94, 0.0),
+        createData("KitKat", 518, 26.0, 65, 7.0),
+        createData("Lollipop", 392, 0.2, 98, 0.0),
+        createData("Marshmallow", 318, 0, 81, 2.0),
+        createData("Nougat", 360, 19.0, 9, 37.0),
+        createData("Oreo", 437, 18.0, 63, 4.0),
       ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
       page: 0,
       rowsPerPage: 5,
@@ -211,11 +220,11 @@ class EnhancedTable extends React.Component {
   }
 
   render() {
-    const {data, order, orderBy, selected, rowsPerPage, page} = this.state;
+    const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
 
     return (
       <div>
-        <EnhancedTableToolbar numSelected={selected.length}/>
+        <EnhancedTableToolbar numSelected={selected.length} />
         <div className="flex-auto">
           <div className="table-responsive-material">
             <Table>
@@ -228,30 +237,32 @@ class EnhancedTable extends React.Component {
                 rowCount={data.length}
               />
               <TableBody>
-                {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
-                  const isSelected = this.isSelected(n.id);
-                  return (
-                    <TableRow
-                      hover
-                      onClick={event => this.handleClick(event, n.id)}
-                      onKeyDown={event => this.handleKeyDown(event, n.id)}
-                      role="checkbox"
-                      aria-checked={isSelected}
-                      tabIndex={-1}
-                      key={n.id}
-                      selected={isSelected}
-                    >
-                      <TableCell padding="checkbox">
-                        <Checkbox color="primary" checked={isSelected}/>
-                      </TableCell>
-                      <TableCell padding="none">{n.name}</TableCell>
-                      <TableCell align="right">{n.calories}</TableCell>
-                      <TableCell align="right">{n.fat}</TableCell>
-                      <TableCell align="right">{n.carbs}</TableCell>
-                      <TableCell align="right">{n.protein}</TableCell>
-                    </TableRow>
-                  );
-                })}
+                {data
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((n) => {
+                    const isSelected = this.isSelected(n.id);
+                    return (
+                      <TableRow
+                        hover
+                        onClick={(event) => this.handleClick(event, n.id)}
+                        onKeyDown={(event) => this.handleKeyDown(event, n.id)}
+                        role="checkbox"
+                        aria-checked={isSelected}
+                        tabIndex={-1}
+                        key={n.id}
+                        selected={isSelected}
+                      >
+                        <TableCell padding="checkbox">
+                          <Checkbox color="primary" checked={isSelected} />
+                        </TableCell>
+                        <TableCell padding="none">{n.name}</TableCell>
+                        <TableCell align="right">{n.calories}</TableCell>
+                        <TableCell align="right">{n.fat}</TableCell>
+                        <TableCell align="right">{n.carbs}</TableCell>
+                        <TableCell align="right">{n.protein}</TableCell>
+                      </TableRow>
+                    );
+                  })}
               </TableBody>
               <TableFooter>
                 <TableRow>

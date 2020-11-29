@@ -1,21 +1,20 @@
-import React, {Component} from 'react';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
+import React, { Component } from "react";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
 
 class RadioButtonsGroup extends Component {
   state = {
-    value: '',
+    value: "",
   };
 
   handleChange = (event, value) => {
-    this.setState({value});
+    this.setState({ value });
   };
 
   render() {
-
     return (
       <div className="row">
         <div className="col-sm-4">
@@ -27,9 +26,21 @@ class RadioButtonsGroup extends Component {
               value={this.state.value}
               onChange={this.handleChange}
             >
-              <FormControlLabel value="male" control={<Radio color="primary"/>} label="Male"/>
-              <FormControlLabel value="female" control={<Radio color="primary"/>} label="Female"/>
-              <FormControlLabel value="other" control={<Radio color="primary"/>} label="Other"/>
+              <FormControlLabel
+                value="male"
+                control={<Radio color="primary" />}
+                label="Male"
+              />
+              <FormControlLabel
+                value="female"
+                control={<Radio color="primary" />}
+                label="Female"
+              />
+              <FormControlLabel
+                value="other"
+                control={<Radio color="primary" />}
+                label="Other"
+              />
               {/*<FormControlLabel value="disabled" disabled control={<Radio />} label="Disabled" />*/}
             </RadioGroup>
           </FormControl>
@@ -45,17 +56,26 @@ class RadioButtonsGroup extends Component {
               value={this.state.value}
               onChange={this.handleChange}
             >
-              <FormControlLabel value="male1" control={<Radio color="primary"/>} label="Male"/>
-              <FormControlLabel value="female1" control={<Radio color="primary"/>} label="Female"/>
-              <FormControlLabel value="other1" control={<Radio color="primary"/>} label="Other"/>
+              <FormControlLabel
+                value="male1"
+                control={<Radio color="primary" />}
+                label="Male"
+              />
+              <FormControlLabel
+                value="female1"
+                control={<Radio color="primary" />}
+                label="Female"
+              />
+              <FormControlLabel
+                value="other1"
+                control={<Radio color="primary" />}
+                label="Other"
+              />
               {/*<FormControlLabel value="disabled" disabled control={<Radio />} label="Disabled" />*/}
             </RadioGroup>
           </FormControl>
         </div>
-
       </div>
-
-
     );
   }
 }

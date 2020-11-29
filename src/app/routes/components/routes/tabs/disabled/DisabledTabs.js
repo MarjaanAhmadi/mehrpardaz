@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import React, { Component } from "react";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 class DisabledTabs extends Component {
   state = {
@@ -9,7 +9,7 @@ class DisabledTabs extends Component {
   };
 
   handleChange = (event, value) => {
-    this.setState({value});
+    this.setState({ value });
   };
 
   render() {
@@ -23,9 +23,9 @@ class DisabledTabs extends Component {
           variant="scrollable"
           scrollButtons="on"
         >
-          <Tab className="tab" label="Active"/>
-          <Tab className="tab" label="Disabled" disabled/>
-          <Tab className="tab" label="Active"/>
+          <Tab className="tab" label="Active" />
+          <Tab className="tab" label="Disabled" disabled />
+          <Tab className="tab" label="Active" />
         </Tabs>
       </Paper>
     );

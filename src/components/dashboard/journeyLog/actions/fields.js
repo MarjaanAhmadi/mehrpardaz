@@ -1,6 +1,7 @@
 import * as R from "ramda";
 
 const minMaxFields = [
+  ["name", "string"],
   ["flight_type", "string"],
   ["passengers_no", "number", 0, 999],
   ["cargo_bagg", "number", 0, 999999],
@@ -30,10 +31,10 @@ const dateFields = [
   ["flight_time", "string"],
   ["block_time", "string"],
 ];
-const selectFields = [
-  ["tanked_fuel", "select"],
-  ["landings", "select"],
-];
+// const selectFields = [
+//   ["tanked_fuel", "select"],
+//   ["landings", "select"],
+// ];
 const minMaxMapper = (field) => {
   const [name, validationType, min, max] = field;
 
@@ -92,19 +93,19 @@ const dateMapper = (field) => {
     ],
   };
 };
-const selectMapper = (field) => {
-  const [name, validationType] = field;
-  return {
-    name: `${name}`,
-    validationType: "string",
-    validations: [
-      {
-        type: "required",
-        params: ["is required"],
-      },
-    ],
-  };
-};
+// const selectMapper = (field) => {
+//   const [name, validationType] = field;
+//   return {
+//     name: `${name}`,
+//     validationType: "string",
+//     validations: [
+//       {
+//         type: "required",
+//         params: ["is required"],
+//       },
+//     ],
+//   };
+// };
 
 const fields = R.concat(
   R.map(minMaxMapper, minMaxFields),

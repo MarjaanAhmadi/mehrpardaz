@@ -1,35 +1,34 @@
-import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import React from "react";
+import IconButton from "@material-ui/core/IconButton";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 class InputAdornments extends React.Component {
   state = {
-    amount: '',
-    password: '',
-    weight: '',
+    amount: "",
+    password: "",
+    weight: "",
     showPassword: false,
   };
 
-  handleChange = prop => event => {
-    this.setState({[prop]: event.target.value});
+  handleChange = (prop) => (event) => {
+    this.setState({ [prop]: event.target.value });
   };
 
-  handleMouseDownPassword = event => {
+  handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
   handleClickShowPasssword = () => {
-    this.setState({showPassword: !this.state.showPassword});
+    this.setState({ showPassword: !this.state.showPassword });
   };
 
   render() {
-
     return (
       <div className="row">
         <div className="col-md-4 col-12">
@@ -38,8 +37,10 @@ class InputAdornments extends React.Component {
             <Input
               id="amount"
               value={this.state.amount}
-              onChange={this.handleChange('amount')}
-              startAdornment={<InputAdornment position="start">$</InputAdornment>}
+              onChange={this.handleChange("amount")}
+              startAdornment={
+                <InputAdornment position="start">$</InputAdornment>
+              }
             />
           </FormControl>
         </div>
@@ -48,7 +49,7 @@ class InputAdornments extends React.Component {
             <Input
               id="weight"
               value={this.state.weight}
-              onChange={this.handleChange('weight')}
+              onChange={this.handleChange("weight")}
               endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
             />
             <FormHelperText>Weight</FormHelperText>
@@ -59,16 +60,20 @@ class InputAdornments extends React.Component {
             <InputLabel htmlFor="password-1">Password</InputLabel>
             <Input
               id="password-1"
-              type={this.state.showPassword ? 'text' : 'password'}
+              type={this.state.showPassword ? "text" : "password"}
               value={this.state.password}
-              onChange={this.handleChange('password')}
+              onChange={this.handleChange("password")}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
                     onClick={this.handleClickShowPasssword}
                     onMouseDown={this.handleMouseDownPassword}
                   >
-                    {this.state.showPassword ? <VisibilityOff/> : <Visibility/>}
+                    {this.state.showPassword ? (
+                      <VisibilityOff />
+                    ) : (
+                      <Visibility />
+                    )}
                   </IconButton>
                 </InputAdornment>
               }

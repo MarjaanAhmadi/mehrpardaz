@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Card,
   CardBody,
@@ -10,11 +10,10 @@ import {
   NavItem,
   NavLink,
   TabContent,
-  TabPane
-} from 'reactstrap';
+  TabPane,
+} from "reactstrap";
 
-import classnames from 'classnames';
-
+import classnames from "classnames";
 
 class NavTabCards extends React.Component {
   constructor(props) {
@@ -22,14 +21,14 @@ class NavTabCards extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: '1'
+      activeTab: "1",
     };
   }
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
       this.setState({
-        activeTab: tab
+        activeTab: tab,
       });
     }
   }
@@ -41,9 +40,9 @@ class NavTabCards extends React.Component {
           <Nav className="card-header-tabs" tabs>
             <NavItem>
               <NavLink
-                className={classnames({active: this.state.activeTab === '1'})}
+                className={classnames({ active: this.state.activeTab === "1" })}
                 onClick={() => {
-                  this.toggle('1');
+                  this.toggle("1");
                 }}
               >
                 Active
@@ -51,9 +50,9 @@ class NavTabCards extends React.Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({active: this.state.activeTab === '2'})}
+                className={classnames({ active: this.state.activeTab === "2" })}
                 onClick={() => {
-                  this.toggle('2');
+                  this.toggle("2");
                 }}
               >
                 Link
@@ -62,9 +61,9 @@ class NavTabCards extends React.Component {
             <NavItem>
               <NavLink
                 disabled
-                className={classnames({active: this.state.activeTab === '3'})}
+                className={classnames({ active: this.state.activeTab === "3" })}
                 onClick={() => {
-                  this.toggle('3');
+                  this.toggle("3");
                 }}
               >
                 Disabled
@@ -79,13 +78,12 @@ class NavTabCards extends React.Component {
               <h3 className="card-title">Card Title</h3>
               <CardSubtitle>Sub-heading text</CardSubtitle>
               <CardText>
-                Small plates, salads & sandwiches in an
-                intimate setting with 12 indoor seats plus
-                patio seating
+                Small plates, salads & sandwiches in an intimate setting with 12
+                indoor seats plus patio seating
               </CardText>
               <CardText>
-                Donec imperdiet enim et dignissim interdum. Pellentesque in ortti tor elit.
-                Curabitur consectetur.
+                Donec imperdiet enim et dignissim interdum. Pellentesque in
+                ortti tor elit. Curabitur consectetur.
               </CardText>
             </CardBody>
             <CardFooter>2 days ago</CardFooter>
@@ -96,38 +94,41 @@ class NavTabCards extends React.Component {
               <h3 className="card-title">Card Title Disabled</h3>
               <CardSubtitle>Sub-heading text Disabled</CardSubtitle>
               <CardText>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                printer took a galley of type and scrambled it to make a type specimen book.
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
               </CardText>
-              <CardText>It has
-                survived not only five centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of
-                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              <CardText>
+                It has survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
               </CardText>
             </CardBody>
             <CardFooter>2 days ago</CardFooter>
-          </TabPane><TabPane tabId="3">
-          <CardBody>
-            <h3 className="card-title">Card Title Active</h3>
-            <CardSubtitle>Sub-heading text Active</CardSubtitle>
-            <CardText>
-              Small plates, salads & sandwiches in an
-              intimate setting with 12 indoor seats plus
-              patio seating
-            </CardText>
-            <CardText>
-              Donec imperdiet enim et dignissim interdum. Pellentesque in ortti tor elit.
-              Curabitur consectetur.
-            </CardText>
-          </CardBody>
-          <CardFooter>2 days ago</CardFooter>
-        </TabPane>
+          </TabPane>
+          <TabPane tabId="3">
+            <CardBody>
+              <h3 className="card-title">Card Title Active</h3>
+              <CardSubtitle>Sub-heading text Active</CardSubtitle>
+              <CardText>
+                Small plates, salads & sandwiches in an intimate setting with 12
+                indoor seats plus patio seating
+              </CardText>
+              <CardText>
+                Donec imperdiet enim et dignissim interdum. Pellentesque in
+                ortti tor elit. Curabitur consectetur.
+              </CardText>
+            </CardBody>
+            <CardFooter>2 days ago</CardFooter>
+          </TabPane>
         </TabContent>
       </Card>
     );
   }
 }
 
-export default NavTabCards
+export default NavTabCards;

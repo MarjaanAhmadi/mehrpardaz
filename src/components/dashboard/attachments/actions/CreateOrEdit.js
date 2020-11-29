@@ -1,202 +1,199 @@
-import React, { useState , useEffect} from 'react';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Input from '@material-ui/core/Input';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core';
-import { Post, Retrieve, Patch, List } from 'DataManager/DataManager';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import React, { useState, useEffect } from "react";
+import FormControl from "@material-ui/core/FormControl";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import Checkbox from "@material-ui/core/Checkbox";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import Input from "@material-ui/core/Input";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core";
+import { Post, Retrieve, Patch, List } from "DataManager/DataManager";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 const useStyles = makeStyles({
   btnRoot: {
-    direction: 'rtl'
+    direction: "rtl",
   },
-  radioTop:{
-    marginTop: '2.2rem'
-  }
-})
-
+  radioTop: {
+    marginTop: "2.2rem",
+  },
+});
 
 const CreateOrEdit = (props) => {
   const classes = useStyles();
-  const[users, setUsers] = useState({
-    list: []
+  const [users, setUsers] = useState({
+    list: [],
   });
   const [form, setForm] = useState({
-    title: '',
-    uuid: '',
-    related_user: {}
+    title: "",
+    uuid: "",
+    related_user: {},
   });
   const [error, setError] = useState({
     hasError: false,
-    errorMsg: ''
+    errorMsg: "",
   });
   const [success, setSuccess] = useState({
     hasSuccess: false,
-    successMsg: ''
+    successMsg: "",
   });
   const getUsers = async () => {
-    try{
-        const response = await List('users', undefined, 10, 0, undefined, undefined);
-        setUsers({
-            ...users,
-            list: response
-        });
-        return response;
-      }
-    catch(error) {
-        console.log(error)
+    try {
+      const response = await List(
+        "users",
+        undefined,
+        0,
+        10,
+        undefined,
+        undefined
+      );
+      setUsers({
+        ...users,
+        list: response,
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
     }
-}
+  };
 
-
-
-  const craeteAttachment = async() => {
+  const craeteAttachment = async () => {
     try {
       let data = form;
-      const response = await Post('attachments',data);
-      if(response.data.error) {
+      const response = await Post("attachments", data);
+      if (response.data.error) {
         setError({
           ...error,
           hasError: true,
-          errorMsg: response.data.error
+          errorMsg: response.data.error,
         });
-      }
-      else {
-        
+      } else {
         setSuccess({
           ...success,
           hasSuccess: true,
-          successMsg: 'Attachment Created Successfully'
+          successMsg: "Attachment Created Successfully",
         });
         props.getAttachments();
       }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const editAttachment = async () => {
-    try{
+    try {
       const data = form;
-      const response = await Patch('attachments', data, props.id);
+      await Patch("attachments", data, props.id);
       setSuccess({
         ...success,
         hasSuccess: true,
-        successMsg: 'Attachment Created Successfully'
+        successMsg: "Attachment Created Successfully",
       });
       props.getAttachments();
-
-    } 
-    catch(error){
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
-  }
-
+  };
 
   const getAttachment = async () => {
     try {
       const userLi = await getUsers();
-      const response =await Retrieve('attachments',props.id);
-        const cb = userLi.filter(i => i._id === response.related_user._id)[0];
-          
-         console.log(response)
-        setForm({
-          ...form,
-          title: response.title,
-          uuid: response.uuid,
-          related_user: cb._id
-        })
-    } catch (error) {
-      
-    }
-    
-  }
+      const response = await Retrieve("attachments", props.id);
+      const cb = userLi.filter((i) => i.id === response.related_user.id)[0];
+
+      console.log(response);
+      setForm({
+        ...form,
+        title: response.title,
+        uuid: response.uuid,
+        related_user: cb.id,
+      });
+    } catch (error) {}
+  };
 
   useEffect(() => {
-    if(props.edit) getAttachment(); 
+    if (props.edit) getAttachment();
     else getUsers();
-  },[])
+  }, []);
 
-  return(
+  function onInputChange(event) {
+    const { name, value } = event.target.value;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  }
+
+  return (
     <React.Fragment>
       <Grid container>
-          <Grid item xs={6} sm={6}>
+        <Grid item xs={6} sm={6}>
           <FormControl>
-              <InputLabel htmlFor="position-top">Title</InputLabel>
-              <Input
-                type="text"
-                value={form.title}
-                onChange={(event) => {
-                  setForm({
-                    ...form,
-                    title: event.target.value
-                  })
-                }}
-              />
-            </FormControl>
-          </Grid>
-          
-          <Grid item xs={6} sm={6} >
-            <FormControl>
-              <InputLabel htmlFor="position-top">UUID</InputLabel>
-              <Input
-                type="text"
-                value={form.uuid}
-                onChange={(event) => {
-                  setForm({
-                    ...form,
-                    uuid: event.target.value
-                  })
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={6} sm={6} >
+            <InputLabel htmlFor="position-top">Title</InputLabel>
+            <Input
+              type="text"
+              name="title"
+              value={form.title}
+              onChange={onInputChange}
+            />
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={6} sm={6}>
+          <FormControl>
+            <InputLabel htmlFor="position-top">UUID</InputLabel>
+            <Input
+              type="text"
+              name="uid"
+              value={form.uuid}
+              onChange={onInputChange}
+            />
+          </FormControl>
+        </Grid>
+        <Grid item xs={6} sm={6}>
           <FormControl className="w-100 mb-2">
             <InputLabel>Related User</InputLabel>
             <Select
               value={form.related_user}
-              onChange={(event) => {
-                  setForm({
-                    ...form,
-                    related_user: event.target.value
-                  })
-              }}
-              input={<Input id="ageSimple1"/>}
+              name="related_user"
+              onChange={onInputChange}
+              input={<Input id="ageSimple1" />}
             >
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {
-                users.list !== undefined && users.list.length > 0 ?
-                users.list.map((user, idx) => {
-                    return(
-                      <MenuItem key={idx} value={user._id}>{user.username}</MenuItem>
-                    )
-                })
-                : null
-              }
+              {users.list !== undefined && users.list.length > 0
+                ? users.list.map((user, idx) => {
+                    return (
+                      <MenuItem key={idx} value={user.id}>
+                        {user.username}
+                      </MenuItem>
+                    );
+                  })
+                : null}
             </Select>
           </FormControl>
-          </Grid>
-          
         </Grid>
-        <div className={`jr-btn-group d-flex flex-wrap mt-3 ${classes.btnRoot}`}>
-            <Button onClick={!props.edit ? craeteAttachment : editAttachment} variant="contained" color="primary" className="jr-btn text-white">{!props.edit ? 'Create' : 'Edit'}</Button>
-        </div>
-        {error.hasError && NotificationManager.error(error.errorMsg)}
-        <NotificationContainer />
-        {success.hasSuccess && NotificationManager.success(error.successMsg)}
-        <NotificationContainer />
-
-
+      </Grid>
+      <div className={`jr-btn-group d-flex flex-wrap mt-3 ${classes.btnRoot}`}>
+        <Button
+          onClick={!props.edit ? craeteAttachment : editAttachment}
+          variant="contained"
+          color="primary"
+          className="jr-btn text-white"
+        >
+          {!props.edit ? "Create" : "Edit"}
+        </Button>
+      </div>
+      {error.hasError && NotificationManager.error(error.errorMsg)}
+      <NotificationContainer />
+      {success.hasSuccess && NotificationManager.success(error.successMsg)}
+      <NotificationContainer />
     </React.Fragment>
-
-  )
-}
+  );
+};
 export default CreateOrEdit;

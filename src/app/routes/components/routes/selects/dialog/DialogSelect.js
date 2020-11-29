@@ -1,39 +1,43 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 class DialogSelect extends React.Component {
   state = {
     open: false,
-    age: '',
+    age: "",
   };
 
-  handleChange = name => event => {
-    this.setState({[name]: Number(event.target.value)});
+  handleChange = (name) => (event) => {
+    this.setState({ [name]: Number(event.target.value) });
   };
 
   handleClickOpen = () => {
-    this.setState({open: true});
+    this.setState({ open: true });
   };
 
   handleRequestClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false });
   };
 
   render() {
-
     return (
       <div>
-        <Button variant="contained" color="primary" onClick={this.handleClickOpen}>Open select
-          dialog</Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.handleClickOpen}
+        >
+          Open select dialog
+        </Button>
         <Dialog
           // className="dialog-menu"
           disableBackdropClick
@@ -51,10 +55,10 @@ class DialogSelect extends React.Component {
                     <Select
                       native
                       value={this.state.age}
-                      onChange={this.handleChange('age')}
-                      input={<Input id="age-native-simple"/>}
+                      onChange={this.handleChange("age")}
+                      input={<Input id="age-native-simple" />}
                     >
-                      <option value=""/>
+                      <option value="" />
                       <option value={10}>Ten</option>
                       <option value={20}>Twenty</option>
                       <option value={30}>Thirty</option>
@@ -66,8 +70,8 @@ class DialogSelect extends React.Component {
                     <InputLabel htmlFor="age-simple">Age</InputLabel>
                     <Select
                       value={this.state.age}
-                      onChange={this.handleChange('age')}
-                      input={<Input id="ageSimple2"/>}
+                      onChange={this.handleChange("age")}
+                      input={<Input id="ageSimple2" />}
                     >
                       <MenuItem value="">
                         <em>None</em>
@@ -82,10 +86,18 @@ class DialogSelect extends React.Component {
             </div>
           </DialogContent>
           <DialogActions>
-            <Button className="jr-btn" onClick={this.handleRequestClose} color="primary">
+            <Button
+              className="jr-btn"
+              onClick={this.handleRequestClose}
+              color="primary"
+            >
               Cancel
             </Button>
-            <Button className="jr-btn" onClick={this.handleRequestClose} color="primary">
+            <Button
+              className="jr-btn"
+              onClick={this.handleRequestClose}
+              color="primary"
+            >
               Ok
             </Button>
           </DialogActions>

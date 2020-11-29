@@ -1,11 +1,14 @@
-import React from 'react';
-
+import React from "react";
 
 const UserDetailCard = () => {
   return (
     <div className="jr-card user-detail-card">
       <div className="user-img-container">
-        <img className="user-img" alt="userAvatar" src='https://via.placeholder.com/150x150'/>
+        <img
+          className="user-img"
+          alt="userAvatar"
+          src={"https://via.placeholder.com/150x150"}
+        />
       </div>
 
       <div className="jr-card-body d-flex flex-column justify-content-center">

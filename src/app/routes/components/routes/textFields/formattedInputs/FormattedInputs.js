@@ -1,16 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import MaskedInput from 'react-text-mask';
-import NumberFormat from 'react-number-format';
-import Input from '@material-ui/core/Input';
+import React from "react";
+import PropTypes from "prop-types";
+import MaskedInput from "react-text-mask";
+import NumberFormat from "react-number-format";
+import Input from "@material-ui/core/Input";
 
 class TextMaskCustom extends React.Component {
   render() {
     return (
       <MaskedInput
         {...this.props}
-        mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-        placeholderChar={'\u2000'}
+        mask={[
+          "(",
+          /[1-9]/,
+          /\d/,
+          /\d/,
+          ")",
+          " ",
+          /\d/,
+          /\d/,
+          /\d/,
+          "-",
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+        ]}
+        placeholderChar={"\u2000"}
         showMask
       />
     );
@@ -22,7 +37,7 @@ class NumberFormatCustom extends React.Component {
     return (
       <NumberFormat
         {...this.props}
-        onValueChange={values => {
+        onValueChange={(values) => {
           this.props.onChange({
             target: {
               value: values.value,
@@ -42,11 +57,11 @@ NumberFormatCustom.propTypes = {
 
 class FormattedInputs extends React.Component {
   state = {
-    textmask: '(1  )    -    ',
-    numberformat: '1320',
+    textmask: "(1  )    -    ",
+    numberformat: "1320",
   };
 
-  handleChange = name => event => {
+  handleChange = (name) => (event) => {
     this.setState({
       [name]: event.target.value,
     });
@@ -59,10 +74,10 @@ class FormattedInputs extends React.Component {
           <Input
             value={this.state.textmask}
             inputComponent={TextMaskCustom}
-            onChange={this.handleChange('textmask')}
+            onChange={this.handleChange("textmask")}
             className="w-100 mb-3"
             inputProps={{
-              'aria-label': 'Description',
+              "aria-label": "Description",
             }}
           />
         </div>
@@ -70,11 +85,11 @@ class FormattedInputs extends React.Component {
         <div className="col-lg-4 col-sm-6 col-12">
           <Input
             value={this.state.numberformat}
-            onChange={this.handleChange('numberformat')}
+            onChange={this.handleChange("numberformat")}
             inputComponent={NumberFormatCustom}
             className="w-100 mb-3"
             inputProps={{
-              'aria-label': 'Description',
+              "aria-label": "Description",
             }}
           />
         </div>

@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 
-const ConversationCell = ({conversation}) => {
+const ConversationCell = ({ conversation }) => {
   return (
     <div className="d-flex module-detail-item">
       <div className="chat-todo-avatar">
-
-        <img className="rounded-circle avatar size-40" src={conversation.thumb}
-             alt="..."/>
+        <img
+          className="rounded-circle avatar size-40"
+          src={conversation.thumb}
+          alt="..."
+        />
       </div>
       <div className="chat-toto-info">
         <div className="d-flex  flex-column">
@@ -16,7 +18,7 @@ const ConversationCell = ({conversation}) => {
         <div className="message">{conversation.message}</div>
       </div>
     </div>
-  )
+  );
 };
 
 export default ConversationCell;

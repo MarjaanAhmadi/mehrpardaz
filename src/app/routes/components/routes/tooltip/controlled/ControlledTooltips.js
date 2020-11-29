@@ -1,7 +1,7 @@
-import React from 'react';
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
+import React from "react";
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
 
 class ControlledTooltips extends React.Component {
   state = {
@@ -9,11 +9,11 @@ class ControlledTooltips extends React.Component {
   };
 
   handleIconButtonRequestClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false });
   };
 
   handleIconButtonRequestOpen = () => {
-    this.setState({open: true});
+    this.setState({ open: true });
   };
 
   render() {
@@ -29,7 +29,7 @@ class ControlledTooltips extends React.Component {
         placement="bottom"
       >
         <IconButton aria-label="Delete">
-          <DeleteIcon/>
+          <DeleteIcon />
         </IconButton>
       </Tooltip>
     );

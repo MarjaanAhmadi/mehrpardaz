@@ -1,23 +1,21 @@
 import React from "react";
 
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 import Widget from "components/Widget/index";
 
-
 class CurrencyCalculator extends React.Component {
-
   state = {
-    name: '',
+    name: "",
   };
 
-  handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
@@ -31,14 +29,17 @@ class CurrencyCalculator extends React.Component {
         <form autoComplete="off" className="row">
           <div className="col-sm-4 col-6 mb-3">
             <FormControl className="w-100">
-              <InputLabel htmlFor="demo-controlled-open-select">From</InputLabel>
+              <InputLabel htmlFor="demo-controlled-open-select">
+                From
+              </InputLabel>
               <Select
                 value={this.state.name}
                 onChange={this.handleChange}
                 inputProps={{
-                  name: 'name',
-                  id: 'demo-controlled-open-select',
-                }}>
+                  name: "name",
+                  id: "demo-controlled-open-select",
+                }}
+              >
                 <MenuItem value={1}>BTC</MenuItem>
                 <MenuItem value={2}>USD</MenuItem>
               </Select>
@@ -51,9 +52,10 @@ class CurrencyCalculator extends React.Component {
                 value={this.state.name}
                 onChange={this.handleChange}
                 inputProps={{
-                  name: 'name',
-                  id: 'demo-controlled',
-                }}>
+                  name: "name",
+                  id: "demo-controlled",
+                }}
+              >
                 <MenuItem value={3}>USD</MenuItem>
                 <MenuItem value={4}>BTC</MenuItem>
               </Select>
@@ -75,15 +77,19 @@ class CurrencyCalculator extends React.Component {
             </FormControl>
           </div>
           <div className="col-12">
-            <Button size="small" variant="contained" color="primary" className="text-capitalize">
+            <Button
+              size="small"
+              variant="contained"
+              color="primary"
+              className="text-capitalize"
+            >
               Calculate
             </Button>
           </div>
         </form>
-
       </Widget>
     );
   }
-};
+}
 
 export default CurrencyCalculator;

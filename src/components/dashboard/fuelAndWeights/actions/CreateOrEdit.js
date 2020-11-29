@@ -273,7 +273,9 @@ const CreateOrEdit = (props) => {
           />
           <Grid item xs={3} sm={3} style={{ margin: "1rem 0rem" }}>
             <FormControl className={classes.formControl}>
-              <InputLabel id="demo-simple-select-label">Age</InputLabel>
+              <InputLabel id="demo-simple-select-label">
+                limit_w_plnd
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"

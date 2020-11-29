@@ -6,7 +6,6 @@ export default function useValidation(init) {
   // const alert = useAlert();
   const [errors, setErrors] = useState({});
   const { data, key } = init;
-
   const [checker, checkVal] = yupFactory(data, key);
 
   async function checkFiled(name, value) {

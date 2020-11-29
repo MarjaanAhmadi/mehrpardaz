@@ -262,7 +262,8 @@ div[tabindex="-1"] {
 }
 
 .remove-table-border {
-  td, th {
+  td,
+  th {
     border: 0 none;
   }
 }
@@ -742,7 +743,12 @@ a.btn-outline-geekblue {
 }
 
 .bg-gradient-primary-x {
-  @include gradient-x(darken($app-primary, 10%), lighten($app-primary, 16%), 70%, 100%);
+  @include gradient-x(
+    darken($app-primary, 10%),
+    lighten($app-primary, 16%),
+    70%,
+    100%
+  );
 }
 
 .overflow-hidden {

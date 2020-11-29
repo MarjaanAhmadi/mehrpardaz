@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { useEffect } from "react";
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -6,28 +6,29 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 am4core.useTheme(am4themes_animated);
 
-class SalesGauge extends Component {
-  componentDidMount() {
+const SalesGauge = () => {
+  useEffect(() => {
     let chart = am4core.create("chartdiv", am4charts.RadarChart);
     chart.paddingRight = 20;
     chart.responsive.enabled = true;
 
     chart.data = [
       {
-        "category": "Total Orders",
-        "value": 65,
-        "full": 100
+        category: "Total Orders",
+        value: 65,
+        full: 100,
       },
       {
-        "category": "Past Orders",
-        "value": 80,
-        "full": 100
+        category: "Past Orders",
+        value: 80,
+        full: 100,
       },
       {
-        "category": "Total Revenue",
-        "value": 90,
-        "full": 100
-      },];
+        category: "Total Revenue",
+        value: 90,
+        full: 100,
+      },
+    ];
 
     chart.colors.list = [
       am4core.color("#FF9800"),
@@ -35,16 +36,15 @@ class SalesGauge extends Component {
       am4core.color("#00BCD4"),
     ];
 
-
     // Make chart not full circle
     chart.startAngle = -90;
     chart.endAngle = 180;
     chart.innerRadius = am4core.percent(40);
 
-// Set number format
+    // Set number format
     chart.numberFormatter.numberFormat = "#.#'%'";
 
-// Create axes
+    // Create axes
     let categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = "category";
     categoryAxis.renderer.grid.template.location = 0;
@@ -52,8 +52,11 @@ class SalesGauge extends Component {
     categoryAxis.renderer.labels.template.horizontalCenter = "right";
     categoryAxis.renderer.labels.template.fontWeight = 500;
 
-    categoryAxis.renderer.labels.template.adapter.add("fill", function (fill, target) {
-      return (target.dataItem.index >= 0) ? "#6C757D" : fill;
+    categoryAxis.renderer.labels.template.adapter.add("fill", function (
+      fill,
+      target
+    ) {
+      return target.dataItem.index >= 0 ? "#6C757D" : fill;
     });
     categoryAxis.renderer.minGridDistance = 20;
 
@@ -63,12 +66,14 @@ class SalesGauge extends Component {
     valueAxis.max = 100;
     valueAxis.strictMinMax = true;
 
-// Create series
+    // Create series
     let series1 = chart.series.push(new am4charts.RadarColumnSeries());
     series1.dataFields.valueX = "full";
     series1.dataFields.categoryY = "category";
     series1.clustered = false;
-    series1.columns.template.fill = new am4core.InterfaceColorSet().getFor("alternativeBackground");
+    series1.columns.template.fill = new am4core.InterfaceColorSet().getFor(
+      "alternativeBackground"
+    );
     series1.columns.template.fillOpacity = 0.08;
     series1.columns.template.cornerRadiusTopLeft = 30;
     series1.columns.template.strokeWidth = 0;
@@ -78,7 +83,7 @@ class SalesGauge extends Component {
     series2.dataFields.valueX = "value";
     series2.dataFields.categoryY = "category";
     series2.clustered = false;
-    series2.columns.template.strokeWidth = 0
+    series2.columns.template.strokeWidth = 0;
     series2.columns.template.tooltipText = "{category}: [bold]{value}[/]";
     series2.columns.template.radarColumn.cornerRadius = 30;
     series2.columns.template.disabled = false;
@@ -86,22 +91,17 @@ class SalesGauge extends Component {
       return chart.colors.getIndex(target.dataItem.index);
     });
 
-// Add cursor
+    // Add cursor
     chart.cursor = new am4charts.RadarCursor();
 
-  }
+    return () => {
+      if (chart) {
+        chart.dispose();
+      }
+    };
+  }, []);
 
-  componentWillUnmount() {
-    if (this.chart) {
-      this.chart.dispose();
-    }
-  }
-
-  render() {
-    return (
-      <div id="chartdiv" style={{width: "100%", height: "300px"}}/>
-    );
-  }
-}
+  return <div id="chartdiv" style={{ width: "100%", height: "300px" }} />;
+};
 
 export default SalesGauge;

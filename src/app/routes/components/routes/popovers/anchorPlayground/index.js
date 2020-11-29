@@ -1,37 +1,37 @@
-import React from 'react';
-import {findDOMNode} from 'react-dom';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Popover from '@material-ui/core/Popover';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
+import React from "react";
+import { findDOMNode } from "react-dom";
+import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Popover from "@material-ui/core/Popover";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
 
 class AnchorPlayground extends React.Component {
   state = {
     open: false,
     anchorEl: null,
-    anchorOriginVertical: 'bottom',
-    anchorOriginHorizontal: 'center',
-    transformOriginVertical: 'top',
-    transformOriginHorizontal: 'center',
+    anchorOriginVertical: "bottom",
+    anchorOriginHorizontal: "center",
+    transformOriginVertical: "top",
+    transformOriginHorizontal: "center",
     positionTop: 200, // Just so the popover can be spotted more easily
     positionLeft: 400, // Same as above
-    anchorReference: 'anchorEl',
+    anchorReference: "anchorEl",
   };
 
-  handleChange = key => (event, value) => {
+  handleChange = (key) => (event, value) => {
     this.setState({
       [key]: value,
     });
   };
 
-  handleNumberInputChange = key => event => {
+  handleNumberInputChange = (key) => (event) => {
     this.setState({
       [key]: parseInt(event.target.value, 10),
     });
@@ -68,7 +68,7 @@ class AnchorPlayground extends React.Component {
     return (
       <div>
         <Button
-          ref={node => {
+          ref={(node) => {
             this.button = node;
           }}
           variant="contained"
@@ -81,7 +81,7 @@ class AnchorPlayground extends React.Component {
           open={open}
           anchorEl={anchorEl}
           anchorReference={anchorReference}
-          anchorPosition={{top: positionTop, left: positionLeft}}
+          anchorPosition={{ top: positionTop, left: positionLeft }}
           onClose={this.handleRequestClose}
           anchorOrigin={{
             vertical: anchorOriginVertical,
@@ -103,12 +103,16 @@ class AnchorPlayground extends React.Component {
                 aria-label="anchorReference"
                 name="anchorReference"
                 value={this.state.anchorReference}
-                onChange={this.handleChange('anchorReference')}
+                onChange={this.handleChange("anchorReference")}
               >
-                <FormControlLabel value="anchorEl" control={<Radio/>} label="Anchor El"/>
+                <FormControlLabel
+                  value="anchorEl"
+                  control={<Radio />}
+                  label="Anchor El"
+                />
                 <FormControlLabel
                   value="anchorPosition"
-                  control={<Radio/>}
+                  control={<Radio />}
                   label="Anchor Position"
                 />
               </RadioGroup>
@@ -116,22 +120,26 @@ class AnchorPlayground extends React.Component {
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormControl>
-              <InputLabel htmlFor="position-top">Anchor Position Top</InputLabel>
+              <InputLabel htmlFor="position-top">
+                Anchor Position Top
+              </InputLabel>
               <Input
                 id="position-top"
                 type="number"
                 value={this.state.positionTop}
-                onChange={this.handleNumberInputChange('positionTop')}
+                onChange={this.handleNumberInputChange("positionTop")}
               />
             </FormControl>
             &nbsp;
             <FormControl>
-              <InputLabel htmlFor="position-left">Anchor Position Left</InputLabel>
+              <InputLabel htmlFor="position-left">
+                Anchor Position Left
+              </InputLabel>
               <Input
                 id="position-left"
                 type="number"
                 value={this.state.positionLeft}
-                onChange={this.handleNumberInputChange('positionLeft')}
+                onChange={this.handleNumberInputChange("positionLeft")}
               />
             </FormControl>
           </Grid>
@@ -142,26 +150,44 @@ class AnchorPlayground extends React.Component {
                 aria-label="anchorOriginVertical"
                 name="anchorOriginVertical"
                 value={this.state.anchorOriginVertical}
-                onChange={this.handleChange('anchorOriginVertical')}
+                onChange={this.handleChange("anchorOriginVertical")}
               >
-                <FormControlLabel value="top" control={<Radio/>} label="Top"/>
-                <FormControlLabel value="center" control={<Radio/>} label="Center"/>
-                <FormControlLabel value="bottom" control={<Radio/>} label="Bottom"/>
+                <FormControlLabel value="top" control={<Radio />} label="Top" />
+                <FormControlLabel
+                  value="center"
+                  control={<Radio />}
+                  label="Center"
+                />
+                <FormControlLabel
+                  value="bottom"
+                  control={<Radio />}
+                  label="Bottom"
+                />
               </RadioGroup>
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormControl component="fieldset">
-              <FormLabel component="legend">Transform Origin Vertical</FormLabel>
+              <FormLabel component="legend">
+                Transform Origin Vertical
+              </FormLabel>
               <RadioGroup
                 aria-label="transformOriginVertical"
                 name="transformOriginVertical"
                 value={this.state.transformOriginVertical}
-                onChange={this.handleChange('transformOriginVertical')}
+                onChange={this.handleChange("transformOriginVertical")}
               >
-                <FormControlLabel value="top" control={<Radio/>} label="Top"/>
-                <FormControlLabel value="center" control={<Radio/>} label="Center"/>
-                <FormControlLabel value="bottom" control={<Radio/>} label="Bottom"/>
+                <FormControlLabel value="top" control={<Radio />} label="Top" />
+                <FormControlLabel
+                  value="center"
+                  control={<Radio />}
+                  label="Center"
+                />
+                <FormControlLabel
+                  value="bottom"
+                  control={<Radio />}
+                  label="Bottom"
+                />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -173,27 +199,53 @@ class AnchorPlayground extends React.Component {
                 aria-label="anchorOriginHorizontal"
                 name="anchorOriginHorizontal"
                 value={this.state.anchorOriginHorizontal}
-                onChange={this.handleChange('anchorOriginHorizontal')}
+                onChange={this.handleChange("anchorOriginHorizontal")}
               >
-                <FormControlLabel value="left" control={<Radio/>} label="Left"/>
-                <FormControlLabel value="center" control={<Radio/>} label="Center"/>
-                <FormControlLabel value="right" control={<Radio/>} label="Right"/>
+                <FormControlLabel
+                  value="left"
+                  control={<Radio />}
+                  label="Left"
+                />
+                <FormControlLabel
+                  value="center"
+                  control={<Radio />}
+                  label="Center"
+                />
+                <FormControlLabel
+                  value="right"
+                  control={<Radio />}
+                  label="Right"
+                />
               </RadioGroup>
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormControl component="fieldset">
-              <FormLabel component="legend">Transform Origin Horizontal</FormLabel>
+              <FormLabel component="legend">
+                Transform Origin Horizontal
+              </FormLabel>
               <RadioGroup
                 row
                 aria-label="transformOriginHorizontal"
                 name="transformOriginHorizontal"
                 value={this.state.transformOriginHorizontal}
-                onChange={this.handleChange('transformOriginHorizontal')}
+                onChange={this.handleChange("transformOriginHorizontal")}
               >
-                <FormControlLabel value="left" control={<Radio/>} label="Left"/>
-                <FormControlLabel value="center" control={<Radio/>} label="Center"/>
-                <FormControlLabel value="right" control={<Radio/>} label="Right"/>
+                <FormControlLabel
+                  value="left"
+                  control={<Radio />}
+                  label="Left"
+                />
+                <FormControlLabel
+                  value="center"
+                  control={<Radio />}
+                  label="Center"
+                />
+                <FormControlLabel
+                  value="right"
+                  control={<Radio />}
+                  label="Right"
+                />
               </RadioGroup>
             </FormControl>
           </Grid>

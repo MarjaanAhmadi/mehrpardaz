@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import React, { Component } from "react";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 class LinearBuffer extends Component {
   timer;
@@ -8,13 +8,16 @@ class LinearBuffer extends Component {
     buffer: 10,
   };
   progress = () => {
-    const {completed} = this.state;
+    const { completed } = this.state;
     if (completed > 100) {
-      this.setState({completed: 0, buffer: 10});
+      this.setState({ completed: 0, buffer: 10 });
     } else {
       const diff = Math.random() * 10;
       const diff2 = Math.random() * 10;
-      this.setState({completed: completed + diff, buffer: completed + diff + diff2});
+      this.setState({
+        completed: completed + diff,
+        buffer: completed + diff + diff2,
+      });
     }
   };
 
@@ -27,10 +30,17 @@ class LinearBuffer extends Component {
   }
 
   render() {
-    const {completed, buffer} = this.state;
+    const { completed, buffer } = this.state;
     return (
       <div>
-        <LinearProgress color="secondary" mode="buffer" value={completed} valueBuffer={buffer}/>
+        <LinearProgress mode="buffer" value={completed} valueBuffer={buffer} />
+        <br />
+        <LinearProgress
+          color="secondary"
+          mode="buffer"
+          value={completed}
+          valueBuffer={buffer}
+        />
       </div>
     );
   }

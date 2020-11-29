@@ -1,14 +1,11 @@
-import React from 'react';
+import React from "react";
 import FeedCell from "./FeedCell";
 
-const DailyFeed = ({data}) => {
-
+const DailyFeed = ({ data }) => {
   return (
     <div className="daily-feed-body">
       {data.map((data, index) => {
-        return (
-          <FeedCell key={index} feed={data}/>
-        );
+        return <FeedCell key={index} feed={data} />;
       })}
     </div>
   );

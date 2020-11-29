@@ -32,7 +32,6 @@
 
     @each $prop, $abbrev in (margin: m, padding: p) {
       @each $size, $length in $spacers {
-
         .rtl .#{$abbrev}r#{$infix}-#{$size} {
           #{$prop}-left: $length !important;
           #{$prop}-right: 0 !important;
@@ -92,11 +91,11 @@
   text-align: right;
 }
 
-.rtl ul.nav-menu li.menu > a,
-.rtl ul.nav-menu li.menu > button {
+.rtl .nav-menu-item .nav-menu-link,
+.rtl .nav-collapse .nav-collapse-btn {
   border-left: 0 none;
   border-right: 2px solid transparent;
-  padding: 7px 20px 8px 35px;
+  padding: 7px 20px 8px 30px;
 }
 
 .rtl ul.nav-menu li.menu > a:before,
@@ -112,88 +111,23 @@
   @include rotate(90deg);
 }
 
-.rtl ul.nav-menu li i {
+.rtl .nav-collapse i,
+.rtl .nav-menu-item i {
   margin-left: 12px;
   margin-right: 0;
 }
 
-.rtl ul.nav-menu li ul > li > a,
-.rtl ul.nav-menu li ul > li > button {
-  padding-left: 20px;
-  padding-right: 52px;
-}
-
-.rtl ul.nav-menu li ul > li > ul > li > a,
-.rtl ul.nav-menu li ul > li > ul > li > button {
-  padding-left: 20px;
-  padding-right: 72px;
-}
-
-.rtl ul.nav-menu li ul > li > ul > li > ul > li > a,
-.rtl ul.nav-menu li ul > li > ul > li > ul > li > button {
-  padding-left: 20px;
-  padding-right: 92px;
-}
-
-.rtl ul.nav-menu li ul > li > ul > li > ul > li > ul > li > a,
-.rtl ul.nav-menu li ul > li > ul > li > ul > li > ul > li > button {
-  padding-left: 20px;
-  padding-right: 112px;
-}
-
-.rtl ul.nav-menu li.menu .sub-menu li > a {
+.rtl .nav-collapse .nav-menu-item .nav-menu-link {
   @include border-left-radius($border-radius-xxl);
   @include border-right-radius(0);
   margin-right: 0;
   margin-left: 20px;
-}
+  padding-left: 20px;
+  padding-right: 52px;
 
-.rtl ul.nav-menu li.menu.open .sub-menu li > a:after {
-  right: auto;
-  left: 15px;
-}
-
-.rtl .app-container.mini-drawer {
-  & .side-nav:not(:hover) {
-    & ul.nav-menu li i {
-      margin-left: 0;
-    }
-  }
-
-  & .side-nav:hover {
-    & ul.nav-menu {
-      & li {
-        text-align: right;
-        & i {
-          margin-left: 16px;
-          margin-right: 0;
-        }
-
-        & button {
-          text-align: right;
-        }
-      }
-
-      & ul.sub-menu li a {
-        padding-left: 20px;
-        padding-right: 56px;
-      }
-
-      ul.sub-menu > li > ul > li > a {
-        padding-left: 20px;
-        padding-right: 76px;
-      }
-
-      ul.sub-menu > li > ul > li > ul > li > a {
-        padding-left: 20px;
-        padding-right: 96px;
-      }
-
-      ul.sub-menu > li > ul > li > ul > li > ul > li > a {
-        padding-left: 20px;
-        padding-right: 116px;
-      }
-    }
+  &:after {
+    right: auto;
+    left: 15px;
   }
 }
 
@@ -218,7 +152,6 @@
     right: 0;
 
     & li {
-
       & > ul.sub-menu {
         left: auto;
         right: 100%;
@@ -277,6 +210,13 @@
   & .app-main-header {
     left: 0;
     right: $mini-drawer-width;
+  }
+
+  & .side-nav:not(:hover) {
+    & .nav-collapse i,
+    & .nav-menu-item i {
+      margin-left: 0;
+    }
   }
 }
 
@@ -439,7 +379,7 @@
 
 .rtl .zmdi-chevron-right::before,
 .rtl .breadcrumb-item + .breadcrumb-item::before {
-  content: '\f2fa';
+  content: "\f2fa";
 }
 
 /*Chart Styles*/
@@ -1512,7 +1452,6 @@
 
 //Silk Slider
 .rtl .jr-slick-slider {
-
   &-dot-top {
     padding-right: 0;
     padding-left: 18px;
@@ -1573,7 +1512,6 @@
 }
 
 .rtl .jr-profile-banner .jr-follower-list {
-
   & li:not(:first-child) {
     border-right-color: $white;
   }
@@ -1589,7 +1527,6 @@
 }
 
 .rtl .jr-card-tabs-right {
-
   & .jr-tabs-up {
     margin-left: 30px;
     margin-right: auto;

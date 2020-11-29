@@ -1,8 +1,8 @@
-import React from 'react';
-import {ButtonGroup} from 'reactstrap';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import { ButtonGroup } from "reactstrap";
+import Button from "@material-ui/core/Button";
 
-const HighLightedButtonGroup = ({isVertical}) => {
+const HighLightedButtonGroup = ({ isVertical }) => {
   return (
     <ButtonGroup vertical={isVertical}>
       <Button className="jr-btn">Left</Button>

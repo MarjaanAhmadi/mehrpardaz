@@ -1,5 +1,5 @@
-import React from 'react';
-import Input from '@material-ui/core/Input';
+import React from "react";
+import Input from "@material-ui/core/Input";
 
 function Inputs() {
   return (
@@ -9,7 +9,7 @@ function Inputs() {
           defaultValue="Hello world"
           className="w-100 mb-3"
           inputProps={{
-            'aria-label': 'Description',
+            "aria-label": "Description",
           }}
         />
       </div>
@@ -18,7 +18,7 @@ function Inputs() {
           placeholder="Placeholder"
           className="w-100 mb-3"
           inputProps={{
-            'aria-label': 'Description',
+            "aria-label": "Description",
           }}
         />
       </div>
@@ -28,7 +28,7 @@ function Inputs() {
           className="w-100 mb-3"
           disabled
           inputProps={{
-            'aria-label': 'Description',
+            "aria-label": "Description",
           }}
         />
       </div>
@@ -38,13 +38,12 @@ function Inputs() {
           className="w-100 mb-3"
           error
           inputProps={{
-            'aria-label': 'Description',
+            "aria-label": "Description",
           }}
         />
       </div>
     </div>
   );
 }
-
 
 export default Inputs;

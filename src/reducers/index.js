@@ -1,22 +1,12 @@
-import {combineReducers} from 'redux';
-import {connectRouter} from 'connected-react-router'
-import Settings from './Settings';
-import ChatData from './Chat';
-import Contact from './Contact';
-import Mail from './Mail';
-import ToDo from './ToDo';
-import Auth from './Auth';
-import Users from './Users';
+// import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
+import Settings from "./Settings";
+import Auth from "./Auth";
+import Common from "./Common";
 
-
-const reducers = (history) => combineReducers({
+export default (history) => ({
   router: connectRouter(history),
   settings: Settings,
-  chatData: ChatData,
-  contacts: Contact,
-  mail: Mail,
-  toDo: ToDo,
   auth: Auth,
-  users: Users
+  commonData: Common,
 });
-export default reducers;

@@ -1,26 +1,22 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 function TabContainer(props) {
-  return (
-    <div style={{padding: 20}}>
-      {props.children}
-    </div>
-  );
+  return <div style={{ padding: 20 }}>{props.children}</div>;
 }
 
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
-    width: '100%',
+    width: "100%",
     marginTop: theme.spacing.unit * 3,
     backgroundColor: theme.palette.background.paper,
   },
@@ -32,12 +28,12 @@ class ScrollableTabsButtonAuto extends Component {
   };
 
   handleChange = (event, value) => {
-    this.setState({value});
+    this.setState({ value });
   };
 
   render() {
-    const {classes} = this.props;
-    const {value} = this.state;
+    const { classes } = this.props;
+    const { value } = this.state;
 
     return (
       <div className={classes.root}>
@@ -50,43 +46,22 @@ class ScrollableTabsButtonAuto extends Component {
             variant="scrollable"
             scrollButtons="auto"
           >
-            <Tab label="Item One"/>
-            <Tab label="Item Two"/>
-            <Tab label="Item Three"/>
-            <Tab label="Item Four"/>
-            <Tab label="Item Five"/>
-            <Tab label="Item Six"/>
-            <Tab label="Item Seven"/>
+            <Tab label="Item One" />
+            <Tab label="Item Two" />
+            <Tab label="Item Three" />
+            <Tab label="Item Four" />
+            <Tab label="Item Five" />
+            <Tab label="Item Six" />
+            <Tab label="Item Seven" />
           </Tabs>
         </AppBar>
-        {value === 0 &&
-        <TabContainer>
-          {'Item One'}
-        </TabContainer>}
-        {value === 1 &&
-        <TabContainer>
-          {'Item Two'}
-        </TabContainer>}
-        {value === 2 &&
-        <TabContainer>
-          {'Item Three'}
-        </TabContainer>}
-        {value === 3 &&
-        <TabContainer>
-          {'Item Four'}
-        </TabContainer>}
-        {value === 4 &&
-        <TabContainer>
-          {'Item Five'}
-        </TabContainer>}
-        {value === 5 &&
-        <TabContainer>
-          {'Item Six'}
-        </TabContainer>}
-        {value === 6 &&
-        <TabContainer>
-          {'Item Seven'}
-        </TabContainer>}
+        {value === 0 && <TabContainer>{"Item One"}</TabContainer>}
+        {value === 1 && <TabContainer>{"Item Two"}</TabContainer>}
+        {value === 2 && <TabContainer>{"Item Three"}</TabContainer>}
+        {value === 3 && <TabContainer>{"Item Four"}</TabContainer>}
+        {value === 4 && <TabContainer>{"Item Five"}</TabContainer>}
+        {value === 5 && <TabContainer>{"Item Six"}</TabContainer>}
+        {value === 6 && <TabContainer>{"Item Seven"}</TabContainer>}
       </div>
     );
   }

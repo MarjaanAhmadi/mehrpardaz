@@ -34,9 +34,9 @@
   color: $white;
 
   &:after {
-    content: '\f2f9';
+    content: "\f2f9";
     font: {
-      family: 'Material-Design-Iconic-Font';
+      family: "Material-Design-Iconic-Font";
       size: 20px;
     }
     position: absolute;
@@ -120,5 +120,3 @@
     margin-left: 10px;
   }
 }
-
-

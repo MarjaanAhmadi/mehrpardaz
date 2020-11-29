@@ -1,22 +1,28 @@
-import React from 'react';
-import Card, {CardActions, CardContent, CardMedia} from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import Card, {
+  CardActions,
+  CardContent,
+  CardMedia,
+} from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
-
-function MediaCard() {
+const MediaCard = () => {
   return (
     <div className="col-md-8">
       <Card>
-        <CardMedia className="height-200" image='https://via.placeholder.com/500x330'
-                   title="Contemplative Reptile"/>
+        <CardMedia
+          className="height-200"
+          image={"https://via.placeholder.com/500x330"}
+          title="Contemplative Reptile"
+        />
         <CardContent>
           <Typography variant="headline" component="h2">
             Lizard
           </Typography>
           <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
           </Typography>
         </CardContent>
         <CardActions>
@@ -30,6 +36,6 @@ function MediaCard() {
       </Card>
     </div>
   );
-}
+};
 
 export default MediaCard;

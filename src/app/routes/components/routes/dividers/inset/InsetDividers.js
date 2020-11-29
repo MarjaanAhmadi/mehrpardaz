@@ -12,31 +12,31 @@ function InsetDividers() {
       <ListItem button>
         <ListItemAvatar>
           <Avatar>
-          <i className="zmdi zmdi-collection-folder-image zmdi-hc-fw text-white"/>
-        </Avatar>
+            <i className="zmdi zmdi-collection-folder-image zmdi-hc-fw text-white" />
+          </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Work" secondary="Jan 28, 2017"/>
+        <ListItemText primary="Work" secondary="Jan 28, 2017" />
       </ListItem>
-      <Divider inset/>
+      <Divider inset />
       <ListItem button>
         <ListItemAvatar>
           <Avatar>
-          <i className="zmdi zmdi-collection-case-play zmdi-hc-fw text-white"/>
-        </Avatar>
+            <i className="zmdi zmdi-collection-case-play zmdi-hc-fw text-white" />
+          </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Private" secondary="Nov 20, 2017"/>
+        <ListItemText primary="Private" secondary="Nov 20, 2017" />
       </ListItem>
-      <Divider inset/>
+      <Divider inset />
       <ListItem button>
         <ListItemAvatar>
           <Avatar>
-          <i className="zmdi zmdi-coffee zmdi-hc-fw text-white"/>
-        </Avatar>
+            <i className="zmdi zmdi-coffee zmdi-hc-fw text-white" />
+          </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Meetings" secondary="Dec 02, 2014"/>
+        <ListItemText primary="Meetings" secondary="Dec 02, 2014" />
       </ListItem>
     </List>
   );
 }
 
-export default (InsetDividers);
+export default InsetDividers;

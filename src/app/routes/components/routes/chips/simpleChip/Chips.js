@@ -1,36 +1,35 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Chip from '@material-ui/core/Chip';
-import FaceIcon from '@material-ui/icons/Face';
-import Done from '@material-ui/icons/Done';
-
+import React from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Chip from "@material-ui/core/Chip";
+import FaceIcon from "@material-ui/icons/Face";
+import Done from "@material-ui/icons/Done";
 
 function handleRequestDelete() {
-  alert('You clicked the delete icon.'); // eslint-disable-line no-alert
+  alert("You clicked the delete icon."); // eslint-disable-line no-alert
 }
 
 function handleClick() {
-  alert('You clicked the Chip.'); // eslint-disable-line no-alert
+  alert("You clicked the Chip."); // eslint-disable-line no-alert
 }
 
 function Chips() {
   return (
     <div className="manage-margin d-flex flex-wrap">
-      <Chip label="Basic Chip" className="mx-2"/>
+      <Chip label="Basic Chip" className="mx-2" />
       <Chip
         avatar={<Avatar>MB</Avatar>}
         label="Clickable Chip"
         onClick={handleClick}
       />
       <Chip
-        avatar={<Avatar src='https://via.placeholder.com/128x128'/>}
+        avatar={<Avatar src="https://via.placeholder.com/128x128" />}
         label="Deletable Chip"
         onDelete={handleRequestDelete}
       />
       <Chip
         avatar={
           <Avatar>
-            <FaceIcon className="bg-gray lighten-3"/>
+            <FaceIcon className="bg-gray lighten-3" />
           </Avatar>
         }
         label="Clickable Deletable Chip"
@@ -41,7 +40,7 @@ function Chips() {
         label="Custom delete icon Chip"
         onClick={handleClick}
         onDelete={handleRequestDelete}
-        deleteIcon={<Done/>}
+        deleteIcon={<Done />}
       />
     </div>
   );

@@ -1,64 +1,64 @@
-import React from 'react';
-import CardBox from '../CardBox/index';
+import React from "react";
+import CardBox from "../CardBox/index";
 
-import GalleryCard from './Highlighted';
-import Card2 from './HeighlightedHeaderWithBg';
-import Card3 from './Card3';
-import Card4 from './Gallery';
-import Card5 from './Tabbed';
-import Card6 from './Post';
-import CafeCard from './Cafe';
-import Card8 from './Card8';
-import Card9 from './Card9';
-import Gallery from './List';
-import ContactCard from './Contact';
-import WeatherCard from './Weather';
-import CustomScrollbars from 'util/CustomScrollbars';
-
+import GalleryCard from "./Highlighted";
+import Card2 from "./HeighlightedHeaderWithBg";
+import Card3 from "./Card3";
+import Card4 from "./Gallery";
+import Card5 from "./Tabbed";
+import Card6 from "./Post";
+import CafeCard from "./Cafe";
+import Card8 from "./Card8";
+import Card9 from "./Card9";
+import Gallery from "./List";
+import ContactCard from "./Contact";
+import WeatherCard from "./Weather";
+import CustomScrollbars from "util/CustomScrollbars";
 
 const Cards = () => (
   <div className="app-container">
     <div className="app-main-content app-wrapper">
-      <CustomScrollbars className="card-view scrollbar scrollbar" style={{height: '100vh'}}>
+      <CustomScrollbars
+        className="card-view scrollbar scrollbar"
+        style={{ height: "100vh" }}
+      >
         <div className="row">
           <CardBox heading="Simple App bar">
-            <Card2/>
+            <Card2 />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <GalleryCard/>
+            <GalleryCard />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <Card3/>
+            <Card3 />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <Card4/>
+            <Card4 />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <Card5/>
+            <Card5 />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <Card6/>
+            <Card6 />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <CafeCard/>
+            <CafeCard />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <Card8/>
+            <Card8 />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <Card9/>
+            <Card9 />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <Gallery/>
+            <Gallery />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <ContactCard/>
+            <ContactCard />
           </CardBox>
           <CardBox heading="Simple App bar">
-            <WeatherCard/>
+            <WeatherCard />
           </CardBox>
-
-
         </div>
       </CustomScrollbars>
     </div>

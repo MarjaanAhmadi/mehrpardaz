@@ -1,11 +1,9 @@
-import appLocaleData from 'react-intl/locale-data/it';
-import saMessages from '../locales/it_IT.json';
+import saMessages from "../locales/it_IT.json";
 
 const saLang = {
   messages: {
-    ...saMessages
+    ...saMessages,
   },
-  locale: 'it-IT',
-  data: appLocaleData
+  locale: "it-IT",
 };
 export default saLang;

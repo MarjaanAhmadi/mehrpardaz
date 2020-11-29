@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 class SimpleMenu extends Component {
   state = {
@@ -9,19 +9,19 @@ class SimpleMenu extends Component {
     open: false,
   };
 
-  handleClick = event => {
-    this.setState({open: true, anchorEl: event.currentTarget});
+  handleClick = (event) => {
+    this.setState({ open: true, anchorEl: event.currentTarget });
   };
 
   handleRequestClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false });
   };
 
   render() {
     return (
       <div>
         <Button
-          aria-owns={this.state.open ? 'simple-SidenavContent.js' : null}
+          aria-owns={this.state.open ? "simple-SidenavContent.js" : null}
           aria-haspopup
           onClick={this.handleClick}
         >

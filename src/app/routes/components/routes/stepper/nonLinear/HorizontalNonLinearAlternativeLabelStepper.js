@@ -1,24 +1,24 @@
-import React from 'react';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepButton from "@material-ui/core/StepButton";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ["Select campaign settings", "Create an ad group", "Create an ad"];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return 'Step 1: Select campaign settings...';
+      return "Step 1: Select campaign settings...";
     case 1:
-      return 'Step 2: What is an ad group anyways?';
+      return "Step 2: What is an ad group anyways?";
     case 2:
-      return 'Step 3: This is the bit I really care about!';
+      return "Step 3: This is the bit I really care about!";
     default:
-      return 'Unknown step';
+      return "Unknown step";
   }
 }
 
@@ -32,11 +32,11 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
   totalSteps = () => {
     return getSteps().length;
   };
-  isStepOptional = step => {
+  isStepOptional = (step) => {
     return step === 1;
   };
   handleSkip = () => {
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
     if (!this.isStepOptional(activeStep)) {
       // You probably want to guard against something like this
       // it should never occur unless someone's actively trying to break something.
@@ -69,7 +69,7 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
       activeStep: this.state.activeStep - 1,
     });
   };
-  handleStep = step => () => {
+  handleStep = (step) => () => {
     this.setState({
       activeStep: step,
     });
@@ -123,25 +123,41 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
 
   render() {
     const steps = getSteps();
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
 
     return (
       <div className="w-100">
-        <Stepper alternativeLabel nonLinear activeStep={activeStep} className="horizontal-stepper-linear">
+        <Stepper
+          alternativeLabel
+          nonLinear
+          activeStep={activeStep}
+          className="horizontal-stepper-linear"
+        >
           {steps.map((label, index) => {
             const props = {};
             const labelProps = {};
             if (this.isStepOptional(index)) {
-              labelProps.optional = <Typography variant="caption">Optional</Typography>;
+              labelProps.optional = (
+                <Typography variant="caption">Optional</Typography>
+              );
             }
             if (this.isStepSkipped(index)) {
               props.completed = false;
             }
             return (
-              <Step key={label}
-                    className={`horizontal-stepper ${index === activeStep ? 'active' : ''}`} {...props}>
-                <StepButton className="stepperbutton" onClick={this.handleStep(index)}
-                            completed={this.isStepComplete(index)}{...labelProps}>
+              <Step
+                key={label}
+                className={`horizontal-stepper ${
+                  index === activeStep ? "active" : ""
+                }`}
+                {...props}
+              >
+                <StepButton
+                  className="stepperbutton"
+                  onClick={this.handleStep(index)}
+                  completed={this.isStepComplete(index)}
+                  {...labelProps}
+                >
                   {label}
                 </StepButton>
               </Step>
@@ -158,7 +174,9 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
             </div>
           ) : (
             <div>
-              <Typography className="my-2">{getStepContent(activeStep)}</Typography>
+              <Typography className="my-2">
+                {getStepContent(activeStep)}
+              </Typography>
               <div>
                 <Button
                   disabled={activeStep === 0}
@@ -167,31 +185,42 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
                 >
                   Back
                 </Button>
-                <Button variant="contained" color="primary" onClick={this.handleNext} className="jr-btn">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleNext}
+                  className="jr-btn"
+                >
                   Next
                 </Button>
                 {this.isStepOptional(activeStep) &&
-                !this.state.completed.has(this.state.activeStep) && (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={this.handleSkip}
-                    className="jr-btn"
-                  >
-                    Skip
-                  </Button>
-                )}
+                  !this.state.completed.has(this.state.activeStep) && (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={this.handleSkip}
+                      className="jr-btn"
+                    >
+                      Skip
+                    </Button>
+                  )}
                 {activeStep !== steps.length &&
-                (this.state.completed.has(this.state.activeStep) ? (
-                  <Typography variant="caption" className="my-2">
-                    Step {activeStep + 1} already completed
-                  </Typography>
-                ) : (
-                  <Button className="jr-btn" variant="contained" color="primary"
-                          onClick={this.handleComplete}>
-                    {this.completedSteps() === this.totalSteps() - 1 ? 'Finish' : 'Complete Step'}
-                  </Button>
-                ))}
+                  (this.state.completed.has(this.state.activeStep) ? (
+                    <Typography variant="caption" className="my-2">
+                      Step {activeStep + 1} already completed
+                    </Typography>
+                  ) : (
+                    <Button
+                      className="jr-btn"
+                      variant="contained"
+                      color="primary"
+                      onClick={this.handleComplete}
+                    >
+                      {this.completedSteps() === this.totalSteps() - 1
+                        ? "Finish"
+                        : "Complete Step"}
+                    </Button>
+                  ))}
               </div>
             </div>
           )}

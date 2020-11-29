@@ -31,8 +31,18 @@
     z-index: 2;
   }
 
-  h1, h2, h3, h4, h5, h6,
-  .h1, .h2, .h3, .h4, .h5, .h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
     color: $white;
   }
 
@@ -113,7 +123,6 @@
 }
 
 .jr-profile-content-right {
-
   @media (max-width: 575px) {
     @include display-flex(flex, row, wrap);
     @include align-items(center);
@@ -167,4 +176,3 @@
     padding: 10px $jr-card-padding 20px;
   }
 }
- 

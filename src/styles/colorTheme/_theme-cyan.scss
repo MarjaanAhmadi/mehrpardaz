@@ -1,6 +1,6 @@
 /*Theme Cyan Styles*/
 $app-primary-cyan: #00bcd4 !default;
-$secondary-cyan: #69F0AE;
+$secondary-cyan: #69f0ae;
 
 $sidebar-cyan: rgba($app-primary-cyan, 0.25) !default;
 $sidebar-text-cyan: #868e96 !default;
@@ -196,80 +196,73 @@ $link-hover-color: $app-primary;
   }
 }
 
-.cyan ul.nav-menu li button,
-.cyan ul.nav-menu li a {
-  color: $sidebar-text-cyan;
-}
-
-.cyan ul.nav-menu {
+.cyan .nav-section {
   & .nav-header {
     color: $sidebar-text-cyan;
-  }
-
-  & li.menu + .nav-header {
     border-color: $gray-400;
   }
 }
 
-.cyan ul.nav-menu > li.open > button,
-.cyan ul.nav-menu > li > button:hover,
-.cyan ul.nav-menu > li > button:focus,
-.cyan ul.nav-menu > li.open > a,
-.cyan ul.nav-menu > li > a:hover,
-.cyan ul.nav-menu > li > a:focus {
-  background-color: $white;
-  color: $app-primary-cyan;
+.cyan .nav-collapse {
+  & .nav-collapse-btn {
+    color: $sidebar-text-cyan;
+
+    &:focus,
+    &:hover {
+      background-color: $white;
+      color: $app-primary-cyan;
+    }
+  }
+
+  &.open {
+    background-color: $white;
+
+    & .nav-collapse-btn {
+      background-color: $white;
+      color: $app-primary-cyan;
+
+      &:focus,
+      &:hover {
+        background-color: $white;
+        color: $app-primary-cyan;
+      }
+    }
+  }
 }
 
-.cyan ul.nav-menu li.menu.open > a {
-  border-color: $app-primary-cyan;
+.cyan .nav-collapse {
+  & .nav-menu-item .nav-menu-link {
+    color: $sidebar-text-cyan;
+
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $white;
+      color: $app-primary-cyan;
+    }
+
+    &:after {
+      background-color: $app-primary-cyan;
+    }
+  }
+
+  &.open {
+    & .nav-menu-item .nav-menu-link.active {
+      background-color: $sidebar-cyan;
+      color: $app-primary-cyan;
+    }
+  }
 }
 
-.cyan ul.nav-menu li.menu > button:focus:before,
-.cyan ul.nav-menu li.menu > button:hover:before,
-.cyan ul.nav-menu li.menu > a:focus:before,
-.cyan ul.nav-menu li.menu > a:hover:before {
-  color: $app-primary-cyan;
-}
-
-.cyan ul.nav-menu li ul {
-  background-color: $white;
-}
-
-.cyan ul.nav-menu li.menu > button:before,
-.cyan ul.nav-menu li.menu > a:before {
-  color: $sidebar-text-cyan;
-}
-
-.cyan ul.nav-menu li.menu.open > a:before,
-.cyan ul.nav-menu li.menu > a:focus:before,
-.cyan ul.nav-menu li.menu li > a:hover:before,
-.cyan ul.nav-menu li.menu.open > button:before,
-.cyan ul.nav-menu li.menu > button:focus:before,
-.cyan ul.nav-menu li.menu li > button:hover:before {
-  color: $app-primary-cyan;
-}
-
-.cyan ul.nav-menu li.menu .sub-menu li > a:before {
-  color: $sidebar-text-cyan;
-}
-
-.cyan ul.nav-menu li.menu.open .sub-menu li > a:after {
-  background-color: $app-primary-cyan;
-}
-
-.cyan ul.nav-menu li.menu.open .sub-menu li > a.active {
-  background-color: $sidebar-cyan;
-  color: $app-primary-cyan;
-}
-
-.cyan ul.nav-menu li.menu .sub-menu li > a:hover,
-.cyan ul.nav-menu li.menu .sub-menu li > a:focus,
-.cyan ul.nav-menu li.menu.open .sub-menu li > a.active:before,
-.cyan ul.nav-menu li.menu .sub-menu li > a:focus:before,
-.cyan ul.nav-menu li.menu .sub-menu li > a:hover:before {
-  background-color: $white;
-  color: $app-primary-cyan;
+.cyan .nav-menu-item {
+  & .nav-menu-link {
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $white;
+      color: $app-primary-cyan;
+    }
+  }
 }
 
 /*Header top Navbar Styles*/
@@ -349,7 +342,6 @@ $link-hover-color: $app-primary;
 }
 
 .cyan .app-top-nav {
-
   & .navbar-nav {
     & li.nav-item > a,
     & li.nav-item > .nav-link {
@@ -379,7 +371,6 @@ $link-hover-color: $app-primary;
 
 .cyan .header-notifications .app-notification {
   & .jr-list-link {
-
     @include hover-focus-active {
       color: $app-primary-cyan;
       border-color: $app-primary-cyan;
@@ -389,9 +380,13 @@ $link-hover-color: $app-primary;
 
 //_app-module.scss
 .cyan .module-nav {
-  & li a {
-    &.active {
+  & li {
+    & a.active {
       border-color: $app-primary-cyan;
+    }
+
+    & .jr-link.active {
+      color: $app-primary-cyan;
     }
   }
 }
@@ -542,7 +537,6 @@ $link-hover-color: $app-primary;
       background-color: $app-primary-cyan;
       border-color: $app-primary-cyan;
     }
-
   }
 
   > .jr-flat-btn {
@@ -591,11 +585,20 @@ $link-hover-color: $app-primary;
 
 // Gradient Color Class
 .cyan .bg-gradient-primary {
-  @include gradient-directional($app-primary-cyan, lighten($app-primary-cyan, 16%), 0deg);
+  @include gradient-directional(
+    $app-primary-cyan,
+    lighten($app-primary-cyan, 16%),
+    0deg
+  );
 }
 
 .cyan .bg-gradient-primary-x {
-  @include gradient-x(darken($app-primary-cyan, 10%), lighten($app-primary-cyan, 16%), 70%, 100%);
+  @include gradient-x(
+    darken($app-primary-cyan, 10%),
+    lighten($app-primary-cyan, 16%),
+    70%,
+    100%
+  );
 }
 
 //Profile style
@@ -614,7 +617,6 @@ $link-hover-color: $app-primary;
 }
 
 .cyan .dropdown-item {
-
   &.active,
   &:active {
     background-color: $app-primary-cyan;
@@ -622,7 +624,6 @@ $link-hover-color: $app-primary;
   }
 
   &[class*="text-"] {
-
     &.active,
     &:active {
       background-color: transparent;

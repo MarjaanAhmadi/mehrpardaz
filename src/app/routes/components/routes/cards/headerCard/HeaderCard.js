@@ -1,6 +1,6 @@
-import React from 'react';
-import {Card, CardBody, CardHeader, CardSubtitle, CardText} from 'reactstrap';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import { Card, CardBody, CardHeader, CardSubtitle, CardText } from "reactstrap";
+import Button from "@material-ui/core/Button";
 
 const HeaderCard = () => {
   return (
@@ -10,17 +10,24 @@ const HeaderCard = () => {
         <h3 className="card-title">Special Title Treatment</h3>
         <CardSubtitle>A new subheading you can use</CardSubtitle>
         <CardText>
-          All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making
-          this the first true generator on the Internet. It uses a dictionary of over 200 Latin words,
+          All the Lorem Ipsum generators on the Internet tend to repeat
+          predefined chunks as necessary, making this the first true generator
+          on the Internet. It uses a dictionary of over 200 Latin words,
           combined with a handful of model sentence structures,
         </CardText>
         <CardText>
-          making it look like
-          readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-          default model text,
+          making it look like readable English. Many desktop publishing packages
+          and web page editors now use Lorem Ipsum as their default model text,
         </CardText>
-        <Button variant="contained" className="btn btn-sm  bg-primary text-white">Go somewhere</Button>
-        <Button className="btn btn-sm" color="primary">Another Link</Button>
+        <Button
+          variant="contained"
+          className="btn btn-sm  bg-primary text-white"
+        >
+          Go somewhere
+        </Button>
+        <Button className="btn btn-sm" color="primary">
+          Another Link
+        </Button>
       </CardBody>
     </Card>
   );

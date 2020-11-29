@@ -1,23 +1,25 @@
-import React, {Component} from 'react';
-import {createMuiTheme} from '@material-ui/core/styles';
-import {ThemeProvider} from '@material-ui/styles';
-import URLSearchParams from 'url-search-params'
-import MomentUtils from '@date-io/moment';
-import {MuiPickersUtilsProvider} from 'material-ui-pickers';
-import {Redirect, Route, Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {IntlProvider} from 'react-intl'
-import "assets/vendors/style"
-import indigoTheme from './themes/indigoTheme';
-import cyanTheme from './themes/cyanTheme';
-import orangeTheme from './themes/orangeTheme';
-import amberTheme from './themes/amberTheme';
-import pinkTheme from './themes/pinkTheme';
-import blueTheme from './themes/blueTheme';
-import purpleTheme from './themes/purpleTheme';
-import greenTheme from './themes/greenTheme';
-import darkTheme from './themes/darkTheme';
-import AppLocale from '../lngProvider';
+import React, { useEffect } from "react";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import URLSearchParams from "url-search-params";
+import MomentUtils from "@date-io/moment";
+import { MuiPickersUtilsProvider } from "material-ui-pickers";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { IntlProvider } from "react-intl";
+import "assets/vendors/style";
+import indigoTheme from "./themes/indigoTheme";
+import cyanTheme from "./themes/cyanTheme";
+import orangeTheme from "./themes/orangeTheme";
+import amberTheme from "./themes/amberTheme";
+import pinkTheme from "./themes/pinkTheme";
+import blueTheme from "./themes/blueTheme";
+import purpleTheme from "./themes/purpleTheme";
+import greenTheme from "./themes/greenTheme";
+import darkTheme from "./themes/darkTheme";
+import asyncComponent from "util/asyncComponent";
+
+import AppLocale from "../lngProvider";
 import {
   AMBER,
   BLUE,
@@ -34,51 +36,78 @@ import {
   DEEP_PURPLE,
   GREEN,
   INDIGO,
-  PINK
-} from 'constants/ThemeColors';
+  PINK,
+} from "constants/ThemeColors";
 
-import MainApp from 'app/index';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-import {setInitUrl} from '../actions/Auth';
-import RTL from 'util/RTL';
-import asyncComponent from 'util/asyncComponent';
-import {setDarkTheme, setThemeColor} from "../actions/Setting";
+// import MainApp from "app/index.js";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
+import { setInitUrl } from "../actions/Auth";
+import RTL from "util/RTL";
 
-const RestrictedRoute = ({component: Component, authUser, ...rest}) =>
+import { setDarkTheme, setThemeColor } from "../actions/Setting";
+import AppLayout from "./AppLayout";
+
+// const RestrictedRoute = ({ component: Component, token, ...rest }) => {
+//   if (token) return <Route {...rest} component={Component} />;
+//   return (props) => (
+//     <Redirect
+//       to={{
+//         pathname: "/signin",
+//         state: { from: props.location },
+//       }}
+//     />
+//   );
+// };
+
+const RestrictedRoute = ({ component: Component, token, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
-      authUser
-        ? 
+    render={(props) =>
+      token ? (
         <Component {...props} />
-        :
-         <Redirect
+      ) : (
+        <Redirect
           to={{
-            pathname: '/signin',
-            state: {from: props.location}
+            pathname: "/signin",
+            state: { from: props.location },
           }}
         />
-      }
-  />;
-
-class App extends Component {
-
-  componentWillMount() {
-    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
-    if (this.props.initURL === '') {
-      this.props.setInitUrl(this.props.history.location.pathname);
+      )
     }
-    const params = new URLSearchParams(this.props.location.search);
+  />
+);
+
+const App = (props) => {
+  const dispatch = useDispatch();
+  const { themeColor, darkTheme, locale, isDirectionRTL } = useSelector(
+    ({ settings }) => settings
+  );
+  const { token, initURL } = useSelector(({ auth }) => auth);
+  const isDarkTheme = darkTheme;
+  const { match, location } = props;
+
+  useEffect(() => {
+    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+    if (initURL === "") {
+      dispatch(setInitUrl(props.history.location.pathname));
+    }
+    const params = new URLSearchParams(props.location.search);
+
     if (params.has("theme-name")) {
-      this.props.setThemeColor(params.get('theme-name'));
+      dispatch(setThemeColor(params.get("theme-name")));
     }
     if (params.has("dark-theme")) {
-      this.props.setDarkTheme();
+      dispatch(setDarkTheme());
     }
-  }
+  }, [
+    dispatch,
+    initURL,
+    props.history.location.pathname,
+    props.location.search,
+  ]);
 
-  getColorTheme(themeColor, applyTheme) {
+  const getColorTheme = (themeColor, applyTheme) => {
     switch (themeColor) {
       case INDIGO: {
         applyTheme = createMuiTheme(indigoTheme);
@@ -113,7 +142,7 @@ class App extends Component {
         break;
       }
       case DARK_INDIGO: {
-        applyTheme = createMuiTheme(indigoTheme);
+        applyTheme = createMuiTheme({ ...indigoTheme, direction: "rtl" });
         break;
       }
       case DARK_CYAN: {
@@ -144,69 +173,67 @@ class App extends Component {
         applyTheme = createMuiTheme(greenTheme);
         break;
       }
-      default : createMuiTheme(indigoTheme);
+      default:
+        createMuiTheme(indigoTheme);
     }
     return applyTheme;
+  };
+
+  let applyTheme = createMuiTheme(indigoTheme);
+  if (isDarkTheme) {
+    document.body.classList.add("dark-theme");
+    applyTheme = createMuiTheme(darkTheme);
+  } else {
+    applyTheme = getColorTheme(themeColor, applyTheme);
+  }
+  if (location.pathname === "/") {
+    if (token === null) {
+      return <Redirect to={"/signin"} />;
+    } else if (initURL === "" || initURL === "/" || initURL === "/signin") {
+      return <Redirect to={"/app/sample-page"} />;
+    } else {
+      return <Redirect to={initURL} />;
+    }
+  }
+  if (isDirectionRTL) {
+    applyTheme.direction = "rtl";
+    document.body.classList.add("rtl");
+  } else {
+    document.body.classList.remove("rtl");
+    applyTheme.direction = "ltr";
   }
 
-  render() {
-    const {match, location, isDarkTheme, locale, authUser, initURL, isDirectionRTL} = this.props;
-    let {themeColor} = this.props;
-    let applyTheme = createMuiTheme(indigoTheme);
-    if (isDarkTheme) {
-      document.body.classList.add('dark-theme');
-      applyTheme = createMuiTheme(darkTheme)
-    } else {
-      applyTheme = this.getColorTheme(themeColor, applyTheme);
-    }
-    if (location.pathname === '/') {
-      if (authUser === null) {
-        return ( <Redirect to={'/signin'}/> );
-      } else 
-      if (initURL === '' || initURL === '/' || initURL === '/signin') {
-        return ( <Redirect to={'/app/dashboard/library'}/> );
-      } else {
-        return ( <Redirect to={initURL}/> );
-      }
-    }
-    if (isDirectionRTL) {
-      applyTheme.direction = 'rtl';
-      document.body.classList.add('rtl')
-    } else {
-      document.body.classList.remove('rtl');
-      applyTheme.direction = 'ltr';
-    }
-
-    const currentAppLocale = AppLocale[locale.locale];
-    return (
-      <ThemeProvider theme={applyTheme}>
-        <MuiPickersUtilsProvider utils={MomentUtils}>
-          <IntlProvider
-            locale={currentAppLocale.locale}
-            messages={currentAppLocale.messages}>
-            <RTL>
-              <div className="app-main">
-                <Switch>
-                  <RestrictedRoute path={`${match.url}app`} authUser={authUser}
-                                   component={MainApp}/>
-                  <Route path='/signin' component={SignIn}/>
-                  <Route path='/signup' component={SignUp}/>
-                  <Route
-                    component={asyncComponent(() => import('app/routes/extraPages/routes/404'))}/>
-                </Switch>
-              </div>
-            </RTL>
-          </IntlProvider>
-        </MuiPickersUtilsProvider>
-      </ThemeProvider>
-    );
-  }
-}
-
-const mapStateToProps = ({settings, auth}) => {
-  const {themeColor, sideNavColor, darkTheme, locale, isDirectionRTL} = settings;
-  const {authUser, initURL} = auth;
-  return {themeColor, sideNavColor, isDarkTheme: darkTheme, locale, isDirectionRTL, authUser, initURL}
+  const currentAppLocale = AppLocale[locale.locale];
+  console.log("in indexf file");
+  return (
+    <ThemeProvider theme={applyTheme}>
+      <MuiPickersUtilsProvider utils={MomentUtils}>
+        <IntlProvider
+          locale={currentAppLocale.locale}
+          messages={currentAppLocale.messages}
+        >
+          <RTL>
+            <div className="app-main">
+              <Switch>
+                <RestrictedRoute
+                  path={`${match.url}app`}
+                  token={token}
+                  component={AppLayout}
+                />
+                <Route path="/signin" component={SignIn} />
+                <Route path="/signup" component={SignUp} />
+                <Route
+                  component={asyncComponent(() =>
+                    import("app/routes/extraPages/routes/404")
+                  )}
+                />
+              </Switch>
+            </div>
+          </RTL>
+        </IntlProvider>
+      </MuiPickersUtilsProvider>
+    </ThemeProvider>
+  );
 };
 
-export default connect(mapStateToProps, {setInitUrl, setThemeColor, setDarkTheme})(App);
+export default App;

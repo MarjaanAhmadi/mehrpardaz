@@ -1,24 +1,24 @@
-import React from 'react';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepButton from "@material-ui/core/StepButton";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ["Select campaign settings", "Create an ad group", "Create an ad"];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return 'Step 1: Select campaign settings...';
+      return "Step 1: Select campaign settings...";
     case 1:
-      return 'Step 2: What is an ad group anyways?';
+      return "Step 2: What is an ad group anyways?";
     case 2:
-      return 'Step 3: This is the bit I really care about!';
+      return "Step 3: This is the bit I really care about!";
     default:
-      return 'Unknown step';
+      return "Unknown step";
   }
 }
 
@@ -46,18 +46,18 @@ class HorizontalNonLinearStepper extends React.Component {
     });
   };
   handleBack = () => {
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
     this.setState({
       activeStep: activeStep - 1,
     });
   };
-  handleStep = step => () => {
+  handleStep = (step) => () => {
     this.setState({
       activeStep: step,
     });
   };
   handleComplete = () => {
-    const {completed} = this.state;
+    const { completed } = this.state;
     completed[this.state.activeStep] = true;
     this.setState({
       completed,
@@ -85,17 +85,27 @@ class HorizontalNonLinearStepper extends React.Component {
 
   render() {
     const steps = getSteps();
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
 
     return (
       <div className="w-100">
-        <Stepper nonLinear activeStep={activeStep} className="horizontal-stepper-linear">
+        <Stepper
+          nonLinear
+          activeStep={activeStep}
+          className="horizontal-stepper-linear"
+        >
           {steps.map((label, index) => {
             return (
-              <Step key={label} className={`horizontal-stepper ${index === activeStep ? 'active' : ''}`}>
-                <StepButton className="stepperbutton"
-                            onClick={this.handleStep(index)}
-                            completed={this.state.completed[index]}
+              <Step
+                key={label}
+                className={`horizontal-stepper ${
+                  index === activeStep ? "active" : ""
+                }`}
+              >
+                <StepButton
+                  className="stepperbutton"
+                  onClick={this.handleStep(index)}
+                  completed={this.state.completed[index]}
                 >
                   {label}
                 </StepButton>
@@ -109,11 +119,15 @@ class HorizontalNonLinearStepper extends React.Component {
               <Typography className="my-2">
                 All steps completed - you&quot;re finished
               </Typography>
-              <Button className="jr-btn" onClick={this.handleReset}>Reset</Button>
+              <Button className="jr-btn" onClick={this.handleReset}>
+                Reset
+              </Button>
             </div>
           ) : (
             <div>
-              <Typography className="my-2">{getStepContent(activeStep)}</Typography>
+              <Typography className="my-2">
+                {getStepContent(activeStep)}
+              </Typography>
               <div>
                 <Button
                   disabled={activeStep === 0}
@@ -122,20 +136,31 @@ class HorizontalNonLinearStepper extends React.Component {
                 >
                   Back
                 </Button>
-                <Button variant="contained" color="primary" onClick={this.handleNext} className="jr-btn">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleNext}
+                  className="jr-btn"
+                >
                   Next
                 </Button>
                 {activeStep !== steps.length &&
-                (this.state.completed[this.state.activeStep] ? (
-                  <Typography variant="caption" className="my-2">
-                    Step {activeStep + 1} already completed
-                  </Typography>
-                ) : (
-                  <Button className="jr-btn" variant="contained" color="primary"
-                          onClick={this.handleComplete}>
-                    {this.completedSteps() === this.totalSteps() - 1 ? 'Finish' : 'Complete Step'}
-                  </Button>
-                ))}
+                  (this.state.completed[this.state.activeStep] ? (
+                    <Typography variant="caption" className="my-2">
+                      Step {activeStep + 1} already completed
+                    </Typography>
+                  ) : (
+                    <Button
+                      className="jr-btn"
+                      variant="contained"
+                      color="primary"
+                      onClick={this.handleComplete}
+                    >
+                      {this.completedSteps() === this.totalSteps() - 1
+                        ? "Finish"
+                        : "Complete Step"}
+                    </Button>
+                  ))}
               </div>
             </div>
           )}

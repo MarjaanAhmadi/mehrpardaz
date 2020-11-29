@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 
 class SimpleSnackbar extends Component {
   state = {
@@ -11,15 +11,15 @@ class SimpleSnackbar extends Component {
   };
 
   handleClick = () => {
-    this.setState({open: true});
+    this.setState({ open: true });
   };
 
   handleRequestClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
-    this.setState({open: false});
+    this.setState({ open: false });
   };
 
   render() {
@@ -30,18 +30,23 @@ class SimpleSnackbar extends Component {
         </Button>
         <Snackbar
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
+            vertical: "bottom",
+            horizontal: "left",
           }}
           open={this.state.open}
           autoHideDuration={6e3}
           onClose={this.handleRequestClose}
           ContentProps={{
-            'aria-describedby': 'message-id',
+            "aria-describedby": "message-id",
           }}
           message={<span id="message-id">Note archived</span>}
           action={[
-            <Button key="undo" color="secondary" size="small" onClick={this.handleRequestClose}>
+            <Button
+              key="undo"
+              color="secondary"
+              size="small"
+              onClick={this.handleRequestClose}
+            >
               UNDO
             </Button>,
             <IconButton
@@ -50,7 +55,7 @@ class SimpleSnackbar extends Component {
               color="inherit"
               onClick={this.handleRequestClose}
             >
-              <CloseIcon/>
+              <CloseIcon />
             </IconButton>,
           ]}
         />

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
+import React, { Component } from "react";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 class SwitchLabels extends Component {
   state = {
@@ -18,13 +18,16 @@ class SwitchLabels extends Component {
       <div>
         <FormControlLabel
           control={
-            <Switch color="primary"
-                    classes={{
-                      checked: 'text-primary',
-                      bar: 'bg-primary',
-                    }}
-                    checked={this.state.checkedA}
-                    onChange={(event, checked) => this.setState({checkedA: checked})}
+            <Switch
+              color="primary"
+              classes={{
+                checked: "text-primary",
+                bar: "bg-primary",
+              }}
+              checked={this.state.checkedA}
+              onChange={(event, checked) =>
+                this.setState({ checkedA: checked })
+              }
             />
           }
           label="A"
@@ -33,26 +36,30 @@ class SwitchLabels extends Component {
           control={
             <Switch
               classes={{
-                checked: 'text-secondary',
-                bar: 'bg-secondary',
+                checked: "text-secondary",
+                bar: "bg-secondary",
               }}
               checked={this.state.checkedB}
-              onChange={(event, checked) => this.setState({checkedB: checked})}
+              onChange={(event, checked) =>
+                this.setState({ checkedB: checked })
+              }
             />
           }
           label="B"
         />
-        <FormControlLabel control={<Switch/>} disabled label="C"/>
+        <FormControlLabel control={<Switch />} disabled label="C" />
 
         <FormControlLabel
           control={
             <Switch
               classes={{
-                checked: 'text-dark',
-                bar: 'bg-dark',
+                checked: "text-dark",
+                bar: "bg-dark",
               }}
               checked={this.state.checkedD}
-              onChange={(event, checked) => this.setState({checkedD: checked})}
+              onChange={(event, checked) =>
+                this.setState({ checkedD: checked })
+              }
             />
           }
           label="D"
@@ -61,11 +68,13 @@ class SwitchLabels extends Component {
           control={
             <Switch
               classes={{
-                checked: 'text-success',
-                bar: 'bg-success',
+                checked: "text-success",
+                bar: "bg-success",
               }}
               checked={this.state.checkedE}
-              onChange={(event, checked) => this.setState({checkedE: checked})}
+              onChange={(event, checked) =>
+                this.setState({ checkedE: checked })
+              }
             />
           }
           label="E"
@@ -74,28 +83,32 @@ class SwitchLabels extends Component {
           control={
             <Switch
               classes={{
-                checked: 'text-danger',
-                bar: 'bg-danger',
+                checked: "text-danger",
+                bar: "bg-danger",
               }}
               checked={this.state.checkedF}
-              onChange={(event, checked) => this.setState({checkedF: checked})}
+              onChange={(event, checked) =>
+                this.setState({ checkedF: checked })
+              }
             />
           }
           label="F"
-        /><FormControlLabel
-        control={
-          <Switch
-            classes={{
-              checked: 'text-warning',
-              bar: 'bg-warning',
-            }}
-            checked={this.state.checkedG}
-            onChange={(event, checked) => this.setState({checkedG: checked})}
-          />
-        }
-        label="G"
-      />
-
+        />
+        <FormControlLabel
+          control={
+            <Switch
+              classes={{
+                checked: "text-warning",
+                bar: "bg-warning",
+              }}
+              checked={this.state.checkedG}
+              onChange={(event, checked) =>
+                this.setState({ checkedG: checked })
+              }
+            />
+          }
+          label="G"
+        />
       </div>
     );
   }

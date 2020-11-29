@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 import Slider from "react-slick";
 import ProductItem from "./ProductItem";
 
-const ProductCarousel = ({products}) => {
-
+const ProductCarousel = ({ products }) => {
   const options = {
     dots: true,
     infinite: true,
@@ -18,58 +17,58 @@ const ProductCarousel = ({products}) => {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
-          dots: false
-        }
-      }, {
+          dots: false,
+        },
+      },
+      {
         breakpoint: 850,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          dots: false
-        }
+          dots: false,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          dots: false
-        }
+          dots: false,
+        },
       },
       {
         breakpoint: 400,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          dots: false
-        }
-      }
-    ]
+          dots: false,
+        },
+      },
+    ],
   };
 
   return (
-    <Slider className="slick-app-frame" {...options} >
+    <Slider className="slick-app-frame" {...options}>
       <div class="slick-slide-item">
-        <ProductItem product={products[0]}/>
+        <ProductItem product={products[0]} />
       </div>
       <div class="slick-slide-item">
-        <ProductItem product={products[1]}/>
+        <ProductItem product={products[1]} />
       </div>
       <div class="slick-slide-item">
-        <ProductItem product={products[2]}/>
+        <ProductItem product={products[2]} />
       </div>
       <div class="slick-slide-item">
-        <ProductItem product={products[3]}/>
+        <ProductItem product={products[3]} />
       </div>
       <div class="slick-slide-item">
-        <ProductItem product={products[4]}/>
+        <ProductItem product={products[4]} />
       </div>
       <div class="slick-slide-item">
-        <ProductItem product={products[5]}/>
+        <ProductItem product={products[5]} />
       </div>
     </Slider>
   );
 };
-
 
 export default ProductCarousel;

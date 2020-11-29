@@ -1,6 +1,6 @@
 /*Theme Blue Styles*/
-$app-primary-blue: #2196F3 !default;
-$secondary-blue: #FF6E40;
+$app-primary-blue: #2196f3 !default;
+$secondary-blue: #ff6e40;
 
 $sidebar-blue: rgba($app-primary-blue, 0.25) !default;
 $sidebar-text-blue: #868e96 !default;
@@ -60,51 +60,51 @@ $sidebar-text-blue: #868e96 !default;
 
   & .bg-primary {
     &.lighten-4 {
-      background-color: #BBDEFB !important;
+      background-color: #bbdefb !important;
     }
 
     &.lighten-3 {
-      background-color: #90CAF9 !important;
+      background-color: #90caf9 !important;
     }
 
     &.lighten-2 {
-      background-color: #64B5F6 !important;
+      background-color: #64b5f6 !important;
     }
 
     &.lighten-1 {
-      background-color: #42A5F5 !important;
+      background-color: #42a5f5 !important;
     }
 
     &.darken-1 {
-      background-color: #1E88E5 !important;
+      background-color: #1e88e5 !important;
     }
 
     &.darken-2 {
-      background-color: #1976D2 !important;
+      background-color: #1976d2 !important;
     }
 
     &.darken-3 {
-      background-color: #1565C0 !important;
+      background-color: #1565c0 !important;
     }
 
     &.darken-4 {
-      background-color: #0D47A1 !important;
+      background-color: #0d47a1 !important;
     }
 
     &.accent-1 {
-      background-color: #82B1FF !important;
+      background-color: #82b1ff !important;
     }
 
     &.accent-2 {
-      background-color: #448AFF !important;
+      background-color: #448aff !important;
     }
 
     &.accent-3 {
-      background-color: #2979FF !important;
+      background-color: #2979ff !important;
     }
 
     &.accent-4 {
-      background-color: #2962FF !important;
+      background-color: #2962ff !important;
     }
   }
 }
@@ -188,80 +188,73 @@ $sidebar-text-blue: #868e96 !default;
   }
 }
 
-.blue ul.nav-menu li button,
-.blue ul.nav-menu li a {
-  color: $sidebar-text-blue;
-}
-
-.blue ul.nav-menu {
+.blue .nav-section {
   & .nav-header {
     color: $sidebar-text-blue;
-  }
-
-  & li.menu + .nav-header {
     border-color: $gray-400;
   }
 }
 
-.blue ul.nav-menu > li.open > button,
-.blue ul.nav-menu > li > button:hover,
-.blue ul.nav-menu > li > button:focus,
-.blue ul.nav-menu > li.open > a,
-.blue ul.nav-menu > li > a:hover,
-.blue ul.nav-menu > li > a:focus {
-  background-color: $white;
-  color: $app-primary-blue;
+.blue .nav-collapse {
+  & .nav-collapse-btn {
+    color: $sidebar-text-blue;
+
+    &:focus,
+    &:hover {
+      background-color: $white;
+      color: $app-primary-blue;
+    }
+  }
+
+  &.open {
+    background-color: $white;
+
+    & .nav-collapse-btn {
+      background-color: $white;
+      color: $app-primary-blue;
+
+      &:focus,
+      &:hover {
+        background-color: $white;
+        color: $app-primary-blue;
+      }
+    }
+  }
 }
 
-.blue ul.nav-menu li.menu.open > a {
-  border-color: $app-primary-blue;
+.blue .nav-collapse {
+  & .nav-menu-item .nav-menu-link {
+    color: $sidebar-text-blue;
+
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $white;
+      color: $app-primary-blue;
+    }
+
+    &:after {
+      background-color: $app-primary-blue;
+    }
+  }
+
+  &.open {
+    & .nav-menu-item .nav-menu-link.active {
+      background-color: $sidebar-blue;
+      color: $app-primary-blue;
+    }
+  }
 }
 
-.blue ul.nav-menu li.menu > button:focus:before,
-.blue ul.nav-menu li.menu > button:hover:before,
-.blue ul.nav-menu li.menu > a:focus:before,
-.blue ul.nav-menu li.menu > a:hover:before {
-  color: $app-primary-blue;
-}
-
-.blue ul.nav-menu li ul {
-  background-color: $white;
-}
-
-.blue ul.nav-menu li.menu > button:before,
-.blue ul.nav-menu li.menu > a:before {
-  color: $sidebar-text-blue;
-}
-
-.blue ul.nav-menu li.menu.open > a:before,
-.blue ul.nav-menu li.menu > a:focus:before,
-.blue ul.nav-menu li.menu li > a:hover:before,
-.blue ul.nav-menu li.menu.open > button:before,
-.blue ul.nav-menu li.menu > button:focus:before,
-.blue ul.nav-menu li.menu li > button:hover:before {
-  color: $app-primary-blue;
-}
-
-.blue ul.nav-menu li.menu .sub-menu li > a:before {
-  color: $sidebar-text-blue;
-}
-
-.blue ul.nav-menu li.menu.open .sub-menu li > a:after {
-  background-color: $app-primary-blue;
-}
-
-.blue ul.nav-menu li.menu.open .sub-menu li > a.active {
-  background-color: $sidebar-blue;
-  color: $app-primary-blue;
-}
-
-.blue ul.nav-menu li.menu .sub-menu li > a:hover,
-.blue ul.nav-menu li.menu .sub-menu li > a:focus,
-.blue ul.nav-menu li.menu.open .sub-menu li > a.active:before,
-.blue ul.nav-menu li.menu .sub-menu li > a:focus:before,
-.blue ul.nav-menu li.menu .sub-menu li > a:hover:before {
-  background-color: $white;
-  color: $app-primary-blue;
+.blue .nav-menu-item {
+  & .nav-menu-link {
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $white;
+      color: $app-primary-blue;
+    }
+  }
 }
 
 /*Header top Navbar Styles*/
@@ -341,7 +334,6 @@ $sidebar-text-blue: #868e96 !default;
 }
 
 .blue .app-top-nav {
-
   & .navbar-nav {
     & li.nav-item > a,
     & li.nav-item > .nav-link {
@@ -371,7 +363,6 @@ $sidebar-text-blue: #868e96 !default;
 
 .blue .header-notifications .app-notification {
   & .jr-list-link {
-
     @include hover-focus-active {
       color: $app-primary-blue;
       border-color: $app-primary-blue;
@@ -381,9 +372,13 @@ $sidebar-text-blue: #868e96 !default;
 
 //_app-module.scss
 .blue .module-nav {
-  & li a {
-    &.active {
+  & li {
+    & a.active {
       border-color: $app-primary-blue;
+    }
+
+    & .jr-link.active {
+      color: $app-primary-blue;
     }
   }
 }
@@ -534,7 +529,6 @@ $sidebar-text-blue: #868e96 !default;
       background-color: $app-primary-blue;
       border-color: $app-primary-blue;
     }
-
   }
 
   > .jr-flat-btn {
@@ -583,11 +577,20 @@ $sidebar-text-blue: #868e96 !default;
 
 // Gradient Color Class
 .blue .bg-gradient-primary {
-  @include gradient-directional($app-primary-blue, lighten($app-primary-blue, 16%), 0deg);
+  @include gradient-directional(
+    $app-primary-blue,
+    lighten($app-primary-blue, 16%),
+    0deg
+  );
 }
 
 .blue .bg-gradient-primary-x {
-  @include gradient-x(darken($app-primary-blue, 10%), lighten($app-primary-blue, 16%), 70%, 100%);
+  @include gradient-x(
+    darken($app-primary-blue, 10%),
+    lighten($app-primary-blue, 16%),
+    70%,
+    100%
+  );
 }
 
 //Profile style
@@ -606,7 +609,6 @@ $sidebar-text-blue: #868e96 !default;
 }
 
 .blue .dropdown-item {
-
   &.active,
   &:active {
     background-color: $app-primary-blue;
@@ -614,7 +616,6 @@ $sidebar-text-blue: #868e96 !default;
   }
 
   &[class*="text-"] {
-
     &.active,
     &:active {
       background-color: transparent;

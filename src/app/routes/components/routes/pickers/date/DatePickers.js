@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import moment from 'moment';
-import {DatePicker} from 'material-ui-pickers';
+import React, { Component } from "react";
+import moment from "moment";
+import { DatePicker } from "material-ui-pickers";
 
 export default class DatePickers extends Component {
   state = {
@@ -8,11 +8,11 @@ export default class DatePickers extends Component {
   };
 
   handleDateChange = (date) => {
-    this.setState({selectedDate: date});
+    this.setState({ selectedDate: date });
   };
 
   render() {
-    const {selectedDate} = this.state;
+    const { selectedDate } = this.state;
 
     return (
       <div key="basic_day" className="picker">
@@ -21,11 +21,10 @@ export default class DatePickers extends Component {
           value={selectedDate}
           onChange={this.handleDateChange}
           animateYearScrolling={false}
-          leftArrowIcon={<i className="zmdi zmdi-arrow-back"/>}
-          rightArrowIcon={<i className="zmdi zmdi-arrow-forward"/>}
+          leftArrowIcon={<i className="zmdi zmdi-arrow-back" />}
+          rightArrowIcon={<i className="zmdi zmdi-arrow-forward" />}
         />
       </div>
-    )
-
+    );
   }
 }

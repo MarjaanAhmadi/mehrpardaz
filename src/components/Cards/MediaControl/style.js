@@ -1,22 +1,22 @@
 const styles = {
   card: {
-    display: 'flex',
+    display: "flex",
     maxWidth: 365,
   },
   details: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
   },
   content: {
-    flex: '1 0 auto',
+    flex: "1 0 auto",
   },
   cover: {
     width: 151,
     height: 151,
   },
   controls: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     paddingLeft: 8,
     paddingBottom: 8,
   },

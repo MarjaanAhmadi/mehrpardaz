@@ -23,7 +23,7 @@
     width: 560px;
 
     &:after {
-      content: '';
+      content: "";
       display: block;
       width: 870px;
       position: absolute;
@@ -38,7 +38,7 @@
 
   & .search-bar input {
     @include transition($transition-base);
-    background-color: rgba($white, 0.20);
+    background-color: rgba($white, 0.2);
     color: $white;
     & + .search-icon {
       top: 0;
@@ -113,7 +113,7 @@
     }
 
     @media screen and (max-width: 1099px) {
-      width: 200px;
+      width: 170px;
     }
 
     @media screen and (max-width: 767px) {
@@ -162,6 +162,12 @@
     &.list-inline-item:not(:last-child) {
       margin-right: 0;
     }
+
+    .app-header-horizontal & {
+      @media screen and (max-width: 991px) {
+        padding: 0 2px;
+      }
+    }
   }
 
   & .app-notification {
@@ -183,7 +189,7 @@
       }
 
       &:after {
-        content: '\f2f9';
+        content: "\f2f9";
         font: {
           family: Material-Design-Iconic-Font;
         }
@@ -429,7 +435,6 @@
 }
 
 .dropdown-item[class*="text-"] {
-
   &.active,
   &:active {
     background-color: transparent;

@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import MobileStepper from "@material-ui/core/MobileStepper";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 
 class TextMobileStepper extends React.Component {
   state = {
@@ -26,11 +26,15 @@ class TextMobileStepper extends React.Component {
   };
 
   render() {
-    const {theme} = this.props;
+    const { theme } = this.props;
 
     return (
       <div className="w-100">
-        <Paper square elevation={0} className="d-flex align-items-center pl-3 mb-3 ">
+        <Paper
+          square
+          elevation={0}
+          className="d-flex align-items-center pl-3 mb-3 "
+        >
           <Typography>Step {this.state.activeStep + 1} of 6</Typography>
         </Paper>
         <MobileStepper
@@ -39,14 +43,30 @@ class TextMobileStepper extends React.Component {
           position="static"
           activeStep={this.state.activeStep}
           nextButton={
-            <Button size="small" onClick={this.handleNext} disabled={this.state.activeStep === 5}>
+            <Button
+              size="small"
+              onClick={this.handleNext}
+              disabled={this.state.activeStep === 5}
+            >
               Next
-              {theme.direction === 'rtl' ? <KeyboardArrowLeft/> : <KeyboardArrowRight/>}
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowLeft />
+              ) : (
+                <KeyboardArrowRight />
+              )}
             </Button>
           }
           backButton={
-            <Button size="small" onClick={this.handleBack} disabled={this.state.activeStep === 0}>
-              {theme.direction === 'rtl' ? <KeyboardArrowRight/> : <KeyboardArrowLeft/>}
+            <Button
+              size="small"
+              onClick={this.handleBack}
+              disabled={this.state.activeStep === 0}
+            >
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowRight />
+              ) : (
+                <KeyboardArrowLeft />
+              )}
               Back
             </Button>
           }
@@ -60,4 +80,4 @@ TextMobileStepper.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(null, {withTheme: true})(TextMobileStepper);
+export default withStyles(null, { withTheme: true })(TextMobileStepper);

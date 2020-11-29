@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-const PopularArticles = ({article}) => {
-  const {image, title, description} = article;
+const PopularArticles = ({ article }) => {
+  const { image, title, description } = article;
   return (
     <div className="col-sm-6 col-12 mb-1">
       <div className="row">
         <div className="col-md-5 col-6 mb-2 pr-0">
           <div className="grid-thumb-equal grid-art-thumb-equal rounded-sm">
             <div className="grid-thumb-cover">
-              <img className="img-fluid" src={image} alt={title}/>
+              <img className="img-fluid" src={image} alt={title} />
             </div>
           </div>
         </div>
@@ -19,8 +19,7 @@ const PopularArticles = ({article}) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default PopularArticles;
-

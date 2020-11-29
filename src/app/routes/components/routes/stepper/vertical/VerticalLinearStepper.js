@@ -1,15 +1,14 @@
-import React from 'react';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-
+import React from "react";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import StepContent from "@material-ui/core/StepContent";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ["Select campaign settings", "Create an ad group", "Create an ad"];
 }
 
 function getStepContent(step) {
@@ -19,14 +18,14 @@ function getStepContent(step) {
               you're willing to spend on clicks and conversions, which networks
               and geographical locations you want your ads to show on, and more.`;
     case 1:
-      return 'An ad group contains one or more ads which target a shared set of keywords.';
+      return "An ad group contains one or more ads which target a shared set of keywords.";
     case 2:
       return `Try out different ad text to see what brings in the most customers,
               and learn how to enhance your ads using features like ad extensions.
               If you run into any problems with your ads, find out how to tell if
               they're running and how to resolve approval issues.`;
     default:
-      return 'Unknown step';
+      return "Unknown step";
   }
 }
 
@@ -55,7 +54,7 @@ class VerticalLinearStepper extends React.Component {
 
   render() {
     const steps = getSteps();
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
 
     return (
       <div className="w-100">
@@ -81,7 +80,7 @@ class VerticalLinearStepper extends React.Component {
                         onClick={this.handleNext}
                         className="jr-btn"
                       >
-                        {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                        {activeStep === steps.length - 1 ? "Finish" : "Next"}
                       </Button>
                     </div>
                   </div>

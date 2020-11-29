@@ -1,43 +1,42 @@
-import React from 'react';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-import IntlMessages from 'util/IntlMessages';
+import React from "react";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
+import IntlMessages from "util/IntlMessages";
 
 const currencies = [
   {
-    value: 'USD',
-    label: '$',
+    value: "USD",
+    label: "$",
   },
   {
-    value: 'EUR',
-    label: '€',
+    value: "EUR",
+    label: "€",
   },
   {
-    value: 'BTC',
-    label: '฿',
+    value: "BTC",
+    label: "฿",
   },
   {
-    value: 'JPY',
-    label: '¥',
+    value: "JPY",
+    label: "¥",
   },
 ];
 
 class TextFields extends React.Component {
   state = {
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
+    name: "Cat in the Hat",
+    age: "",
+    multiline: "Controlled",
+    currency: "EUR",
   };
 
-  handleChange = name => event => {
+  handleChange = (name) => (event) => {
     this.setState({
       [name]: event.target.value,
     });
   };
 
   render() {
-
     return (
       <form className="row" noValidate autoComplete="off">
         <div className="col-md-3 col-12">
@@ -45,7 +44,7 @@ class TextFields extends React.Component {
             id="name"
             label="Name"
             value={this.state.name}
-            onChange={this.handleChange('name')}
+            onChange={this.handleChange("name")}
             margin="normal"
             fullWidth
           />
@@ -82,7 +81,7 @@ class TextFields extends React.Component {
         <div className="col-md-3 col-12">
           <TextField
             id="password"
-            label={<IntlMessages id="appModule.password"/>}
+            label={<IntlMessages id="appModule.password" />}
             type="password"
             autoComplete="current-password"
             margin="normal"
@@ -95,7 +94,7 @@ class TextFields extends React.Component {
             id="number"
             label="Number"
             value={this.state.age}
-            onChange={this.handleChange('age')}
+            onChange={this.handleChange("age")}
             type="number"
             InputLabelProps={{
               shrink: true,
@@ -111,7 +110,7 @@ class TextFields extends React.Component {
             multiline
             rowsMax="4"
             value={this.state.multiline}
-            onChange={this.handleChange('multiline')}
+            onChange={this.handleChange("multiline")}
             margin="normal"
             fullWidth
           />
@@ -158,13 +157,13 @@ class TextFields extends React.Component {
             select
             label="Select"
             value={this.state.currency}
-            onChange={this.handleChange('currency')}
+            onChange={this.handleChange("currency")}
             SelectProps={{}}
             helperText="Please select your currency"
             margin="normal"
             fullWidth
           >
-            {currencies.map(option => (
+            {currencies.map((option) => (
               <MenuItem key={option.value} value={option.value}>
                 {option.label}
               </MenuItem>
@@ -177,7 +176,7 @@ class TextFields extends React.Component {
             select
             label="Native select"
             value={this.state.currency}
-            onChange={this.handleChange('currency')}
+            onChange={this.handleChange("currency")}
             SelectProps={{
               native: true,
             }}
@@ -185,7 +184,7 @@ class TextFields extends React.Component {
             margin="normal"
             fullWidth
           >
-            {currencies.map(option => (
+            {currencies.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -220,6 +219,5 @@ class TextFields extends React.Component {
     );
   }
 }
-
 
 export default TextFields;

@@ -1,24 +1,26 @@
-import React, {useState} from 'react';
-import moment from 'moment';
-import {TimePicker} from 'material-ui-pickers';
+import React, { Component } from "react";
+import moment from "moment";
+import { TimePicker } from "material-ui-pickers";
 
-const TimePickers = (props) => {
-  const [selectedDate, setSelectedDate] = useState(moment);
- 
-
-  const handleDateChange = (date) => {
-      setSelectedDate(date);
-      props.setPublishedTime(date);
+export default class TimePickers extends Component {
+  state = {
+    selectedDate: moment(),
   };
 
-    return (<div key="basic_time" className="picker">
+  handleDateChange = (date) => {
+    this.setState({ selectedDate: date });
+  };
 
-      <TimePicker
-        fullWidth
-        value={selectedDate}
-        onChange={handleDateChange}
-      />
-    </div>)
-  
+  render() {
+    const { selectedDate } = this.state;
+    return (
+      <div key="basic_time" className="picker">
+        <TimePicker
+          fullWidth
+          value={selectedDate}
+          onChange={this.handleDateChange}
+        />
+      </div>
+    );
+  }
 }
-export default TimePickers;

@@ -1,33 +1,41 @@
 /*Input Styles*/
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
   font-size: 12px;
 }
 
-::-moz-placeholder { /* Firefox 19+ */
+::-moz-placeholder {
+  /* Firefox 19+ */
   font-size: 12px;
 }
 
-:-ms-input-placeholder { /* IE 10+ */
+:-ms-input-placeholder {
+  /* IE 10+ */
   font-size: 12px;
 }
 
-:-moz-placeholder { /* Firefox 18- */
+:-moz-placeholder {
+  /* Firefox 18- */
   font-size: 12px;
 }
 
-.module-box-header ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+.module-box-header ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
   font-size: 14px;
 }
 
-.module-box-header ::-moz-placeholder { /* Firefox 19+ */
+.module-box-header ::-moz-placeholder {
+  /* Firefox 19+ */
   font-size: 14px;
 }
 
-.module-box-header :-ms-input-placeholder { /* IE 10+ */
+.module-box-header :-ms-input-placeholder {
+  /* IE 10+ */
   font-size: 14px;
 }
 
-.module-box-header :-moz-placeholder { /* Firefox 18- */
+.module-box-header :-moz-placeholder {
+  /* Firefox 18- */
   font-size: 14px;
 }
 
@@ -110,6 +118,9 @@
   @include box-shadow(none);
 
   &:focus {
-    @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(0, 123, 255, 0.25));
+    @include box-shadow(
+      inset 0 1px 1px rgba(0, 0, 0, 0.075),
+      0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+    );
   }
 }

@@ -1,23 +1,24 @@
-import React, {Component} from "react";
-import {Circle, GoogleMap, InfoWindow, withGoogleMap} from "react-google-maps";
+import React, { Component } from "react";
+import {
+  Circle,
+  GoogleMap,
+  InfoWindow,
+  withGoogleMap,
+} from "react-google-maps";
 import canUseDOM from "can-use-dom";
 import raf from "raf";
 
-const geolocation = (
-  canUseDOM && navigator.geolocation ?
-    navigator.geolocation :
-    ({
-      getCurrentPosition(success, failure) {
-        failure(`Your browser doesn't support geolocation.`);
-      },
-    })
-);
+const geolocation =
+  canUseDOM && navigator.geolocation
+    ? navigator.geolocation
+    : {
+        getCurrentPosition(success, failure) {
+          failure(`Your browser doesn't support geolocation.`);
+        },
+      };
 
-const GeolocationExampleGoogleMap = withGoogleMap(props => (
-  <GoogleMap
-    defaultZoom={10}
-    center={props.center}
-  >
+const GeolocationExampleGoogleMap = withGoogleMap((props) => (
+  <GoogleMap defaultZoom={10} center={props.center}>
     {props.center && (
       <InfoWindow position={props.center}>
         <div>{props.content}</div>
@@ -28,9 +29,9 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
         center={props.center}
         radius={props.radius}
         options={{
-          fillColor: 'red',
-          fillOpacity: 0.20,
-          strokeColor: 'red',
+          fillColor: "red",
+          fillOpacity: 0.2,
+          strokeColor: "red",
           strokeOpacity: 1,
           strokeWeight: 1,
         }}
@@ -45,7 +46,6 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
  * Add <script src="https://maps.googleapis.com/maps/api/js"></script> to your HTML to provide google.maps reference
  */
 export default class GeolocationExample extends Component {
-
   state = {
     center: null,
     content: null,
@@ -59,37 +59,40 @@ export default class GeolocationExample extends Component {
       if (this.isUnmounted) {
         return;
       }
-      this.setState({radius: Math.max(this.state.radius - 20, 0)});
+      this.setState({ radius: Math.max(this.state.radius - 20, 0) });
 
       if (this.state.radius > 200) {
         raf(tick);
       }
     };
-    geolocation.getCurrentPosition((position) => {
-      if (this.isUnmounted) {
-        return;
-      }
-      this.setState({
-        center: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        },
-        content: `Location found using HTML5.`,
-      });
+    geolocation.getCurrentPosition(
+      (position) => {
+        if (this.isUnmounted) {
+          return;
+        }
+        this.setState({
+          center: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          },
+          content: `Location found using HTML5.`,
+        });
 
-      raf(tick);
-    }, (reason) => {
-      if (this.isUnmounted) {
-        return;
+        raf(tick);
+      },
+      (reason) => {
+        if (this.isUnmounted) {
+          return;
+        }
+        this.setState({
+          center: {
+            lat: 60,
+            lng: 105,
+          },
+          content: `Error: The Geolocation service failed (${reason}).`,
+        });
       }
-      this.setState({
-        center: {
-          lat: 60,
-          lng: 105,
-        },
-        content: `Error: The Geolocation service failed (${reason}).`,
-      });
-    });
+    );
   }
 
   componentWillUnmount() {
@@ -100,9 +103,9 @@ export default class GeolocationExample extends Component {
     return (
       <GeolocationExampleGoogleMap
         containerElement={
-          <div className="embed-responsive embed-responsive-21by9"/>
+          <div className="embed-responsive embed-responsive-21by9" />
         }
-        mapElement={<div className="embed-responsive-item"/>}
+        mapElement={<div className="embed-responsive-item" />}
         center={this.state.center}
         content={this.state.content}
         radius={this.state.radius}

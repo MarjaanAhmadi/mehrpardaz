@@ -16,7 +16,7 @@
   color: map-get($green, base);
 
   & .zmdi {
-    font-size: 2*$font-size-base;
+    font-size: 2 * $font-size-base;
     line-height: 10px;
     vertical-align: bottom;
     padding-bottom: 2px;
@@ -31,7 +31,7 @@
   color: $danger;
 
   & .zmdi {
-    font-size: 2*$font-size-base;
+    font-size: 2 * $font-size-base;
     line-height: 10px;
     vertical-align: bottom;
     @include rotate(180deg);
@@ -79,7 +79,7 @@
     padding: 15px 20px;
 
     .jr-overlay-fillchart & {
-      background-color: rgba($black, 0.20);
+      background-color: rgba($black, 0.2);
     }
 
     & .card-title {
@@ -97,7 +97,7 @@
     visibility: hidden;
     cursor: pointer;
     @include transition(all 0.3s ease-out);
-    border: solid 2*$border-width $white;
+    border: solid 2 * $border-width $white;
     @include border-radius($border-radius-circle);
     width: $size-30;
     height: $size-30;
@@ -514,7 +514,6 @@
     }
 
     @media (max-width: 991px) {
-
       .jr-card-profile & {
         @include display-flex(flex, column, nowrap);
       }
@@ -557,7 +556,6 @@
 
       @media (max-width: 575px) {
         .jr-card-profile & {
-
           & h2 {
             font-size: $font-size-base;
           }
@@ -765,7 +763,6 @@
   }
 
   .jr-card-ticketlist & {
-
     .jr-hover {
       display: none;
 
@@ -978,7 +975,7 @@
     }
 
     & .zmdi {
-      font-size: 2*$font-size-base;
+      font-size: 2 * $font-size-base;
       line-height: 10px;
       vertical-align: bottom;
     }
@@ -1012,11 +1009,11 @@
     z-index: 1;
     text-align: center;
     font-weight: $font-weight-bold;
-    font-size: 2*$font-size-sm;
+    font-size: 2 * $font-size-sm;
     color: $white;
 
     & .zmdi {
-      font-size: 2*$font-size-base;
+      font-size: 2 * $font-size-base;
     }
   }
 
@@ -1044,7 +1041,7 @@
       height: $size-30;
       min-height: $size-30;
       width: $size-30;
-      @include box-shadow(0 .5rem 1rem rgba($black, .15));
+      @include box-shadow(0 0.5rem 1rem rgba($black, 0.15));
       line-height: ($size-30 - 5) !important;
     }
   }
@@ -1064,7 +1061,7 @@
   .jr-dot {
     cursor: pointer;
     @include transition(all 0.3s ease-out);
-    font-size: 2*$font-size-sm;
+    font-size: 2 * $font-size-sm;
     @include display-flex(flex, column, nowrap);
     @include justify-content(center);
   }

@@ -1,9 +1,9 @@
 /*Theme Amber Styles*/
-$app-primary-amber: #FFC107 !default;
-$secondary-amber: #FF3D00;
+$app-primary-amber: #ffc107 !default;
+$secondary-amber: #ff3d00;
 
 $sidebar-amber: rgba($app-primary-amber, 0.25) !default;
-$sidebar-text-color-amber: #868e96 !default;
+$sidebar-text-amber: #868e96 !default;
 
 //-Base-scss
 .amber .right-arrow {
@@ -167,7 +167,7 @@ $sidebar-text-color-amber: #868e96 !default;
 //_sidebar.scss
 .amber .side-nav {
   background-color: $white !important;
-  color: $sidebar-text-color-amber !important;
+  color: $sidebar-text-amber !important;
   @include box-shadow(0 1px 4px 0 rgba(0, 0, 0, 0.15));
 
   & .user-profile {
@@ -182,7 +182,7 @@ $sidebar-text-color-amber: #868e96 !default;
   }
 
   & .customizer {
-    border-bottom: solid 1px lighten($sidebar-text-color-amber, 35%);
+    border-bottom: solid 1px lighten($sidebar-text-amber, 35%);
   }
 
   & .user-detail {
@@ -192,80 +192,73 @@ $sidebar-text-color-amber: #868e96 !default;
   }
 }
 
-.amber ul.nav-menu li button,
-.amber ul.nav-menu li a {
-  color: $sidebar-text-color-amber;
-}
-
-.amber ul.nav-menu {
+.amber .nav-section {
   & .nav-header {
-    color: $sidebar-text-color-amber;
-  }
-
-  & li.menu + .nav-header {
+    color: $sidebar-text-amber;
     border-color: $gray-400;
   }
 }
 
-.amber ul.nav-menu > li.open > button,
-.amber ul.nav-menu > li > button:hover,
-.amber ul.nav-menu > li > button:focus,
-.amber ul.nav-menu > li.open > a,
-.amber ul.nav-menu > li > a:hover,
-.amber ul.nav-menu > li > a:focus {
-  background-color: $white;
-  color: $app-primary-amber;
+.amber .nav-collapse {
+  & .nav-collapse-btn {
+    color: $sidebar-text-amber;
+
+    &:focus,
+    &:hover {
+      background-color: $white;
+      color: $app-primary-amber;
+    }
+  }
+
+  &.open {
+    background-color: $white;
+
+    & .nav-collapse-btn {
+      background-color: $white;
+      color: $app-primary-amber;
+
+      &:focus,
+      &:hover {
+        background-color: $white;
+        color: $app-primary-amber;
+      }
+    }
+  }
 }
 
-.amber ul.nav-menu li.open > a {
-  border-color: $app-primary-amber;
+.amber .nav-collapse {
+  & .nav-menu-item .nav-menu-link {
+    color: $sidebar-text-amber;
+
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $white;
+      color: $app-primary-amber;
+    }
+
+    &:after {
+      background-color: $app-primary-amber;
+    }
+  }
+
+  &.open {
+    & .nav-menu-item .nav-menu-link.active {
+      background-color: $sidebar-amber;
+      color: $app-primary-amber;
+    }
+  }
 }
 
-.amber ul.nav-menu li.menu > button:focus:before,
-.amber ul.nav-menu li.menu > button:hover:before,
-.amber ul.nav-menu li.menu > a:focus:before,
-.amber ul.nav-menu li.menu > a:hover:before {
-  color: $app-primary-amber;
-}
-
-.amber ul.nav-menu li ul {
-  background-color: $white;
-}
-
-.amber ul.nav-menu li.menu > button:before,
-.amber ul.nav-menu li.menu > a:before {
-  color: $sidebar-text-color;
-}
-
-.amber ul.nav-menu li.menu.open > a:before,
-.amber ul.nav-menu li.menu > a:focus:before,
-.amber ul.nav-menu li.menu li > a:hover:before,
-.amber ul.nav-menu li.menu.open > button:before,
-.amber ul.nav-menu li.menu > button:focus:before,
-.amber ul.nav-menu li.menu li > button:hover:before {
-  color: $app-primary-amber;
-}
-
-.amber ul.nav-menu li.menu .sub-menu li > a:before {
-  color: $sidebar-text-color-amber;
-}
-
-.amber ul.nav-menu li.menu.open .sub-menu li > a:after {
-  background-color: $app-primary-amber;
-}
-
-.amber ul.nav-menu li.menu.open .sub-menu li > a.active {
-  background-color: $sidebar-amber;
-  color: $app-primary-amber;
-}
-
-.amber ul.nav-menu li.menu .sub-menu li > a:hover,
-.amber ul.nav-menu li.menu .sub-menu li > a:focus,
-.amber ul.nav-menu li.menu.open .sub-menu li > a.active:before,
-.amber ul.nav-menu li.menu .sub-menu li > a:focus:before,
-.amber ul.nav-menu li.menu .sub-menu li > a:hover:before {
-  background-color: $white;
-  color: $app-primary-amber;
+.amber .nav-menu-item {
+  & .nav-menu-link {
+    &:focus,
+    &:hover,
+    &.active {
+      background-color: $white;
+      color: $app-primary-amber;
+    }
+  }
 }
 
 /*Header top Navbar Styles*/
@@ -345,7 +338,6 @@ $sidebar-text-color-amber: #868e96 !default;
 }
 
 .amber .app-top-nav {
-
   & .navbar-nav {
     & li.nav-item > a,
     & li.nav-item > .nav-link {
@@ -375,7 +367,6 @@ $sidebar-text-color-amber: #868e96 !default;
 
 .amber .header-notifications .app-notification {
   & .jr-list-link {
-
     @include hover-focus-active {
       color: $app-primary-amber;
       border-color: $app-primary-amber;
@@ -385,9 +376,13 @@ $sidebar-text-color-amber: #868e96 !default;
 
 //_app-module.scss
 .amber .module-nav {
-  & li a {
-    &.active {
+  & li {
+    & a.active {
       border-color: $app-primary-amber;
+    }
+
+    & .jr-link.active {
+      color: $app-primary-amber;
     }
   }
 }
@@ -538,7 +533,6 @@ $sidebar-text-color-amber: #868e96 !default;
       background-color: $app-primary-amber;
       border-color: $app-primary-amber;
     }
-
   }
 
   > .jr-flat-btn {
@@ -587,11 +581,20 @@ $sidebar-text-color-amber: #868e96 !default;
 
 // Gradient Color Class
 .amber .bg-gradient-primary {
-  @include gradient-directional($app-primary-amber, lighten($app-primary-amber, 16%), 0deg);
+  @include gradient-directional(
+    $app-primary-amber,
+    lighten($app-primary-amber, 16%),
+    0deg
+  );
 }
 
 .amber .bg-gradient-primary-x {
-  @include gradient-x(darken($app-primary-amber, 10%), lighten($app-primary-amber, 16%), 70%, 100%);
+  @include gradient-x(
+    darken($app-primary-amber, 10%),
+    lighten($app-primary-amber, 16%),
+    70%,
+    100%
+  );
 }
 
 //Profile style
@@ -610,7 +613,6 @@ $sidebar-text-color-amber: #868e96 !default;
 }
 
 .amber .dropdown-item {
-
   &.active,
   &:active {
     background-color: $app-primary-amber;
@@ -618,7 +620,6 @@ $sidebar-text-color-amber: #868e96 !default;
   }
 
   &[class*="text-"] {
-
     &.active,
     &:active {
       background-color: transparent;

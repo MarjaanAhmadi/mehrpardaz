@@ -1,32 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import React from "react";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const options = [
-  'None',
-  'Atria',
-  'Callisto',
-  'Dione',
-  'Ganymede',
-  'Hangouts Call',
-  'Luna',
-  'Oberon',
-  'Phobos',
-  'Pyxis',
-  'Sedna',
-  'Titania',
-  'Triton',
-  'Umbriel',
+  "None",
+  "Atria",
+  "Callisto",
+  "Dione",
+  "Ganymede",
+  "Hangouts Call",
+  "Luna",
+  "Oberon",
+  "Phobos",
+  "Pyxis",
+  "Sedna",
+  "Titania",
+  "Triton",
+  "Umbriel",
 ];
 
 class ConfirmationDialog extends React.Component {
@@ -44,22 +44,22 @@ class ConfirmationDialog extends React.Component {
     this.props.onClose(this.state.value);
   };
   handleChange = (event, value) => {
-    this.setState({value});
+    this.setState({ value });
   };
 
   componentWillMount() {
-    this.setState({value: this.props.value});
+    this.setState({ value: this.props.value });
   }
 
   componentWillUpdate(nextProps) {
     if (nextProps.value !== this.props.value) {
       // eslint-disable-next-line react/no-will-update-set-state
-      this.setState({value: nextProps.value});
+      this.setState({ value: nextProps.value });
     }
   }
 
   render() {
-    const {value, ...other} = this.props;
+    const { value, ...other } = this.props;
 
     return (
       <Dialog
@@ -72,7 +72,7 @@ class ConfirmationDialog extends React.Component {
         <DialogTitle>Phone Ringtone</DialogTitle>
         <DialogContent>
           <RadioGroup
-            ref={node => {
+            ref={(node) => {
               this.radioGroup = node;
             }}
             aria-label="ringtone"
@@ -80,8 +80,13 @@ class ConfirmationDialog extends React.Component {
             value={this.state.value}
             onChange={this.handleChange}
           >
-            {options.map(option => (
-              <FormControlLabel value={option} key={option} control={<Radio/>} label={option}/>
+            {options.map((option) => (
+              <FormControlLabel
+                value={option}
+                key={option}
+                control={<Radio />}
+                label={option}
+              />
             ))}
           </RadioGroup>
         </DialogContent>
@@ -106,17 +111,17 @@ ConfirmationDialog.propTypes = {
 class ConfirmationDialogDemo extends React.Component {
   state = {
     open: false,
-    value: 'Dione',
+    value: "Dione",
   };
 
   button = undefined;
 
   handleClickListItem = () => {
-    this.setState({open: true});
+    this.setState({ open: true });
   };
 
-  handleRequestClose = value => {
-    this.setState({value, open: false});
+  handleRequestClose = (value) => {
+    this.setState({ value, open: false });
   };
 
   render() {
@@ -124,7 +129,7 @@ class ConfirmationDialogDemo extends React.Component {
       <div className="d-inline-block w-100">
         <List>
           <ListItem button divider disabled>
-            <ListItemText primary="Interruptions"/>
+            <ListItemText primary="Interruptions" />
           </ListItem>
           <ListItem
             button
@@ -134,10 +139,16 @@ class ConfirmationDialogDemo extends React.Component {
             aria-label="Phone ringtone"
             onClick={this.handleClickListItem}
           >
-            <ListItemText primary="Phone ringtone" secondary={this.state.value}/>
+            <ListItemText
+              primary="Phone ringtone"
+              secondary={this.state.value}
+            />
           </ListItem>
           <ListItem button divider disabled>
-            <ListItemText primary="Default notification ringtone" secondary="Tethys"/>
+            <ListItemText
+              primary="Default notification ringtone"
+              secondary="Tethys"
+            />
           </ListItem>
           <ConfirmationDialog
             open={this.state.open}
